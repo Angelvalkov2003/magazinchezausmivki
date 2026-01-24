@@ -3,11 +3,11 @@
 import { useState } from "react";
 import { EnvelopeIcon, PhoneIcon } from "@heroicons/react/24/outline";
 
-const siteName = process.env.NEXT_PUBLIC_SITE_NAME || process.env.SITE_NAME || "My Ecommerce Store";
+const siteName = "Магазинче за усмивки";
 const contactEmail = process.env.NEXT_PUBLIC_CONTACT_EMAIL || process.env.CONTACT_EMAIL || "contact@example.com";
 const contactPhone = process.env.NEXT_PUBLIC_CONTACT_PHONE || "+359 888 888 888";
 const facebookUrl = process.env.NEXT_PUBLIC_FACEBOOK_URL || "#";
-const instagramUrl = process.env.NEXT_PUBLIC_INSTAGRAM_URL || "#";
+const instagramUrl = "https://www.instagram.com/magazinchezausmivki.shop/";
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -66,16 +66,16 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-white dark:bg-gray-900 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-4xl mx-auto">
-        <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-8 text-center">
+        <h1 className="text-4xl font-bold text-mustard dark:text-mustard mb-8 text-center">
           Свържете се с нас
         </h1>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Contact Information */}
           <div className="space-y-6">
-            <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-6">
+            <h2 className="text-2xl font-semibold text-mustard dark:text-mustard mb-6">
               Контактна информация
             </h2>
 
@@ -83,17 +83,17 @@ export default function ContactPage() {
               {/* Email */}
               <div className="flex items-start space-x-4">
                 <div className="flex-shrink-0">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-blue-100 dark:bg-blue-900">
-                    <EnvelopeIcon className="h-6 w-6 text-blue-600 dark:text-blue-400" />
+                  <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-peach dark:bg-peach/30">
+                    <EnvelopeIcon className="h-6 w-6 text-mustard dark:text-mustard" />
                   </div>
                 </div>
                 <div>
-                  <h3 className="text-sm font-medium text-gray-500 dark:text-gray-400">
+                  <h3 className="text-sm font-medium text-sage dark:text-sage">
                     Имейл
                   </h3>
                   <a
                     href={`mailto:${contactEmail}`}
-                    className="text-base text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400"
+                    className="text-base text-mustard dark:text-mustard hover:opacity-80 dark:hover:opacity-80"
                   >
                     {contactEmail}
                   </a>
@@ -103,17 +103,17 @@ export default function ContactPage() {
               {/* Phone */}
               <div className="flex items-start space-x-4">
                 <div className="flex-shrink-0">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-green-100 dark:bg-green-900">
-                    <PhoneIcon className="h-6 w-6 text-green-600 dark:text-green-400" />
+                  <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-light-sage dark:bg-light-sage/30">
+                    <PhoneIcon className="h-6 w-6 text-sage dark:text-sage" />
                   </div>
                 </div>
                 <div>
-                  <h3 className="text-sm font-medium text-gray-500 dark:text-gray-400">
+                  <h3 className="text-sm font-medium text-sage dark:text-sage">
                     Телефон
                   </h3>
                   <a
                     href={`tel:${contactPhone.replace(/\s/g, "")}`}
-                    className="text-base text-gray-900 dark:text-white hover:text-green-600 dark:hover:text-green-400"
+                    className="text-base text-gray-900 dark:text-white hover:text-sage dark:hover:text-sage"
                   >
                     {contactPhone}
                   </a>
@@ -121,42 +121,49 @@ export default function ContactPage() {
               </div>
 
               {/* Facebook */}
-              <div className="flex items-start space-x-4">
-                <div className="flex-shrink-0">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-blue-600 dark:bg-blue-700">
-                    <svg
-                      className="h-6 w-6 text-white"
-                      fill="currentColor"
-                      viewBox="0 0 24 24"
-                      aria-hidden="true"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"
-                        clipRule="evenodd"
-                      />
-                    </svg>
+              {facebookUrl !== "#" && (
+                <a
+                  href={facebookUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-start space-x-4 hover:opacity-80 transition-opacity"
+                >
+                  <div className="flex-shrink-0">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-mustard dark:bg-mustard/80 cursor-pointer">
+                      <svg
+                        className="h-6 w-6 text-white"
+                        fill="currentColor"
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"
+                          clipRule="evenodd"
+                        />
+                      </svg>
+                    </div>
                   </div>
-                </div>
-                <div>
-                  <h3 className="text-sm font-medium text-gray-500 dark:text-gray-400">
-                    Facebook
-                  </h3>
-                  <a
-                    href={facebookUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-base text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400"
-                  >
-                    {facebookUrl !== "#" ? facebookUrl : "Facebook страница"}
-                  </a>
-                </div>
-              </div>
+                  <div>
+                    <h3 className="text-sm font-medium text-sage dark:text-sage">
+                      Facebook
+                    </h3>
+                    <p className="text-base text-mustard dark:text-mustard">
+                      Facebook
+                    </p>
+                  </div>
+                </a>
+              )}
 
               {/* Instagram */}
-              <div className="flex items-start space-x-4">
+              <a
+                href={instagramUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-start space-x-4 hover:opacity-80 transition-opacity"
+              >
                 <div className="flex-shrink-0">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-to-br from-purple-600 to-pink-600">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-to-br from-purple-600 to-pink-600 cursor-pointer">
                     <svg
                       className="h-6 w-6 text-white"
                       fill="currentColor"
@@ -172,24 +179,19 @@ export default function ContactPage() {
                   </div>
                 </div>
                 <div>
-                  <h3 className="text-sm font-medium text-gray-500 dark:text-gray-400">
+                  <h3 className="text-sm font-medium text-sage dark:text-sage">
                     Instagram
                   </h3>
-                  <a
-                    href={instagramUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-base text-gray-900 dark:text-white hover:text-pink-600 dark:hover:text-pink-400"
-                  >
-                    {instagramUrl !== "#" ? instagramUrl : "Instagram профил"}
-                  </a>
+                  <p className="text-base text-mustard dark:text-mustard">
+                    Instagram
+                  </p>
                 </div>
-              </div>
+              </a>
             </div>
           </div>
 
           {/* Contact Form */}
-          <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
+          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg border border-light-sage p-6">
             <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-6">
               Изпратете съобщение
             </h2>
@@ -210,7 +212,7 @@ export default function ContactPage() {
               <div>
                 <label
                   htmlFor="name"
-                  className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
+                  className="block text-sm font-medium text-sage dark:text-sage mb-1"
                 >
                   Име *
                 </label>
@@ -222,14 +224,14 @@ export default function ContactPage() {
                   onChange={(e) =>
                     setFormData({ ...formData, name: e.target.value })
                   }
-                  className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-700 dark:text-white"
+                  className="w-full px-4 py-2 border border-light-sage dark:border-sage rounded-lg focus:ring-2 focus:ring-mustard focus:border-transparent dark:bg-light-sage/20 dark:text-mustard"
                 />
               </div>
 
               <div>
                 <label
                   htmlFor="email"
-                  className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
+                  className="block text-sm font-medium text-sage dark:text-sage mb-1"
                 >
                   Имейл *
                 </label>
@@ -241,14 +243,14 @@ export default function ContactPage() {
                   onChange={(e) =>
                     setFormData({ ...formData, email: e.target.value })
                   }
-                  className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-700 dark:text-white"
+                  className="w-full px-4 py-2 border border-light-sage dark:border-sage rounded-lg focus:ring-2 focus:ring-mustard focus:border-transparent dark:bg-light-sage/20 dark:text-mustard"
                 />
               </div>
 
               <div>
                 <label
                   htmlFor="phone"
-                  className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
+                  className="block text-sm font-medium text-sage dark:text-sage mb-1"
                 >
                   Телефон *
                 </label>
@@ -260,14 +262,14 @@ export default function ContactPage() {
                   onChange={(e) =>
                     setFormData({ ...formData, phone: e.target.value })
                   }
-                  className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-700 dark:text-white"
+                  className="w-full px-4 py-2 border border-light-sage dark:border-sage rounded-lg focus:ring-2 focus:ring-mustard focus:border-transparent dark:bg-light-sage/20 dark:text-mustard"
                 />
               </div>
 
               <div>
                 <label
                   htmlFor="message"
-                  className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
+                  className="block text-sm font-medium text-sage dark:text-sage mb-1"
                 >
                   Съобщение *
                 </label>
@@ -279,7 +281,7 @@ export default function ContactPage() {
                   onChange={(e) =>
                     setFormData({ ...formData, message: e.target.value })
                   }
-                  className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-700 dark:text-white"
+                  className="w-full px-4 py-2 border border-light-sage dark:border-sage rounded-lg focus:ring-2 focus:ring-mustard focus:border-transparent dark:bg-light-sage/20 dark:text-mustard"
                 />
               </div>
 
@@ -295,7 +297,7 @@ export default function ContactPage() {
                         privacy_policy_accepted: e.target.checked,
                       })
                     }
-                    className="mt-1 h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+                    className="mt-1 h-4 w-4 text-mustard focus:ring-mustard border-gray-300 rounded"
                   />
                   <span className="text-sm text-gray-700 dark:text-gray-300">
                     Съгласен съм с{" "}
@@ -303,7 +305,7 @@ export default function ContactPage() {
                       href="/privacy-policy"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-blue-600 dark:text-blue-400 underline hover:text-blue-800 dark:hover:text-blue-300"
+                      className="text-mustard dark:text-mustard underline hover:opacity-80 dark:hover:opacity-80"
                     >
                       Политиката за поверителност
                     </a>{" "}
@@ -315,7 +317,7 @@ export default function ContactPage() {
               <button
                 type="submit"
                 disabled={isSubmitting || !formData.privacy_policy_accepted}
-                className="w-full bg-blue-600 text-white py-3 px-6 rounded-lg font-medium hover:bg-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full bg-mustard text-white py-3 px-6 rounded-lg font-medium hover:opacity-90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {isSubmitting ? "Изпращане..." : "Изпрати съобщение"}
               </button>

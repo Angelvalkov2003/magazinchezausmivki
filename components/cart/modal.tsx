@@ -80,7 +80,7 @@ export default function CartModal() {
                         return (
                           <li
                             key={i}
-                            className="flex w-full flex-col border-b border-neutral-300 dark:border-neutral-700"
+                            className="flex w-full flex-col border-b border-sage dark:border-sage/50"
                           >
                             <div className="relative flex w-full flex-row justify-between px-1 py-4">
                               <div className="absolute z-40 -ml-1 -mt-2">
@@ -145,28 +145,28 @@ export default function CartModal() {
                         );
                       })}
                   </ul>
-                  <div className="py-4 text-sm text-neutral-500 dark:text-neutral-400">
-                    <div className="mb-3 flex items-center justify-between border-b border-neutral-200 pb-1 dark:border-neutral-700">
-                      <p>Междинна сума</p>
+                  <div className="py-4 text-sm text-sage dark:text-sage">
+                    <div className="mb-3 flex items-center justify-between border-b border-sage pb-1 dark:border-sage/50">
+                      <p className="text-mustard dark:text-mustard">Междинна сума</p>
                       <Price
-                        className="text-right text-base text-black dark:text-white"
+                        className="text-right text-base text-mustard dark:text-mustard"
                         amount={cart.subtotal.toString()}
                         currencyCode={cart.currency}
                       />
                     </div>
-                    <div className="mb-3 flex items-center justify-between border-b border-neutral-200 pb-1 pt-1 dark:border-neutral-700">
-                      <p>Доставка</p>
-                      <p className="text-right">Ще се изчисли при плащане</p>
+                    <div className="mb-3 flex items-center justify-between border-b border-sage pb-1 pt-1 dark:border-sage/50">
+                      <p className="text-mustard dark:text-mustard">Доставка</p>
+                      <p className="text-right text-sage dark:text-sage">Ще се изчисли при плащане</p>
                     </div>
-                    <div className="mb-3 flex items-center justify-between border-b border-neutral-200 pb-1 pt-1 dark:border-neutral-700">
-                      <p>Общо</p>
+                    <div className="mb-3 flex items-center justify-between border-b border-sage pb-1 pt-1 dark:border-sage/50">
+                      <p className="text-mustard dark:text-mustard font-semibold">Общо</p>
                       <Price
-                        className="text-right text-base text-black dark:text-white"
+                        className="text-right text-base text-mustard dark:text-mustard font-semibold"
                         amount={cart.total.toString()}
                         currencyCode={cart.currency}
                       />
                     </div>
-                    <div className="mt-3 text-xs text-neutral-400 dark:text-neutral-500">
+                    <div className="mt-3 text-xs text-sage dark:text-sage">
                       <p className="text-center">
                         Цените се изчисляват по курс 1 EUR = 1.95583 BGN
                       </p>
@@ -175,7 +175,7 @@ export default function CartModal() {
                   <Link
                     href="/checkout"
                     onClick={closeCart}
-                    className="block w-full rounded-full bg-blue-600 p-3 text-center text-sm font-medium text-white opacity-90 hover:opacity-100"
+                    className="block w-full rounded-full bg-mustard p-3 text-center text-sm font-medium text-white opacity-90 hover:opacity-100"
                   >
                     Финализирай поръчката
                   </Link>

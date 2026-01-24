@@ -1,9 +1,17 @@
 import { NextRequest, NextResponse } from "next/server";
-import { createCheckoutSession } from "lib/stripe";
+import { createCheckoutSession, isStripeEnabled } from "lib/stripe";
 import { baseUrl } from "lib/utils";
 
 export async function POST(request: NextRequest) {
   try {
+    // Check if Stripe is enabled
+    if (!isStripeEnabled()) {
+      return NextResponse.json(
+        { error: "Плащането с карта не е активирано" },
+        { status: 400 }
+      );
+    }
+
     const { orderId, cart } = await request.json();
 
     if (!cart || !cart.items || cart.items.length === 0) {

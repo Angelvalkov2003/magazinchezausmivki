@@ -9,7 +9,7 @@ import MobileMenu from "./navbar/mobile-menu";
 import Search, { SearchSkeleton } from "./navbar/search";
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
 
-const SITE_NAME = process.env.NEXT_PUBLIC_SITE_NAME || "Ecommerce Store";
+const SITE_NAME = "Магазинче за усмивки";
 
 interface Collection {
   id: string;

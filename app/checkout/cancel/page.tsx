@@ -5,9 +5,9 @@ export default function CheckoutCancelPage() {
     <div className="flex min-h-screen flex-col items-center justify-center px-4">
       <div className="max-w-md w-full text-center">
         <div className="mb-6">
-          <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-yellow-100 dark:bg-yellow-900">
+          <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-peach dark:bg-peach/30">
             <svg
-              className="h-8 w-8 text-yellow-600 dark:text-yellow-400"
+              className="h-8 w-8 text-mustard dark:text-mustard"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -30,13 +30,13 @@ export default function CheckoutCancelPage() {
         <div className="flex flex-col gap-4 sm:flex-row sm:justify-center">
           <Link
             href="/"
-            className="rounded-lg bg-blue-600 px-6 py-3 text-white hover:bg-blue-700 transition-colors"
+            className="rounded-lg bg-mustard px-6 py-3 text-white hover:opacity-90 transition-colors"
           >
             Към началната страница
           </Link>
           <Link
             href="/search"
-            className="rounded-lg border border-gray-300 px-6 py-3 text-gray-700 hover:bg-gray-50 dark:border-gray-600 dark:text-gray-300 dark:hover:bg-gray-800 transition-colors"
+            className="rounded-lg border border-sage px-6 py-3 text-gray-700 hover:bg-light-sage dark:border-sage/50 dark:text-gray-300 dark:hover:bg-sage/20 transition-colors"
           >
             Продължи пазаруване
           </Link>

@@ -1,15 +1,32 @@
 import Stripe from "stripe";
 import type { Cart } from "./types";
 
-if (!process.env.STRIPE_SECRET_KEY) {
-  throw new Error("STRIPE_SECRET_KEY is not set");
-}
+// Check if Stripe is enabled (keys are set and not "none")
+const isStripeEnabled = () => {
+  const secretKey = process.env.STRIPE_SECRET_KEY;
+  const publishableKey = process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY;
+  return (
+    secretKey &&
+    secretKey !== "none" &&
+    secretKey.trim() !== "" &&
+    publishableKey &&
+    publishableKey !== "none" &&
+    publishableKey.trim() !== ""
+  );
+};
 
-export const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || "", {
-  apiVersion: "2024-11-20.acacia" as any,
-});
+// Only initialize Stripe if keys are properly configured
+export const stripe = isStripeEnabled()
+  ? new Stripe(process.env.STRIPE_SECRET_KEY || "", {
+      apiVersion: "2024-11-20.acacia" as any,
+    })
+  : null;
 
 export async function createCheckoutSession(cart: Cart, successUrl: string, cancelUrl: string) {
+  if (!isStripeEnabled() || !stripe) {
+    throw new Error("Stripe плащането не е активирано");
+  }
+
   // Ensure currency is always EUR
   const currency = "eur";
   
@@ -44,5 +61,11 @@ export async function createCheckoutSession(cart: Cart, successUrl: string, canc
 }
 
 export async function getSession(sessionId: string) {
+  if (!isStripeEnabled() || !stripe) {
+    throw new Error("Stripe плащането не е активирано");
+  }
   return await stripe.checkout.sessions.retrieve(sessionId);
 }
+
+// Export helper function to check if Stripe is enabled
+export { isStripeEnabled };

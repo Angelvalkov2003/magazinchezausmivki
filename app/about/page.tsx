@@ -1,0 +1,72 @@
+import { Metadata } from "next";
+
+const siteName = "Магазинче за усмивки";
+
+export const metadata: Metadata = {
+  title: `За нас - ${siteName}`,
+  description: `Запознайте се с историята и мисията на ${siteName}`,
+};
+
+export default function AboutPage() {
+  return (
+    <div className="min-h-screen bg-white dark:bg-gray-900 py-12 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-4xl mx-auto">
+        <div className="text-center mb-12">
+          <h1 className="text-4xl md:text-5xl font-bold text-mustard dark:text-mustard mb-4">
+            За нас
+          </h1>
+          <div className="w-24 h-1 bg-mustard mx-auto rounded-full"></div>
+        </div>
+
+        <div className="prose prose-lg max-w-none dark:prose-invert">
+          <div className="bg-light-sage/30 dark:bg-light-sage/10 rounded-lg p-8 mb-8 border border-sage/20">
+            <p className="text-xl leading-relaxed text-mustard dark:text-mustard mb-6">
+              <strong className="text-mustard dark:text-mustard">Магазинче за усмивки</strong> е сбъдната мечта.
+            </p>
+            <p className="text-lg leading-relaxed text-sage dark:text-sage mb-6">
+              Мечта, родена от любовта към красивото, ръчно изработеното и истинските емоции. Ние сме малък семеен бизнес, който отвори врати на <strong className="text-mustard dark:text-mustard">01.09.2025 г.</strong> с едно просто, но много силно желание – да създаваме усмивки и да бъдем част от най-щастливите моменти в живота на хората.
+            </p>
+            <p className="text-lg leading-relaxed text-sage dark:text-sage mb-6">
+              Нашият стимул винаги е бил да подкрепяме малките търговци и творци на ръчно изработени изделия, които влагат сърце, време и внимание във всеки детайл. Вярваме, че ръчната изработка носи душа – затова подбрахме с грижа подаръци, цветя и декорации, които разказват истории и носят послание.
+            </p>
+            <p className="text-lg leading-relaxed text-sage dark:text-sage mb-6">
+              В <strong className="text-mustard dark:text-mustard">Магазинче за усмивки</strong> ще откриете не просто продукти, а малки красоти, създадени с обич – за рождени дни, празници, специални поводи или просто за да зарадвате някого без причина. За нас всеки клиент е една малка история, а всяка поръчка – доверие, което приемаме с благодарност и отговорност.
+            </p>
+            <p className="text-lg leading-relaxed text-sage dark:text-sage mb-6">
+              Мечтата ни винаги е била да бъдем до вас в най-ценните ви мигове – в усмивките, изненадите, сълзите от радост и топлите спомени. И днес, с много любов и вдъхновение, продължаваме да я живеем всеки ден.
+            </p>
+            <div className="bg-peach/40 dark:bg-peach/20 rounded-lg p-6 mt-8 border border-peach/50">
+              <p className="text-xl font-semibold text-mustard dark:text-mustard text-center">
+                Добре дошли в <span className="text-mustard dark:text-mustard">Магазинче за усмивки</span> – мястото, където подаръците се правят с обич, а усмивките са най-важното. 🤍
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="bg-sage/20 dark:bg-sage/10 rounded-lg p-6 text-center border border-sage/30">
+            <div className="text-4xl mb-3">🎁</div>
+            <h3 className="font-semibold text-mustard dark:text-mustard mb-2">Ръчно изработени</h3>
+            <p className="text-sm text-sage dark:text-sage">
+              Продукти с душа и внимание към детайла
+            </p>
+          </div>
+          <div className="bg-light-sage/30 dark:bg-light-sage/10 rounded-lg p-6 text-center border border-light-sage/40">
+            <div className="text-4xl mb-3">💝</div>
+            <h3 className="font-semibold text-mustard dark:text-mustard mb-2">С обич</h3>
+            <p className="text-sm text-sage dark:text-sage">
+              Всяка поръчка е изпълнена с грижа и внимание
+            </p>
+          </div>
+          <div className="bg-peach/40 dark:bg-peach/20 rounded-lg p-6 text-center border border-peach/50">
+            <div className="text-4xl mb-3">😊</div>
+            <h3 className="font-semibold text-mustard dark:text-mustard mb-2">За усмивки</h3>
+            <p className="text-sm text-sage dark:text-sage">
+              Създаваме радост и спомени за цял живот
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}

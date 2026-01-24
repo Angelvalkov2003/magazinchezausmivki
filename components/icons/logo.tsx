@@ -1,6 +1,6 @@
 import clsx from "clsx";
 
-const SITE_NAME = process.env.NEXT_PUBLIC_SITE_NAME || "Ecommerce Store";
+const SITE_NAME = "Магазинче за усмивки";
 
 export default function LogoIcon(props: React.ComponentProps<"svg">) {
   return (

@@ -8,7 +8,7 @@ export function WelcomeToast() {
     // ignore if screen height is too small
     if (window.innerHeight < 650) return;
     if (!document.cookie.includes("welcome-toast=2")) {
-      const siteName = process.env.NEXT_PUBLIC_SITE_NAME || "Онлайн Магазин";
+      const siteName = "Магазинче за усмивки";
       toast(`🛍️ Добре дошли в ${siteName}!`, {
         id: "welcome-toast",
         duration: 5000,

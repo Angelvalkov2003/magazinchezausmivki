@@ -1,57 +1,113 @@
 import Link from "next/link";
 
-import FooterMenu from "components/layout/footer-menu";
 import LogoSquare from "components/logo-square";
-import { getCollections } from "lib/supabase/products";
-import { Suspense } from "react";
 
-const SITE_NAME = process.env.SITE_NAME || "Ecommerce Store";
+const SITE_NAME = "Магазинче за усмивки";
+const instagramUrl = "https://www.instagram.com/magazinchezausmivki.shop/";
+const facebookUrl = process.env.NEXT_PUBLIC_FACEBOOK_URL || "#";
 
 export default async function Footer() {
   const currentYear = new Date().getFullYear();
   const copyrightDate = 2023 + (currentYear > 2023 ? `-${currentYear}` : "");
-  const skeleton =
-    "w-full h-6 animate-pulse rounded-sm bg-neutral-200 dark:bg-neutral-700";
-  const collections = await getCollections();
-  const menu = collections.map(c => ({ title: c.title, path: `/search/${c.handle}` }));
-  const copyrightName = SITE_NAME;
 
   return (
-    <footer className="text-sm text-neutral-500 dark:text-neutral-400">
-      <div className="mx-auto flex w-full max-w-7xl flex-col gap-6 border-t border-neutral-200 px-6 py-12 text-sm md:flex-row md:gap-12 md:px-4 min-[1320px]:px-0 dark:border-neutral-700">
-        <div>
-          <Link
-            className="flex items-center gap-2 text-black md:pt-1 dark:text-white"
-            href="/"
-          >
-            <LogoSquare size="sm" />
-            <span className="uppercase">{SITE_NAME}</span>
-          </Link>
-        </div>
-        <Suspense
-          fallback={
-            <div className="flex h-[188px] w-[200px] flex-col gap-2">
-              <div className={skeleton} />
-              <div className={skeleton} />
-              <div className={skeleton} />
-              <div className={skeleton} />
-              <div className={skeleton} />
-              <div className={skeleton} />
+    <footer className="bg-light-sage/20 dark:bg-sage/10 border-t border-sage/30 dark:border-sage/50">
+      <div className="mx-auto max-w-7xl px-6 py-12">
+        <div className="flex flex-col items-center gap-8 md:flex-row md:justify-between">
+          {/* Logo and Name */}
+          <div className="flex flex-col items-center md:items-start">
+            <Link
+              className="flex items-center gap-2 text-mustard dark:text-mustard mb-4 hover:opacity-80 transition-opacity"
+              href="/"
+            >
+              <LogoSquare size="sm" />
+              <span className="text-lg font-semibold uppercase">{SITE_NAME}</span>
+            </Link>
+            <p className="text-sm text-sage dark:text-sage text-center md:text-left max-w-xs">
+              Мястото, където подаръците се правят с обич, а усмивките са най-важното. 🤍
+            </p>
+          </div>
+
+          {/* Social Media Icons */}
+          <div className="flex flex-col items-center md:items-end gap-4">
+            <p className="text-sm font-medium text-mustard dark:text-mustard">
+              Следвайте ни
+            </p>
+            <div className="flex gap-4">
+              {/* Instagram */}
+              <a
+                href={instagramUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-purple-600 to-pink-600 hover:scale-110 transition-transform shadow-lg"
+                aria-label="Instagram"
+              >
+                <svg
+                  className="h-6 w-6 text-white"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+              </a>
+
+              {/* Facebook */}
+              {facebookUrl !== "#" && (
+                <a
+                  href={facebookUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex h-12 w-12 items-center justify-center rounded-full bg-mustard hover:scale-110 transition-transform shadow-lg"
+                  aria-label="Facebook"
+                >
+                  <svg
+                    className="h-6 w-6 text-white"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                </a>
+              )}
             </div>
-          }
-        >
-          <FooterMenu menu={menu} />
-        </Suspense>
-      </div>
-      <div className="border-t border-neutral-200 py-6 text-sm dark:border-neutral-700">
-        <div className="mx-auto flex w-full max-w-7xl items-center justify-center px-4 md:px-4 min-[1320px]:px-0">
-          <p>
-            &copy; {copyrightDate} {copyrightName}
-            {copyrightName.length && !copyrightName.endsWith(".")
-              ? "."
-              : ""}{" "}
-            Всички права запазени.
-          </p>
+          </div>
+        </div>
+
+        {/* Copyright */}
+        <div className="mt-8 pt-6 border-t border-sage/30 dark:border-sage/50">
+          <div className="flex flex-col items-center gap-2 text-center md:flex-row md:justify-between">
+            <p className="text-xs text-sage dark:text-sage">
+              &copy; {copyrightDate} {SITE_NAME}. Всички права запазени.
+            </p>
+            <div className="flex gap-4 text-xs">
+              <Link
+                href="/about"
+                className="text-sage dark:text-sage hover:text-mustard dark:hover:text-mustard transition-colors"
+              >
+                За нас
+              </Link>
+              <Link
+                href="/contact"
+                className="text-sage dark:text-sage hover:text-mustard dark:hover:text-mustard transition-colors"
+              >
+                Контакти
+              </Link>
+              <Link
+                href="/privacy-policy"
+                className="text-sage dark:text-sage hover:text-mustard dark:hover:text-mustard transition-colors"
+              >
+                Политика за поверителност
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
     </footer>

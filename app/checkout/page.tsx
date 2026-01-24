@@ -7,11 +7,22 @@ import Price from "components/price";
 import { createOrder } from "app/checkout/actions";
 import LoadingDots from "components/loading-dots";
 
+// Check if Stripe is enabled
+const isStripeEnabled = () => {
+  const publishableKey = process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY;
+  return (
+    publishableKey &&
+    publishableKey !== "none" &&
+    publishableKey.trim() !== ""
+  );
+};
+
 export default function CheckoutPage() {
   const { cart } = useCart();
   const router = useRouter();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const stripeEnabled = isStripeEnabled();
   const [formData, setFormData] = useState({
     customer_name: "",
     customer_email: "",
@@ -26,15 +37,15 @@ export default function CheckoutPage() {
     return (
       <div className="flex min-h-screen flex-col items-center justify-center px-4">
         <div className="max-w-md w-full text-center">
-          <h1 className="mb-4 text-3xl font-bold text-gray-900 dark:text-white">
+          <h1 className="mb-4 text-3xl font-bold text-mustard dark:text-mustard">
             Количката е празна
           </h1>
-          <p className="mb-8 text-lg text-gray-600 dark:text-gray-400">
+          <p className="mb-8 text-lg text-sage dark:text-sage">
             Моля, добавете продукти в количката преди да финализирате поръчката.
           </p>
           <button
             onClick={() => router.push("/search")}
-            className="rounded-lg bg-blue-600 px-6 py-3 text-white hover:bg-blue-700 transition-colors"
+            className="rounded-lg bg-mustard px-6 py-3 text-white hover:opacity-90 transition-colors"
           >
             Към продуктите
           </button>
@@ -69,8 +80,8 @@ export default function CheckoutPage() {
         comment: formData.comment || undefined,
       });
 
-      // If card payment, redirect to Stripe
-      if (formData.payment_method === "card") {
+      // If card payment, redirect to Stripe (only if enabled)
+      if (formData.payment_method === "card" && stripeEnabled) {
         // Redirect to Stripe checkout
         const response = await fetch("/api/checkout/create-session", {
           method: "POST",
@@ -101,17 +112,17 @@ export default function CheckoutPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-4xl mx-auto">
-        <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">
+    <div className="min-h-screen bg-white dark:bg-gray-900 py-12 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto">
+        <h1 className="text-3xl font-bold text-mustard dark:text-mustard mb-8">
           Финализиране на поръчката
         </h1>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
           {/* Order Form */}
-          <div className="lg:col-span-2">
-            <form onSubmit={handleSubmit} className="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
-              <h2 className="text-xl font-semibold mb-6 text-gray-900 dark:text-white">
+          <div className="lg:col-span-3">
+            <form onSubmit={handleSubmit} className="bg-white dark:bg-gray-800 rounded-lg shadow-lg border border-light-sage p-6">
+              <h2 className="text-xl font-semibold mb-6 text-mustard dark:text-mustard">
                 Данни за доставка
               </h2>
 
@@ -125,7 +136,7 @@ export default function CheckoutPage() {
                 <div>
                   <label
                     htmlFor="customer_name"
-                    className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
+                    className="block text-sm font-medium text-sage dark:text-sage mb-1"
                   >
                     Име и фамилия *
                   </label>
@@ -137,14 +148,14 @@ export default function CheckoutPage() {
                     onChange={(e) =>
                       setFormData({ ...formData, customer_name: e.target.value })
                     }
-                    className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-700 dark:text-white"
+                    className="w-full px-4 py-2 border border-light-sage dark:border-sage rounded-lg focus:ring-2 focus:ring-mustard focus:border-transparent dark:bg-light-sage/20 dark:text-mustard"
                   />
                 </div>
 
                 <div>
                   <label
                     htmlFor="customer_email"
-                    className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
+                    className="block text-sm font-medium text-sage dark:text-sage mb-1"
                   >
                     Имейл *
                   </label>
@@ -156,14 +167,14 @@ export default function CheckoutPage() {
                     onChange={(e) =>
                       setFormData({ ...formData, customer_email: e.target.value })
                     }
-                    className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-700 dark:text-white"
+                    className="w-full px-4 py-2 border border-light-sage dark:border-sage rounded-lg focus:ring-2 focus:ring-mustard focus:border-transparent dark:bg-light-sage/20 dark:text-mustard"
                   />
                 </div>
 
                 <div>
                   <label
                     htmlFor="customer_phone"
-                    className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
+                    className="block text-sm font-medium text-sage dark:text-sage mb-1"
                   >
                     Телефон
                   </label>
@@ -174,14 +185,14 @@ export default function CheckoutPage() {
                     onChange={(e) =>
                       setFormData({ ...formData, customer_phone: e.target.value })
                     }
-                    className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-700 dark:text-white"
+                    className="w-full px-4 py-2 border border-light-sage dark:border-sage rounded-lg focus:ring-2 focus:ring-mustard focus:border-transparent dark:bg-light-sage/20 dark:text-mustard"
                   />
                 </div>
 
                 <div>
                   <label
                     htmlFor="customer_address"
-                    className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
+                    className="block text-sm font-medium text-sage dark:text-sage mb-1"
                   >
                     Адрес за доставка *
                   </label>
@@ -193,14 +204,14 @@ export default function CheckoutPage() {
                     onChange={(e) =>
                       setFormData({ ...formData, customer_address: e.target.value })
                     }
-                    className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-700 dark:text-white"
+                    className="w-full px-4 py-2 border border-light-sage dark:border-sage rounded-lg focus:ring-2 focus:ring-mustard focus:border-transparent dark:bg-light-sage/20 dark:text-mustard"
                   />
                 </div>
 
                 <div>
                   <label
                     htmlFor="comment"
-                    className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
+                    className="block text-sm font-medium text-sage dark:text-sage mb-1"
                   >
                     Коментар (по избор)
                   </label>
@@ -211,16 +222,16 @@ export default function CheckoutPage() {
                     onChange={(e) =>
                       setFormData({ ...formData, comment: e.target.value })
                     }
-                    className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-700 dark:text-white"
+                    className="w-full px-4 py-2 border border-light-sage dark:border-sage rounded-lg focus:ring-2 focus:ring-mustard focus:border-transparent dark:bg-light-sage/20 dark:text-mustard"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-3">
+                  <label className="block text-sm font-medium text-sage dark:text-sage mb-3">
                     Начин на плащане *
                   </label>
                   <div className="space-y-2">
-                    <label className="flex items-center p-4 border border-gray-300 dark:border-gray-600 rounded-lg cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-700">
+                    <label className="flex items-center p-4 border border-light-sage dark:border-sage rounded-lg cursor-pointer hover:bg-light-sage dark:hover:bg-sage/20">
                       <input
                         type="radio"
                         name="payment_method"
@@ -235,38 +246,40 @@ export default function CheckoutPage() {
                         className="mr-3"
                       />
                       <div>
-                        <div className="font-medium text-gray-900 dark:text-white">
+                        <div className="font-medium text-mustard dark:text-mustard">
                           Наложен платеж
                         </div>
-                        <div className="text-sm text-gray-500 dark:text-gray-400">
+                        <div className="text-sm text-sage dark:text-sage">
                           Плащане при получаване на поръчката
                         </div>
                       </div>
                     </label>
 
-                    <label className="flex items-center p-4 border border-gray-300 dark:border-gray-600 rounded-lg cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-700">
-                      <input
-                        type="radio"
-                        name="payment_method"
-                        value="card"
-                        checked={formData.payment_method === "card"}
-                        onChange={(e) =>
-                          setFormData({
-                            ...formData,
-                            payment_method: e.target.value as "cash_on_delivery" | "card",
-                          })
-                        }
-                        className="mr-3"
-                      />
-                      <div>
-                        <div className="font-medium text-gray-900 dark:text-white">
-                          Плащане с карта
+                    {stripeEnabled && (
+                      <label className="flex items-center p-4 border border-light-sage dark:border-sage rounded-lg cursor-pointer hover:bg-light-sage dark:hover:bg-sage/20">
+                        <input
+                          type="radio"
+                          name="payment_method"
+                          value="card"
+                          checked={formData.payment_method === "card"}
+                          onChange={(e) =>
+                            setFormData({
+                              ...formData,
+                              payment_method: e.target.value as "cash_on_delivery" | "card",
+                            })
+                          }
+                          className="mr-3"
+                        />
+                        <div>
+                          <div className="font-medium text-mustard dark:text-mustard">
+                            Плащане с карта
+                          </div>
+                          <div className="text-sm text-sage dark:text-sage">
+                            Сигурно плащане чрез Stripe
+                          </div>
                         </div>
-                        <div className="text-sm text-gray-500 dark:text-gray-400">
-                          Сигурно плащане чрез Stripe
-                        </div>
-                      </div>
-                    </label>
+                      </label>
+                    )}
                   </div>
                 </div>
 
@@ -282,15 +295,15 @@ export default function CheckoutPage() {
                           privacy_policy_accepted: e.target.checked,
                         })
                       }
-                      className="mt-1 h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+                      className="mt-1 h-4 w-4 text-mustard focus:ring-mustard border-sage rounded"
                     />
-                    <span className="text-sm text-gray-700 dark:text-gray-300">
+                    <span className="text-sm text-sage dark:text-sage">
                       Съгласен съм с{" "}
                       <a
                         href="/privacy-policy"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-blue-600 dark:text-blue-400 underline hover:text-blue-800 dark:hover:text-blue-300"
+                        className="text-mustard dark:text-mustard underline hover:opacity-80 dark:hover:opacity-80"
                       >
                         Политиката за поверителност
                       </a>{" "}
@@ -302,7 +315,7 @@ export default function CheckoutPage() {
                 <button
                   type="submit"
                   disabled={isSubmitting || !formData.privacy_policy_accepted}
-                  className="w-full bg-blue-600 text-white py-3 px-6 rounded-lg font-medium hover:bg-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
+                  className="w-full bg-mustard text-white py-3 px-6 rounded-lg font-medium hover:opacity-90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
                 >
                   {isSubmitting ? (
                     <LoadingDots className="bg-white" />
@@ -315,60 +328,62 @@ export default function CheckoutPage() {
           </div>
 
           {/* Order Summary */}
-          <div className="lg:col-span-1">
-            <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-6 sticky top-4">
-              <h2 className="text-xl font-semibold mb-4 text-gray-900 dark:text-white">
+          <div className="lg:col-span-2">
+            <div className="bg-white dark:bg-gray-800 rounded-xl shadow-xl border-2 border-peach p-8 lg:p-10 sticky top-4 max-w-2xl lg:max-w-none">
+              <h2 className="text-2xl md:text-3xl font-bold mb-6 text-mustard dark:text-mustard">
                 Резюме на поръчката
               </h2>
 
-              <div className="space-y-4 mb-6">
+              <div className="space-y-5 mb-8">
                 {cart.items.map((item) => (
                   <div
                     key={item.id}
-                    className="flex justify-between items-start border-b border-gray-200 dark:border-gray-700 pb-3"
+                    className="flex justify-between items-start border-b-2 border-light-sage dark:border-sage/50 pb-4"
                   >
-                    <div className="flex-1">
-                      <p className="text-sm font-medium text-gray-900 dark:text-white">
+                    <div className="flex-1 pr-4">
+                      <p className="text-base md:text-lg font-semibold text-mustard dark:text-mustard mb-1">
                         {item.product.title}
                       </p>
-                      <p className="text-sm text-gray-500 dark:text-gray-400">
-                        Количество: {item.quantity}
+                      <p className="text-sm md:text-base text-sage dark:text-sage">
+                        Количество: <span className="font-medium">{item.quantity}</span>
                       </p>
                     </div>
-                    <Price
-                      amount={(item.price * item.quantity).toString()}
-                      currencyCode={cart.currency}
-                      className="text-sm font-medium"
-                    />
+                    <div className="text-right">
+                      <Price
+                        amount={(item.price * item.quantity).toString()}
+                        currencyCode={cart.currency}
+                        className="text-base md:text-lg font-bold text-mustard dark:text-mustard"
+                      />
+                    </div>
                   </div>
                 ))}
               </div>
 
-              <div className="space-y-2 pt-4 border-t border-gray-200 dark:border-gray-700">
-                <div className="flex justify-between text-sm">
-                  <span className="text-gray-600 dark:text-gray-400">Междинна сума</span>
+              <div className="space-y-4 pt-6 border-t-2 border-sage dark:border-sage/50">
+                <div className="flex justify-between items-center">
+                  <span className="text-base md:text-lg text-sage dark:text-sage font-medium">Междинна сума</span>
                   <Price
                     amount={cart.subtotal.toString()}
                     currencyCode={cart.currency}
-                    className="font-medium"
+                    className="text-base md:text-lg font-semibold text-mustard dark:text-mustard"
                   />
                 </div>
-                <div className="flex justify-between text-sm">
-                  <span className="text-gray-600 dark:text-gray-400">Доставка</span>
-                  <span className="text-gray-600 dark:text-gray-400">
+                <div className="flex justify-between items-center">
+                  <span className="text-base md:text-lg text-sage dark:text-sage font-medium">Доставка</span>
+                  <span className="text-sm md:text-base text-sage dark:text-sage italic">
                     Ще се изчисли при плащане
                   </span>
                 </div>
-                <div className="flex justify-between text-lg font-bold pt-2">
-                  <span className="text-gray-900 dark:text-white">Общо</span>
+                <div className="flex justify-between items-center pt-4 mt-4 border-t-2 border-mustard/30 dark:border-mustard/30">
+                  <span className="text-xl md:text-2xl font-bold text-mustard dark:text-mustard">Общо</span>
                   <Price
                     amount={cart.total.toString()}
                     currencyCode={cart.currency}
-                    className="text-blue-600 dark:text-blue-400"
+                    className="text-xl md:text-2xl font-bold text-mustard dark:text-mustard"
                   />
                 </div>
-                <div className="mt-4 pt-4 border-t border-gray-200 dark:border-gray-700">
-                  <p className="text-xs text-center text-gray-500 dark:text-gray-400">
+                <div className="mt-6 pt-4 border-t border-light-sage dark:border-sage/30">
+                  <p className="text-xs md:text-sm text-center text-sage dark:text-sage italic">
                     Цените се изчисляват по курс 1 EUR = 1.95583 BGN
                   </p>
                 </div>

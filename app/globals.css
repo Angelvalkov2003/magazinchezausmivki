@@ -3,6 +3,18 @@
 @plugin "@tailwindcss/container-queries";
 @plugin "@tailwindcss/typography";
 
+@theme {
+  --color-mustard: #D4AF37;
+  --color-sage: #CADCAE;
+  --color-light-sage: #E1E9C9;
+  --color-peach: #FEE8D9;
+  
+  --color-primary: var(--color-mustard);
+  --color-secondary: var(--color-sage);
+  --color-accent: var(--color-peach);
+  --color-light: var(--color-light-sage);
+}
+
 @layer base {
   *,
   ::after,

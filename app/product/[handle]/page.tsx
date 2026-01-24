@@ -1,5 +1,4 @@
 import { GridTileImage } from "components/grid/tile";
-import Footer from "components/layout/footer";
 import { Gallery } from "components/product/gallery";
 import { BackButton } from "components/product/back-button";
 import { ProductDescription } from "components/product/product-description";
@@ -100,7 +99,6 @@ export default async function ProductPage(props: {
         </div>
         <RelatedProducts category={product.category} currentId={product.id} />
       </div>
-      <Footer />
     </>
   );
 }

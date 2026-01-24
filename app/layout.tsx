@@ -1,5 +1,6 @@
 import { CartProvider } from "components/cart/cart-context";
 import { ConditionalNavbar } from "components/layout/conditional-navbar";
+import Footer from "components/layout/footer";
 import { CookieConsent } from "components/cookie-consent";
 import { GeistSans } from "geist/font/sans";
 import { ReactNode } from "react";
@@ -7,7 +8,7 @@ import { Toaster } from "sonner";
 import "./globals.css";
 import { baseUrl } from "lib/utils";
 
-const SITE_NAME = process.env.SITE_NAME || "Ecommerce Store";
+const SITE_NAME = "Магазинче за усмивки";
 
 export const metadata = {
   metadataBase: new URL(baseUrl),
@@ -38,6 +39,7 @@ export default async function RootLayout({
             {children}
             <Toaster closeButton />
           </main>
+          <Footer />
           <CookieConsent />
         </CartProvider>
       </body>

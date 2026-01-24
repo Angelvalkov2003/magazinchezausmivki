@@ -10,7 +10,7 @@ if (!process.env.CONTACT_EMAIL) {
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 const contactEmail = process.env.CONTACT_EMAIL;
-const siteName = process.env.SITE_NAME || "Ecommerce Store";
+const siteName = "Магазинче за усмивки";
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
 
 export interface ContactFormData {

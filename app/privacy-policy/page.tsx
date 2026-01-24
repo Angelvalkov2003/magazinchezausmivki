@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { ArrowLeftIcon } from "@heroicons/react/24/outline";
 
-const siteName = process.env.SITE_NAME || "My Ecommerce Store";
+const siteName = "Магазинче за усмивки";
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
 
 export const metadata: Metadata = {
@@ -17,7 +17,7 @@ export default function PrivacyPolicyPage() {
         <div className="mb-6">
           <Link
             href="/checkout"
-            className="inline-flex items-center text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors"
+            className="inline-flex items-center text-mustard dark:text-mustard hover:opacity-80 dark:hover:opacity-80 transition-colors"
           >
             <ArrowLeftIcon className="h-5 w-5 mr-2" />
             Назад към потвърждаване на покупката
@@ -39,7 +39,7 @@ export default function PrivacyPolicyPage() {
             <p className="text-gray-700 dark:text-gray-300 mb-6">
               Настоящата Политика за поверителност описва как {siteName} (наричан по-долу "ние", "нас", "наш") 
               събира, използва, съхранява и защитава личните данни на потребителите на нашия уебсайт{" "}
-              <a href={siteUrl} className="text-blue-600 dark:text-blue-400 underline">{siteUrl}</a> 
+              <a href={siteUrl} className="text-mustard dark:text-mustard underline">{siteUrl}</a> 
               (наричан по-долу "Сайтът").
             </p>
             <p className="text-gray-700 dark:text-gray-300 mb-6">
@@ -370,7 +370,7 @@ export default function PrivacyPolicyPage() {
                 Имейл: kzld@cpdp.bg
               </p>
               <p className="text-gray-700 dark:text-gray-300">
-                Уебсайт: <a href="https://www.cpdp.bg" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 underline">www.cpdp.bg</a>
+                Уебсайт: <a href="https://www.cpdp.bg" target="_blank" rel="noopener noreferrer" className="text-mustard dark:text-mustard underline">www.cpdp.bg</a>
               </p>
             </div>
           </section>

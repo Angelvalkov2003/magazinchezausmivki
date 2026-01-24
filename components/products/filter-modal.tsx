@@ -80,10 +80,10 @@ export function FilterModal({
       <div className="bg-white dark:bg-gray-800 rounded-lg shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
         <div className="p-6">
           <div className="flex items-center justify-between mb-6">
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-white">Филтри</h2>
+            <h2 className="text-2xl font-bold text-mustard dark:text-mustard">Филтри</h2>
             <button
               onClick={onClose}
-              className="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300"
+              className="text-sage hover:text-mustard dark:hover:text-mustard"
               aria-label="Затвори"
             >
               <XMarkIcon className="h-6 w-6" />
@@ -92,12 +92,12 @@ export function FilterModal({
 
           {/* Price Range */}
           <div className="mb-6">
-            <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
+            <h3 className="text-lg font-semibold text-mustard dark:text-mustard mb-4">
               Ценови диапазон (EUR)
             </h3>
             <div className="flex items-center gap-4">
               <div className="flex-1">
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                <label className="block text-sm font-medium text-sage dark:text-sage mb-1">
                   От
                 </label>
                 <input
@@ -107,11 +107,11 @@ export function FilterModal({
                   value={minPrice}
                   onChange={(e) => setMinPrice(e.target.value)}
                   placeholder="0.00"
-                  className="w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm text-gray-700 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300"
+                  className="w-full rounded-md border border-light-sage bg-white px-3 py-2 text-sm text-mustard shadow-sm focus:border-mustard focus:outline-none focus:ring-1 focus:ring-mustard dark:border-sage dark:bg-light-sage/20 dark:text-mustard"
                 />
               </div>
               <div className="flex-1">
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                <label className="block text-sm font-medium text-sage dark:text-sage mb-1">
                   До
                 </label>
                 <input
@@ -121,7 +121,7 @@ export function FilterModal({
                   value={maxPrice}
                   onChange={(e) => setMaxPrice(e.target.value)}
                   placeholder="1000.00"
-                  className="w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm text-gray-700 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300"
+                  className="w-full rounded-md border border-light-sage bg-white px-3 py-2 text-sm text-mustard shadow-sm focus:border-mustard focus:outline-none focus:ring-1 focus:ring-mustard dark:border-sage dark:bg-light-sage/20 dark:text-mustard"
                 />
               </div>
             </div>
@@ -129,22 +129,22 @@ export function FilterModal({
 
           {/* Categories */}
           <div className="mb-6">
-            <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
+            <h3 className="text-lg font-semibold text-mustard dark:text-mustard mb-4">
               Категории
             </h3>
             <div className="space-y-2 max-h-48 overflow-y-auto">
               {collections.map((collection) => (
                 <label
                   key={collection.id}
-                  className="flex items-center gap-2 p-2 rounded-md hover:bg-gray-50 dark:hover:bg-gray-700 cursor-pointer"
+                  className="flex items-center gap-2 p-2 rounded-md hover:bg-light-sage dark:hover:bg-sage/20 cursor-pointer"
                 >
                   <input
                     type="checkbox"
                     checked={selectedCategories.includes(collection.handle)}
                     onChange={() => handleCategoryToggle(collection.handle)}
-                    className="h-4 w-4 text-blue-600 rounded border-gray-300 focus:ring-blue-500"
+                    className="h-4 w-4 text-mustard rounded border-sage focus:ring-mustard"
                   />
-                  <span className="text-sm text-gray-700 dark:text-gray-300">
+                  <span className="text-sm text-mustard dark:text-mustard">
                     {collection.title}
                   </span>
                 </label>
@@ -154,36 +154,36 @@ export function FilterModal({
 
           {/* On Sale Only */}
           <div className="mb-6">
-            <label className="flex items-center gap-2 p-2 rounded-md hover:bg-gray-50 dark:hover:bg-gray-700 cursor-pointer">
+            <label className="flex items-center gap-2 p-2 rounded-md hover:bg-light-sage dark:hover:bg-sage/20 cursor-pointer">
               <input
                 type="checkbox"
                 checked={onSaleOnly}
                 onChange={(e) => setOnSaleOnly(e.target.checked)}
-                className="h-4 w-4 text-blue-600 rounded border-gray-300 focus:ring-blue-500"
+                className="h-4 w-4 text-mustard rounded border-sage focus:ring-mustard"
               />
-              <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
+              <span className="text-sm font-medium text-mustard dark:text-mustard">
                 Само продукти на намаление
               </span>
             </label>
           </div>
 
           {/* Actions */}
-          <div className="flex gap-3 pt-4 border-t border-gray-200 dark:border-gray-700">
+          <div className="flex gap-3 pt-4 border-t border-sage dark:border-sage/50">
             <button
               onClick={handleApply}
-              className="flex-1 px-6 py-2 text-sm font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700 transition-colors"
+              className="flex-1 px-6 py-2 text-sm font-medium text-white bg-mustard rounded-md hover:opacity-90 transition-colors"
             >
               Приложи
             </button>
             <button
               onClick={handleReset}
-              className="px-6 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 bg-gray-100 dark:bg-gray-700 rounded-md hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
+              className="px-6 py-2 text-sm font-medium text-mustard dark:text-mustard bg-light-sage dark:bg-sage/30 rounded-md hover:bg-sage dark:hover:bg-sage/50 transition-colors"
             >
               Изчисти
             </button>
             <button
               onClick={onClose}
-              className="px-6 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 bg-gray-100 dark:bg-gray-700 rounded-md hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
+              className="px-6 py-2 text-sm font-medium text-mustard dark:text-mustard bg-peach dark:bg-peach/30 rounded-md hover:opacity-80 dark:hover:opacity-80 transition-colors"
             >
               Отказ
             </button>

@@ -67,9 +67,9 @@ export default async function CheckoutSuccessPage({
       <div className="flex min-h-screen flex-col items-center justify-center px-4">
         <div className="max-w-md w-full text-center">
         <div className="mb-6">
-          <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-green-100 dark:bg-green-900">
+          <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-sage dark:bg-sage/30">
             <svg
-              className="h-8 w-8 text-green-600 dark:text-green-400"
+              className="h-8 w-8 text-mustard dark:text-mustard"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -83,40 +83,40 @@ export default async function CheckoutSuccessPage({
             </svg>
           </div>
         </div>
-        <h1 className="mb-4 text-3xl font-bold text-gray-900 dark:text-white">
+        <h1 className="mb-4 text-3xl font-bold text-mustard dark:text-mustard">
           Поръчката е приета!
         </h1>
         {order && (
-          <div className="mb-6 text-left bg-white dark:bg-gray-800 p-4 rounded-lg shadow">
-            <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">
-              <strong>Номер на поръчка:</strong> #{order.id.substring(0, 8)}
+          <div className="mb-6 text-left bg-white dark:bg-gray-800 p-4 rounded-lg shadow-lg border border-light-sage">
+            <p className="text-sm text-sage dark:text-sage mb-2">
+              <strong className="text-mustard dark:text-mustard">Номер на поръчка:</strong> #{order.id.substring(0, 8)}
             </p>
-            <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">
-              <strong>Начин на плащане:</strong>{" "}
+            <p className="text-sm text-sage dark:text-sage mb-2">
+              <strong className="text-mustard dark:text-mustard">Начин на плащане:</strong>{" "}
               {order.payment_method === "cash_on_delivery"
                 ? "Наложен платеж"
                 : "Плащане с карта"}
             </p>
             {order.payment_method === "cash_on_delivery" && (
-              <p className="text-sm text-gray-600 dark:text-gray-400">
+              <p className="text-sm text-sage dark:text-sage">
                 Ще платите при получаване на поръчката.
               </p>
             )}
           </div>
         )}
-        <p className="mb-8 text-lg text-gray-600 dark:text-gray-400">
+        <p className="mb-8 text-lg text-sage dark:text-sage">
           Благодарим ви за поръчката. Ще получите потвърждение по имейл скоро.
         </p>
         <div className="flex flex-col gap-4 sm:flex-row sm:justify-center">
           <Link
             href="/"
-            className="rounded-lg bg-blue-600 px-6 py-3 text-white hover:bg-blue-700 transition-colors"
+            className="rounded-lg bg-mustard px-6 py-3 text-white hover:opacity-90 transition-colors"
           >
             Към началната страница
           </Link>
           <Link
             href="/search"
-            className="rounded-lg border border-gray-300 px-6 py-3 text-gray-700 hover:bg-gray-50 dark:border-gray-600 dark:text-gray-300 dark:hover:bg-gray-800 transition-colors"
+            className="rounded-lg border border-sage px-6 py-3 text-mustard hover:bg-light-sage dark:border-sage/50 dark:text-mustard dark:hover:bg-sage/20 transition-colors"
           >
             Продължи пазаруване
           </Link>

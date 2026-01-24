@@ -107,7 +107,7 @@ export default function MobileMenu({ menu }: { menu: MenuItem[] }) {
                   <li>
                     <button
                       onClick={() => setProductsSubmenuOpen(!productsSubmenuOpen)}
-                      className="flex w-full items-center justify-between py-2 text-xl text-black transition-colors hover:text-neutral-500 dark:text-white"
+                      className="flex w-full items-center justify-between py-2 text-xl text-mustard transition-colors hover:text-sage dark:text-mustard"
                     >
                       Продукти
                       <ChevronRightIcon
@@ -115,13 +115,13 @@ export default function MobileMenu({ menu }: { menu: MenuItem[] }) {
                       />
                     </button>
                     {productsSubmenuOpen && (
-                      <ul className="ml-4 mt-2 space-y-2 border-l-2 border-gray-200 dark:border-gray-700 pl-4">
+                      <ul className="ml-4 mt-2 space-y-2 border-l-2 border-sage dark:border-sage/50 pl-4">
                         <li>
                           <Link
                             href="/products"
                             prefetch={true}
                             onClick={closeMobileMenu}
-                            className="block py-2 text-lg text-gray-700 transition-colors hover:text-black dark:text-gray-300 dark:hover:text-white"
+                            className="block py-2 text-lg text-sage transition-colors hover:text-mustard dark:text-sage dark:hover:text-mustard"
                           >
                             Всички
                           </Link>
@@ -133,7 +133,7 @@ export default function MobileMenu({ menu }: { menu: MenuItem[] }) {
                                 href={`/products?collection=${collection.handle}`}
                                 prefetch={true}
                                 onClick={closeMobileMenu}
-                                className="block py-2 text-lg text-gray-700 transition-colors hover:text-black dark:text-gray-300 dark:hover:text-white"
+                                className="block py-2 text-lg text-sage transition-colors hover:text-mustard dark:text-sage dark:hover:text-mustard"
                               >
                                 {collection.title}
                               </Link>
@@ -142,7 +142,16 @@ export default function MobileMenu({ menu }: { menu: MenuItem[] }) {
                       </ul>
                     )}
                   </li>
-                  <li className="py-2 text-xl text-black transition-colors hover:text-neutral-500 dark:text-white">
+                  <li className="py-2 text-xl text-mustard transition-colors hover:text-sage dark:text-mustard">
+                    <Link
+                      href="/about"
+                      prefetch={true}
+                      onClick={closeMobileMenu}
+                    >
+                      За нас
+                    </Link>
+                  </li>
+                  <li className="py-2 text-xl text-mustard transition-colors hover:text-sage dark:text-mustard">
                     <Link
                       href="/contact"
                       prefetch={true}

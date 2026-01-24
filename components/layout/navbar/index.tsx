@@ -6,7 +6,7 @@ import { Suspense } from "react";
 import MobileMenu from "./mobile-menu";
 import Search, { SearchSkeleton } from "./search";
 
-const SITE_NAME = process.env.SITE_NAME || "Ecommerce Store";
+const SITE_NAME = "Магазинче за усмивки";
 
 export async function Navbar() {
   const collections = await getCollections();
@@ -36,7 +36,7 @@ export async function Navbar() {
               <Link
                 href="/products"
                 prefetch={true}
-                className="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                className="text-sage underline-offset-4 hover:text-mustard hover:underline dark:text-sage dark:hover:text-mustard"
               >
                 Продукти
               </Link>
@@ -47,7 +47,7 @@ export async function Navbar() {
                   <Link
                     href={item.path}
                     prefetch={true}
-                    className="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                    className="text-sage underline-offset-4 hover:text-mustard hover:underline dark:text-sage dark:hover:text-mustard"
                   >
                     {item.title}
                   </Link>
@@ -56,9 +56,18 @@ export async function Navbar() {
             ) : null}
             <li>
               <Link
+                href="/about"
+                prefetch={true}
+                className="text-sage underline-offset-4 hover:text-mustard hover:underline dark:text-sage dark:hover:text-mustard"
+              >
+                За нас
+              </Link>
+            </li>
+            <li>
+              <Link
                 href="/contact"
                 prefetch={true}
-                className="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                className="text-sage underline-offset-4 hover:text-mustard hover:underline dark:text-sage dark:hover:text-mustard"
               >
                 Контакти
               </Link>
