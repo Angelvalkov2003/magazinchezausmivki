@@ -13,7 +13,7 @@ export async function Navbar() {
   const menu = collections.map(c => ({ title: c.title, path: `/search/${c.handle}` }));
 
   return (
-    <nav className="relative flex items-center justify-between p-4 lg:px-6">
+    <nav className="relative flex items-center justify-between p-4 lg:px-12 bg-light-sage/20 dark:bg-sage/10">
       <div className="block flex-none md:hidden">
         <Suspense fallback={null}>
           <MobileMenu menu={menu} />
@@ -26,7 +26,7 @@ export async function Navbar() {
             prefetch={true}
             className="mr-2 flex w-full items-center justify-center md:w-auto lg:mr-6"
           >
-            <LogoSquare />
+            <LogoSquare size="lg" />
           </Link>
           <ul className="hidden gap-6 text-sm md:flex md:items-center">
             <li>

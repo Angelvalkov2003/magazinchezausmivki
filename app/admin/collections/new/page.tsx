@@ -12,7 +12,7 @@ export default async function NewCollectionPage() {
         </p>
       </div>
 
-      <div className="bg-white dark:bg-stone-400 rounded-lg shadow p-6">
+      <div className="bg-white dark:bg-sage rounded-lg shadow p-6">
         <CollectionForm />
       </div>
     </div>

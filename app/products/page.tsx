@@ -100,8 +100,8 @@ export default async function ProductsPage({
                 href="/products"
                 className={`block rounded-lg px-4 py-2 transition-colors ${
                   !collection
-                    ? "bg-stone-400 text-white dark:bg-mustard"
-                    : "bg-gray-100 text-gray-700 hover:bg-gray-200 dark:bg-stone-400 dark:text-gray-300 dark:hover:bg-gray-700"
+                    ? "bg-sage text-white dark:bg-mustard"
+                    : "bg-gray-100 text-gray-700 hover:bg-gray-200 dark:bg-sage dark:text-gray-300 dark:hover:bg-gray-700"
                 }`}
               >
                 Всичко
@@ -113,8 +113,8 @@ export default async function ProductsPage({
                   href={`/products?collection=${col.handle}`}
                   className={`block rounded-lg px-4 py-2 transition-colors ${
                     collection === col.handle
-                      ? "bg-stone-400 text-white dark:bg-mustard"
-                      : "bg-gray-100 text-gray-700 hover:bg-gray-200 dark:bg-stone-400 dark:text-gray-300 dark:hover:bg-gray-700"
+                      ? "bg-sage text-white dark:bg-mustard"
+                      : "bg-gray-100 text-gray-700 hover:bg-gray-200 dark:bg-sage dark:text-gray-300 dark:hover:bg-gray-700"
                   }`}
                 >
                   {col.title}

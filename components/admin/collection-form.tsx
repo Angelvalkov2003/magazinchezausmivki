@@ -126,7 +126,7 @@ export function CollectionForm({ collection }: CollectionFormProps) {
             type="text"
             value={formData.handle}
             onChange={handleHandleChange}
-            className={`w-full px-3 py-2 border rounded-md bg-white dark:bg-stone-400 text-gray-900 dark:text-white ${
+            className={`w-full px-3 py-2 border rounded-md bg-white dark:bg-sage text-gray-900 dark:text-white ${
               handleError 
                 ? "border-red-500 dark:border-red-500" 
                 : "border-gray-300 dark:border-gray-700"
@@ -153,7 +153,7 @@ export function CollectionForm({ collection }: CollectionFormProps) {
             required
             value={formData.title}
             onChange={handleTitleChange}
-            className="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-md bg-white dark:bg-stone-400 text-gray-900 dark:text-white"
+            className="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-md bg-white dark:bg-sage text-gray-900 dark:text-white"
           />
         </div>
 
@@ -166,7 +166,7 @@ export function CollectionForm({ collection }: CollectionFormProps) {
             min="0"
             value={formData.position}
             onChange={(e) => setFormData({ ...formData, position: e.target.value })}
-            className="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-md bg-white dark:bg-stone-400 text-gray-900 dark:text-white"
+            className="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-md bg-white dark:bg-sage text-gray-900 dark:text-white"
             placeholder="0 = първа позиция"
           />
           <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">
@@ -183,7 +183,7 @@ export function CollectionForm({ collection }: CollectionFormProps) {
           value={formData.description}
           onChange={(e) => setFormData({ ...formData, description: e.target.value })}
           rows={4}
-          className="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-md bg-white dark:bg-stone-400 text-gray-900 dark:text-white"
+          className="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-md bg-white dark:bg-sage text-gray-900 dark:text-white"
           placeholder="Описание на колекцията (незадължително)"
         />
         <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">

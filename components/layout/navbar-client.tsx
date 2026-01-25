@@ -56,7 +56,7 @@ export function NavbarClient() {
   const menu = collections.map((c) => ({ title: c.title, path: `/search/${c.handle}` }));
 
   return (
-    <nav className="relative flex items-center justify-between p-4 lg:px-6">
+    <nav className="relative flex items-center justify-between p-4 lg:px-12 bg-light-sage/20 dark:bg-sage/10">
       <div className="block flex-none md:hidden">
         <Suspense fallback={null}>
           <MobileMenu menu={menu} />
@@ -69,7 +69,7 @@ export function NavbarClient() {
             prefetch={true}
             className="mr-2 flex w-full items-center justify-center md:w-auto lg:mr-6"
           >
-            <LogoSquare />
+            <LogoSquare size="lg" />
           </Link>
           <ul className="hidden gap-6 text-sm md:flex md:items-center">
             {/* Products Dropdown */}
@@ -83,7 +83,7 @@ export function NavbarClient() {
                   <ChevronDownIcon className={`h-4 w-4 transition-transform ${productsDropdownOpen ? "rotate-180" : ""}`} />
                 </button>
                 {productsDropdownOpen && (
-                  <div className="absolute left-0 top-full mt-2 w-48 rounded-lg bg-white shadow-lg dark:bg-stone-400 border border-gray-200 dark:border-gray-700 z-50">
+                  <div className="absolute left-0 top-full mt-2 w-48 rounded-lg bg-white shadow-lg dark:bg-sage border border-gray-200 dark:border-gray-700 z-50">
                     <ul className="py-2">
                       <li>
                         <Link

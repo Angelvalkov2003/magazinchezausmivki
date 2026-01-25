@@ -15,10 +15,10 @@ export default async function AdminOrdersPage() {
         </p>
       </div>
 
-      <div className="bg-white dark:bg-stone-400 rounded-lg shadow overflow-hidden">
+      <div className="bg-white dark:bg-sage rounded-lg shadow overflow-hidden">
         <div className="overflow-x-auto">
           <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
-            <thead className="bg-gray-50 dark:bg-stone-400">
+            <thead className="bg-gray-50 dark:bg-sage">
               <tr>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
                   ID
@@ -46,7 +46,7 @@ export default async function AdminOrdersPage() {
                 </th>
               </tr>
             </thead>
-            <tbody className="bg-white dark:bg-stone-400 divide-y divide-gray-200 dark:divide-gray-700">
+            <tbody className="bg-white dark:bg-sage divide-y divide-gray-200 dark:divide-gray-700">
               {orders.length === 0 ? (
                 <tr>
                   <td

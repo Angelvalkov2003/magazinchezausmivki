@@ -87,7 +87,7 @@ export default async function CheckoutSuccessPage({
           Поръчката е приета!
         </h1>
         {order && (
-          <div className="mb-6 text-left bg-white dark:bg-stone-400 p-4 rounded-lg shadow-lg border border-light-sage">
+          <div className="mb-6 text-left bg-white dark:bg-sage p-4 rounded-lg shadow-lg border border-light-sage">
             <p className="text-sm text-sage dark:text-sage mb-2">
               <strong className="text-mustard dark:text-mustard">Номер на поръчка:</strong> #{order.id.substring(0, 8)}
             </p>

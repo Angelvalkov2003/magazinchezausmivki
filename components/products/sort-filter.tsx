@@ -50,7 +50,7 @@ export function SortFilter() {
     <div className="relative" ref={dropdownRef}>
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center gap-2 px-4 py-2.5 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-stone-400 text-sm font-medium text-gray-700 dark:text-gray-300 shadow-sm hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-200 min-w-[200px] justify-between"
+        className="flex items-center gap-2 px-4 py-2.5 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-sage text-sm font-medium text-gray-700 dark:text-gray-300 shadow-sm hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-200 min-w-[200px] justify-between"
       >
         <div className="flex items-center gap-2">
           <BarsArrowUpIcon className="h-5 w-5 text-gray-500 dark:text-gray-400" />
@@ -64,20 +64,20 @@ export function SortFilter() {
       </button>
 
       {isOpen && (
-        <div className="absolute top-full left-0 mt-2 w-full sm:w-auto min-w-full bg-white dark:bg-stone-400 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg z-50 overflow-hidden">
+        <div className="absolute top-full left-0 mt-2 w-full sm:w-auto min-w-full bg-white dark:bg-sage border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg z-50 overflow-hidden">
           {sortOptions.map((option) => (
             <button
               key={option.value}
               onClick={() => handleSortChange(option.value)}
               className={`w-full text-left px-4 py-3 flex items-center justify-between hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors ${
                 currentSort === option.value
-                  ? "bg-stone-50 dark:bg-stone-900/30 text-stone-900 dark:text-stone-100"
+                  ? "bg-light-sage/30 dark:bg-sage/30 text-gray-900 dark:text-white"
                   : "text-gray-700 dark:text-gray-300"
               }`}
             >
               <span className="text-sm font-medium">{option.label}</span>
               {currentSort === option.value && (
-                <CheckIcon className="h-5 w-5 text-mustard dark:text-stone-400" />
+                <CheckIcon className="h-5 w-5 text-mustard dark:text-sage" />
               )}
             </button>
           ))}

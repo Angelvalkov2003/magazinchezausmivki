@@ -123,7 +123,7 @@ export default function CheckoutPage() {
   };
 
   return (
-    <div className="min-h-screen bg-white dark:bg-stone-400 py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-white dark:bg-sage py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         <h1 className="text-3xl font-bold text-mustard dark:text-mustard mb-8">
           Финализиране на поръчката
@@ -132,7 +132,7 @@ export default function CheckoutPage() {
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
           {/* Order Form */}
           <div className="lg:col-span-3">
-            <form onSubmit={handleSubmit} className="bg-white dark:bg-stone-400 rounded-lg shadow-lg border border-light-sage p-6">
+            <form onSubmit={handleSubmit} className="bg-white dark:bg-sage rounded-lg shadow-lg border border-light-sage p-6">
               <h2 className="text-xl font-semibold mb-6 text-mustard dark:text-mustard">
                 Данни за доставка
               </h2>
@@ -412,7 +412,7 @@ export default function CheckoutPage() {
 
           {/* Order Summary */}
           <div className="lg:col-span-2">
-            <div className="bg-white dark:bg-stone-400 rounded-xl shadow-xl border-2 border-peach p-8 lg:p-10 sticky top-4 max-w-2xl lg:max-w-none">
+            <div className="bg-white dark:bg-sage rounded-xl shadow-xl border-2 border-peach p-8 lg:p-10 sticky top-4 max-w-2xl lg:max-w-none">
               <h2 className="text-2xl md:text-3xl font-bold mb-6 text-mustard dark:text-mustard">
                 Резюме на поръчката
               </h2>

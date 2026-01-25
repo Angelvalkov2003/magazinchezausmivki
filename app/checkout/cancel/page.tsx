@@ -24,7 +24,7 @@ export default function CheckoutCancelPage() {
         <h1 className="mb-4 text-3xl font-bold text-gray-900 dark:text-white">
           Плащането е отменено
         </h1>
-        <p className="mb-8 text-lg text-stone-400 dark:text-stone-400">
+        <p className="mb-8 text-lg text-sage dark:text-sage">
           Вашата поръчка не е завършена. Можете да опитате отново по-късно.
         </p>
         <div className="flex flex-col gap-4 sm:flex-row sm:justify-center">
@@ -36,7 +36,7 @@ export default function CheckoutCancelPage() {
           </Link>
           <Link
             href="/search"
-            className="rounded-lg border border-sage px-6 py-3 text-stone-400 hover:bg-light-sage dark:border-sage/50 dark:text-stone-400 dark:hover:bg-sage/20 transition-colors"
+            className="rounded-lg border border-sage px-6 py-3 text-sage hover:bg-light-sage dark:border-sage/50 dark:text-sage dark:hover:bg-sage/20 transition-colors"
           >
             Продължи пазаруване
           </Link>
