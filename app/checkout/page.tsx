@@ -23,6 +23,7 @@ export default function CheckoutPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const stripeEnabled = isStripeEnabled();
+  const [deliveryType, setDeliveryType] = useState<"address" | "office" | null>(null);
   const [formData, setFormData] = useState({
     customer_name: "",
     customer_email: "",
@@ -60,6 +61,16 @@ export default function CheckoutPage() {
     setIsSubmitting(true);
 
     try {
+      // Validate delivery address
+      if (!deliveryType || !formData.customer_address.trim()) {
+        throw new Error("Моля, изберете тип доставка и попълнете адреса");
+      }
+
+      // Format address based on delivery type
+      const formattedAddress = deliveryType === "address"
+        ? `До точен адрес: ${formData.customer_address}`
+        : `До офис на Спийди: ${formData.customer_address}`;
+
       // Prepare products data
       const products = cart.items.map((item) => ({
         id: item.productId,
@@ -73,7 +84,7 @@ export default function CheckoutPage() {
         customer_name: formData.customer_name,
         customer_email: formData.customer_email,
         customer_phone: formData.customer_phone || undefined,
-        customer_address: formData.customer_address,
+        customer_address: formattedAddress,
         products,
         total_price: cart.total,
         payment_method: formData.payment_method,
@@ -112,7 +123,7 @@ export default function CheckoutPage() {
   };
 
   return (
-    <div className="min-h-screen bg-white dark:bg-gray-900 py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-white dark:bg-stone-400 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         <h1 className="text-3xl font-bold text-mustard dark:text-mustard mb-8">
           Финализиране на поръчката
@@ -121,7 +132,7 @@ export default function CheckoutPage() {
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
           {/* Order Form */}
           <div className="lg:col-span-3">
-            <form onSubmit={handleSubmit} className="bg-white dark:bg-gray-800 rounded-lg shadow-lg border border-light-sage p-6">
+            <form onSubmit={handleSubmit} className="bg-white dark:bg-stone-400 rounded-lg shadow-lg border border-light-sage p-6">
               <h2 className="text-xl font-semibold mb-6 text-mustard dark:text-mustard">
                 Данни за доставка
               </h2>
@@ -189,23 +200,95 @@ export default function CheckoutPage() {
                   />
                 </div>
 
-                <div>
-                  <label
-                    htmlFor="customer_address"
-                    className="block text-sm font-medium text-sage dark:text-sage mb-1"
-                  >
-                    Адрес за доставка *
+                {/* Delivery Information */}
+                <div className="bg-light-sage/30 dark:bg-light-sage/10 rounded-lg p-6 border border-sage/30 mb-4">
+                  <div className="flex items-center gap-4 mb-4">
+                    <img
+                      src="https://brcc.bg/storage/773/conversions/speedy-logo-rgb-vector-list.webp"
+                      alt="Speedy"
+                      className="h-12 object-contain"
+                    />
+                    <div>
+                      <p className="text-base font-semibold text-mustard dark:text-mustard">
+                        Изпращаме поръчките само чрез Speedy
+                      </p>
+                    </div>
+                  </div>
+                  
+                  <label className="block text-sm font-medium text-sage dark:text-sage mb-3">
+                    Тип доставка *
                   </label>
-                  <textarea
-                    id="customer_address"
-                    required
-                    rows={3}
-                    value={formData.customer_address}
-                    onChange={(e) =>
-                      setFormData({ ...formData, customer_address: e.target.value })
-                    }
-                    className="w-full px-4 py-2 border border-light-sage dark:border-sage rounded-lg focus:ring-2 focus:ring-mustard focus:border-transparent dark:bg-light-sage/20 dark:text-mustard"
-                  />
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setDeliveryType("address");
+                        setFormData({ ...formData, customer_address: "" });
+                      }}
+                      className={`p-4 rounded-lg border-2 transition-all ${
+                        deliveryType === "address"
+                          ? "border-mustard bg-mustard/10 dark:bg-mustard/20"
+                          : "border-light-sage hover:border-sage dark:border-sage/50"
+                      }`}
+                    >
+                      <div className="font-medium text-mustard dark:text-mustard mb-1">
+                        До точен адрес
+                      </div>
+                      <div className="text-xs text-sage dark:text-sage">
+                        До вашия адрес
+                      </div>
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setDeliveryType("office");
+                        setFormData({ ...formData, customer_address: "" });
+                      }}
+                      className={`p-4 rounded-lg border-2 transition-all ${
+                        deliveryType === "office"
+                          ? "border-mustard bg-mustard/10 dark:bg-mustard/20"
+                          : "border-light-sage hover:border-sage dark:border-sage/50"
+                      }`}
+                    >
+                      <div className="font-medium text-mustard dark:text-mustard mb-1">
+                        До офис
+                      </div>
+                      <div className="text-xs text-sage dark:text-sage">
+                        До офис на Speedy
+                      </div>
+                    </button>
+                  </div>
+
+                  {deliveryType && (
+                    <div className="mt-4">
+                      <label
+                        htmlFor="customer_address"
+                        className="block text-sm font-medium text-sage dark:text-sage mb-2"
+                      >
+                        {deliveryType === "address"
+                          ? "Въведете точен адрес, на който искате да получите пратката *"
+                          : "Въведете адреса на офиса на Speedy *"}
+                      </label>
+                      <textarea
+                        id="customer_address"
+                        required={deliveryType !== null}
+                        rows={3}
+                        value={formData.customer_address}
+                        onChange={(e) =>
+                          setFormData({ ...formData, customer_address: e.target.value })
+                        }
+                        placeholder={
+                          deliveryType === "address"
+                            ? "Например: гр. София, ул. Примерна 123, ап. 45"
+                            : "Например: гр. София, офис №123"
+                        }
+                        className="w-full px-4 py-2 border border-light-sage dark:border-sage rounded-lg focus:ring-2 focus:ring-mustard focus:border-transparent dark:bg-light-sage/20 dark:text-mustard"
+                      />
+                      <p className="mt-2 text-xs text-sage dark:text-sage italic">
+                        Ще се свържем с вас, за да потвърдим адреса и поръчката.
+                      </p>
+                    </div>
+                  )}
                 </div>
 
                 <div>
@@ -329,7 +412,7 @@ export default function CheckoutPage() {
 
           {/* Order Summary */}
           <div className="lg:col-span-2">
-            <div className="bg-white dark:bg-gray-800 rounded-xl shadow-xl border-2 border-peach p-8 lg:p-10 sticky top-4 max-w-2xl lg:max-w-none">
+            <div className="bg-white dark:bg-stone-400 rounded-xl shadow-xl border-2 border-peach p-8 lg:p-10 sticky top-4 max-w-2xl lg:max-w-none">
               <h2 className="text-2xl md:text-3xl font-bold mb-6 text-mustard dark:text-mustard">
                 Резюме на поръчката
               </h2>

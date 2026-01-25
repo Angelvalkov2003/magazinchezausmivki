@@ -87,7 +87,7 @@ export default async function CheckoutSuccessPage({
           Поръчката е приета!
         </h1>
         {order && (
-          <div className="mb-6 text-left bg-white dark:bg-gray-800 p-4 rounded-lg shadow-lg border border-light-sage">
+          <div className="mb-6 text-left bg-white dark:bg-stone-400 p-4 rounded-lg shadow-lg border border-light-sage">
             <p className="text-sm text-sage dark:text-sage mb-2">
               <strong className="text-mustard dark:text-mustard">Номер на поръчка:</strong> #{order.id.substring(0, 8)}
             </p>
@@ -97,11 +97,20 @@ export default async function CheckoutSuccessPage({
                 ? "Наложен платеж"
                 : "Плащане с карта"}
             </p>
+            <p className="text-sm text-sage dark:text-sage mb-2">
+              <strong className="text-mustard dark:text-mustard">Адрес за доставка:</strong>{" "}
+              {order.customer_address}
+            </p>
             {order.payment_method === "cash_on_delivery" && (
               <p className="text-sm text-sage dark:text-sage">
                 Ще платите при получаване на поръчката.
               </p>
             )}
+            <div className="mt-3 pt-3 border-t border-light-sage dark:border-sage/30">
+              <p className="text-sm text-mustard dark:text-mustard font-semibold">
+                Ще се свържем с вас, за да потвърдим адреса и поръчката.
+              </p>
+            </div>
           </div>
         )}
         <p className="mb-8 text-lg text-sage dark:text-sage">

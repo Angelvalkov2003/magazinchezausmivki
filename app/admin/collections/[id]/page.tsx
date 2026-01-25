@@ -56,7 +56,7 @@ export default async function EditCollectionPage({
         </p>
       </div>
 
-      <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
+      <div className="bg-white dark:bg-stone-400 rounded-lg shadow p-6">
         <CollectionForm collection={collection} />
       </div>
     </div>

@@ -66,7 +66,7 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="min-h-screen bg-white dark:bg-gray-900 py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-white dark:bg-stone-400 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-4xl mx-auto">
         <h1 className="text-4xl font-bold text-mustard dark:text-mustard mb-8 text-center">
           Свържете се с нас
@@ -191,7 +191,7 @@ export default function ContactPage() {
           </div>
 
           {/* Contact Form */}
-          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg border border-light-sage p-6">
+          <div className="bg-white dark:bg-stone-400 rounded-lg shadow-lg border border-light-sage p-6">
             <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-6">
               Изпратете съобщение
             </h2>

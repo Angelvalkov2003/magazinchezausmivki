@@ -15,7 +15,7 @@ export default async function NewProductPage() {
         </p>
       </div>
 
-      <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
+      <div className="bg-white dark:bg-stone-400 rounded-lg shadow p-6">
         <ProductForm collections={collections} />
       </div>
     </div>

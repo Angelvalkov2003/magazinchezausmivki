@@ -86,7 +86,7 @@ export function NavbarClient() {
                   <ChevronDownIcon className={`h-4 w-4 transition-transform ${productsDropdownOpen ? "rotate-180" : ""}`} />
                 </button>
                 {productsDropdownOpen && (
-                  <div className="absolute left-0 top-full mt-2 w-48 rounded-lg bg-white shadow-lg dark:bg-gray-800 border border-gray-200 dark:border-gray-700 z-50">
+                  <div className="absolute left-0 top-full mt-2 w-48 rounded-lg bg-white shadow-lg dark:bg-stone-400 border border-gray-200 dark:border-gray-700 z-50">
                     <ul className="py-2">
                       <li>
                         <Link

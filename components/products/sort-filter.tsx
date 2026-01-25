@@ -1,8 +1,8 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { BarsArrowUpIcon, CheckIcon, ChevronDownIcon } from "@heroicons/react/24/outline";
 import { useRouter, useSearchParams } from "next/navigation";
-import { BarsArrowUpIcon, ChevronDownIcon, CheckIcon } from "@heroicons/react/24/outline";
+import { useEffect, useRef, useState } from "react";
 
 type SortOption = "price-asc" | "price-desc" | "discount-desc" | "name-asc" | "newest";
 
@@ -50,7 +50,7 @@ export function SortFilter() {
     <div className="relative" ref={dropdownRef}>
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center gap-2 px-4 py-2.5 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-sm font-medium text-gray-700 dark:text-gray-300 shadow-sm hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-200 min-w-[200px] justify-between"
+        className="flex items-center gap-2 px-4 py-2.5 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-stone-400 text-sm font-medium text-gray-700 dark:text-gray-300 shadow-sm hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-200 min-w-[200px] justify-between"
       >
         <div className="flex items-center gap-2">
           <BarsArrowUpIcon className="h-5 w-5 text-gray-500 dark:text-gray-400" />
@@ -64,7 +64,7 @@ export function SortFilter() {
       </button>
 
       {isOpen && (
-        <div className="absolute top-full left-0 mt-2 w-full sm:w-auto min-w-full bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg z-50 overflow-hidden">
+        <div className="absolute top-full left-0 mt-2 w-full sm:w-auto min-w-full bg-white dark:bg-stone-400 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg z-50 overflow-hidden">
           {sortOptions.map((option) => (
             <button
               key={option.value}
@@ -77,7 +77,7 @@ export function SortFilter() {
             >
               <span className="text-sm font-medium">{option.label}</span>
               {currentSort === option.value && (
-                <CheckIcon className="h-5 w-5 text-stone-600 dark:text-stone-400" />
+                <CheckIcon className="h-5 w-5 text-mustard dark:text-stone-400" />
               )}
             </button>
           ))}

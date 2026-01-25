@@ -98,8 +98,8 @@ export function FilterDropdown({
         onClick={() => setIsOpen(!isOpen)}
         className={`flex items-center gap-2 px-4 py-2.5 rounded-lg border border-gray-300 dark:border-gray-600 text-sm font-medium transition-all duration-200 min-w-[140px] justify-between ${
           hasActiveFilters
-            ? "bg-stone-400 text-white dark:bg-stone-600 border-stone-400 dark:border-stone-600 hover:bg-stone-500 dark:hover:bg-stone-700"
-            : "bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 shadow-sm hover:bg-gray-50 dark:hover:bg-gray-700"
+            ? "bg-stone-400 text-white dark:bg-mustard border-stone-400 dark:border-mustard hover:bg-stone-500 dark:hover:bg-stone-700"
+            : "bg-white dark:bg-stone-400 text-gray-700 dark:text-gray-300 shadow-sm hover:bg-gray-50 dark:hover:bg-gray-700"
         }`}
       >
         <div className="flex items-center gap-2">
@@ -123,7 +123,7 @@ export function FilterDropdown({
       </button>
 
       {isOpen && (
-        <div className="absolute top-full right-0 sm:right-0 left-0 sm:left-auto mt-2 w-[calc(100vw-2rem)] sm:w-80 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg z-50 max-h-[80vh] overflow-y-auto">
+        <div className="absolute top-full right-0 sm:right-0 left-0 sm:left-auto mt-2 w-[calc(100vw-2rem)] sm:w-80 bg-white dark:bg-stone-400 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg z-50 max-h-[80vh] overflow-y-auto">
           <div className="p-4">
             <div className="flex items-center justify-between mb-4">
               <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Филтри</h3>
@@ -188,7 +188,7 @@ export function FilterDropdown({
                       type="checkbox"
                       checked={selectedCategories.includes(collection.handle)}
                       onChange={() => handleCategoryToggle(collection.handle)}
-                      className="h-4 w-4 text-stone-600 rounded border-gray-300 focus:ring-stone-500"
+                      className="h-4 w-4 text-mustard rounded border-gray-300 focus:ring-stone-500"
                     />
                     <span className="text-sm text-gray-700 dark:text-gray-300">
                       {collection.title}
@@ -205,7 +205,7 @@ export function FilterDropdown({
                   type="checkbox"
                   checked={onSaleOnly}
                   onChange={(e) => setOnSaleOnly(e.target.checked)}
-                  className="h-4 w-4 text-stone-600 rounded border-gray-300 focus:ring-stone-500"
+                  className="h-4 w-4 text-mustard rounded border-gray-300 focus:ring-stone-500"
                 />
                 <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
                   Само продукти на намаление
@@ -217,7 +217,7 @@ export function FilterDropdown({
             <div className="flex gap-2 pt-3 border-t border-gray-200 dark:border-gray-700">
               <button
                 onClick={handleApply}
-                className="flex-1 px-4 py-2 text-sm font-medium text-white bg-stone-400 dark:bg-stone-600 rounded-md hover:bg-stone-500 dark:hover:bg-stone-700 transition-colors"
+                className="flex-1 px-4 py-2 text-sm font-medium text-white bg-stone-400 dark:bg-mustard rounded-md hover:bg-stone-500 dark:hover:bg-stone-700 transition-colors"
               >
                 Приложи
               </button>

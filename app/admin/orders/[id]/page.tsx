@@ -82,7 +82,7 @@ export default async function OrderDetailPage({
       </div>
 
       {/* Edit Order Form */}
-      <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-6 mb-8">
+      <div className="bg-white dark:bg-stone-400 rounded-lg shadow p-6 mb-8">
         <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
           Редактиране на поръчката
         </h2>
@@ -91,7 +91,7 @@ export default async function OrderDetailPage({
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
         {/* Customer Information (Read-only view) */}
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
+        <div className="bg-white dark:bg-stone-400 rounded-lg shadow p-6">
           <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
             Информация за клиента
           </h2>
@@ -152,7 +152,7 @@ export default async function OrderDetailPage({
         </div>
 
         {/* Order Summary */}
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
+        <div className="bg-white dark:bg-stone-400 rounded-lg shadow p-6">
           <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
             Резюме на поръчката
           </h2>
@@ -209,7 +209,7 @@ export default async function OrderDetailPage({
       </div>
 
       {/* Products */}
-      <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-6 mb-8">
+      <div className="bg-white dark:bg-stone-400 rounded-lg shadow p-6 mb-8">
         <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
           Продукти
         </h2>
@@ -267,7 +267,7 @@ export default async function OrderDetailPage({
 
       {/* Comment */}
       {order.comment && (
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
+        <div className="bg-white dark:bg-stone-400 rounded-lg shadow p-6">
           <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
             Коментар от клиента
           </h2>

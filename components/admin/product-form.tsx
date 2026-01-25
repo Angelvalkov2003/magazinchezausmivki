@@ -63,7 +63,12 @@ export function ProductForm({ product, collections }: ProductFormProps) {
       }));
 
       // Generate handle from title if not provided, and trim to remove any spaces
-      const finalHandle = (formData.handle.trim() || generateHandleFromTitle(formData.title)).trim();
+      let finalHandle = (formData.handle.trim() || generateHandleFromTitle(formData.title)).trim();
+      
+      // If handle is still empty, generate a random one
+      if (!finalHandle) {
+        finalHandle = generateRandomHandle();
+      }
 
       const productData = {
         handle: finalHandle,
@@ -263,6 +268,12 @@ export function ProductForm({ product, collections }: ProductFormProps) {
     return formatHandle(title);
   };
 
+  // Generate random handle if needed
+  const generateRandomHandle = (): string => {
+    const randomString = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+    return `product-${randomString}`;
+  };
+
   const handleHandleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const formatted = formatHandle(e.target.value);
     setFormData({ ...formData, handle: formatted });
@@ -297,7 +308,7 @@ export function ProductForm({ product, collections }: ProductFormProps) {
             type="text"
             value={formData.handle}
             onChange={handleHandleChange}
-            className={`w-full px-3 py-2 border rounded-md bg-white dark:bg-gray-800 text-gray-900 dark:text-white ${
+            className={`w-full px-3 py-2 border rounded-md bg-white dark:bg-stone-400 text-gray-900 dark:text-white ${
               handleError 
                 ? "border-red-500 dark:border-red-500" 
                 : "border-gray-300 dark:border-gray-700"
@@ -324,7 +335,7 @@ export function ProductForm({ product, collections }: ProductFormProps) {
             required
             value={formData.title}
             onChange={handleTitleChange}
-            className="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-md bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
+            className="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-md bg-white dark:bg-stone-400 text-gray-900 dark:text-white"
           />
         </div>
       </div>
@@ -337,7 +348,7 @@ export function ProductForm({ product, collections }: ProductFormProps) {
           value={formData.description}
           onChange={(e) => setFormData({ ...formData, description: e.target.value })}
           rows={4}
-          className="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-md bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
+          className="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-md bg-white dark:bg-stone-400 text-gray-900 dark:text-white"
           placeholder="Описанието ще се покаже автоматично под продукта"
         />
       </div>
@@ -353,7 +364,7 @@ export function ProductForm({ product, collections }: ProductFormProps) {
             required
             value={formData.price}
             onChange={(e) => setFormData({ ...formData, price: e.target.value })}
-            className="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-md bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
+            className="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-md bg-white dark:bg-stone-400 text-gray-900 dark:text-white"
           />
         </div>
 
@@ -366,7 +377,7 @@ export function ProductForm({ product, collections }: ProductFormProps) {
             step="0.01"
             value={formData.compare_at_price}
             onChange={(e) => setFormData({ ...formData, compare_at_price: e.target.value })}
-            className="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-md bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
+            className="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-md bg-white dark:bg-stone-400 text-gray-900 dark:text-white"
           />
         </div>
 
@@ -377,7 +388,7 @@ export function ProductForm({ product, collections }: ProductFormProps) {
           <select
             value={formData.category}
             onChange={(e) => setFormData({ ...formData, category: e.target.value })}
-            className="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-md bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
+            className="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-md bg-white dark:bg-stone-400 text-gray-900 dark:text-white"
           >
             <option value="">Избери категория</option>
             {collections.map((collection) => (
@@ -397,7 +408,7 @@ export function ProductForm({ product, collections }: ProductFormProps) {
             min="0"
             value={formData.position}
             onChange={(e) => setFormData({ ...formData, position: e.target.value })}
-            className="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-md bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
+            className="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-md bg-white dark:bg-stone-400 text-gray-900 dark:text-white"
             placeholder="0 = първа позиция"
           />
           <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">
@@ -415,7 +426,7 @@ export function ProductForm({ product, collections }: ProductFormProps) {
             type="url"
             value={formData.featured_image_url}
             onChange={(e) => setFormData({ ...formData, featured_image_url: e.target.value })}
-            className="flex-1 px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-md bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
+            className="flex-1 px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-md bg-white dark:bg-stone-400 text-gray-900 dark:text-white"
             placeholder="https://example.com/image.jpg"
           />
           <ImageUploadButton
@@ -457,7 +468,7 @@ export function ProductForm({ product, collections }: ProductFormProps) {
                   value={image.url}
                   onChange={(e) => updateImage(index, "url", e.target.value)}
                   placeholder="URL на снимка"
-                  className="flex-1 px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-md bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
+                  className="flex-1 px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-md bg-white dark:bg-stone-400 text-gray-900 dark:text-white"
                   disabled={isUploading}
                 />
                 <ImageUploadButton

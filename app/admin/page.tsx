@@ -38,7 +38,7 @@ export default async function AdminDashboard() {
 
       {/* Stats */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
+        <div className="bg-white dark:bg-stone-400 rounded-lg shadow p-6">
           <h3 className="text-sm font-medium text-gray-500 dark:text-gray-400">
             Общо Поръчки
           </h3>
@@ -46,7 +46,7 @@ export default async function AdminDashboard() {
             {stats.totalOrders}
           </p>
         </div>
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
+        <div className="bg-white dark:bg-stone-400 rounded-lg shadow p-6">
           <h3 className="text-sm font-medium text-gray-500 dark:text-gray-400">
             Нови Поръчки
           </h3>
@@ -54,7 +54,7 @@ export default async function AdminDashboard() {
             {stats.newOrders}
           </p>
         </div>
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
+        <div className="bg-white dark:bg-stone-400 rounded-lg shadow p-6">
           <h3 className="text-sm font-medium text-gray-500 dark:text-gray-400">
             Приход от Понеделник насам
           </h3>
@@ -65,7 +65,7 @@ export default async function AdminDashboard() {
       </div>
 
       {/* Recent Orders */}
-      <div className="bg-white dark:bg-gray-800 rounded-lg shadow">
+      <div className="bg-white dark:bg-stone-400 rounded-lg shadow">
         <div className="px-6 py-4 border-b border-gray-200 dark:border-gray-700">
           <h2 className="text-xl font-semibold text-gray-900 dark:text-white">
             Последни Поръчки
@@ -73,7 +73,7 @@ export default async function AdminDashboard() {
         </div>
         <div className="overflow-x-auto">
           <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
-            <thead className="bg-gray-50 dark:bg-gray-900">
+            <thead className="bg-gray-50 dark:bg-stone-400">
               <tr>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
                   ID
@@ -98,7 +98,7 @@ export default async function AdminDashboard() {
                 </th>
               </tr>
             </thead>
-            <tbody className="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
+            <tbody className="bg-white dark:bg-stone-400 divide-y divide-gray-200 dark:divide-gray-700">
               {ordersThisWeek.slice(0, 10).map((order) => (
                 <tr key={order.id}>
                   <td className="px-6 py-4 whitespace-nowrap text-sm font-mono text-gray-900 dark:text-white">
