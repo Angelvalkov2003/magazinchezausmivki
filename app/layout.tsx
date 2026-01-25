@@ -2,11 +2,19 @@ import { CartProvider } from "components/cart/cart-context";
 import { ConditionalNavbar } from "components/layout/conditional-navbar";
 import Footer from "components/layout/footer";
 import { CookieConsent } from "components/cookie-consent";
-import { GeistSans } from "geist/font/sans";
+import localFont from "next/font/local";
 import { ReactNode } from "react";
 import { Toaster } from "sonner";
 import "./globals.css";
 import { baseUrl } from "lib/utils";
+
+const GeistSans = localFont({
+  src: "./fonts/geist-sans/Geist-Variable.woff2",
+  variable: "--font-geist-sans",
+  weight: "100 900",
+  preload: false,
+  display: "swap",
+});
 
 const SITE_NAME = "Магазинче за усмивки";
 
