@@ -141,6 +141,7 @@ export async function createCollection(data: CreateCollectionData) {
     const collectionData = {
       handle: trimmedHandle,
       title: data.title,
+      description: data.description || null,
       position: data.position ?? 0,
       updated_at: new Date().toISOString(),
     };

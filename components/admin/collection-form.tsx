@@ -20,6 +20,7 @@ export function CollectionForm({ collection }: CollectionFormProps) {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [handleError, setHandleError] = useState<string | null>(null);
+  const [handleManuallyEdited, setHandleManuallyEdited] = useState(false);
   const [formData, setFormData] = useState<CollectionFormData>({
     handle: collection?.handle || "",
     title: collection?.title || "",
@@ -46,6 +47,7 @@ export function CollectionForm({ collection }: CollectionFormProps) {
   const handleHandleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const formatted = formatHandle(e.target.value);
     setFormData({ ...formData, handle: formatted });
+    setHandleManuallyEdited(true);
     // Clear error when user starts typing
     if (handleError) {
       setHandleError(null);
@@ -54,16 +56,8 @@ export function CollectionForm({ collection }: CollectionFormProps) {
 
   const handleTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newTitle = e.target.value;
-    // Auto-generate handle from title if handle is empty
-    if (!formData.handle || formData.handle === formatHandle(collection?.title || "")) {
-      setFormData({ 
-        ...formData, 
-        title: newTitle,
-        handle: generateHandleFromTitle(newTitle)
-      });
-    } else {
-      setFormData({ ...formData, title: newTitle });
-    }
+    // Don't auto-generate handle while typing - only generate on submit if empty
+    setFormData({ ...formData, title: newTitle });
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
