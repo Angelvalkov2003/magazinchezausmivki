@@ -72,6 +72,9 @@ export function Carousel({ products }: CarouselProps) {
 
   const { prev, current, next } = getVisibleProducts();
 
+  // Safety check - should never happen due to early return, but TypeScript needs it
+  if (!current) return null;
+
   return (
     <div
       className="relative w-full py-8"
@@ -102,25 +105,27 @@ export function Carousel({ products }: CarouselProps) {
       >
         <div className="flex items-center justify-center gap-4 md:gap-8 px-4 md:px-8 max-w-7xl mx-auto">
           {/* Previous Product (faded) */}
-          <div className="hidden md:flex flex-none w-[150px] justify-center opacity-30 transition-opacity duration-300">
-            <Link
-              href={`/product/${prev.handle}`}
-              className="relative aspect-square h-[25vh] max-h-[200px] block"
-            >
-              <GridTileImage
-                alt={prev.title}
-                label={{
-                  title: prev.title,
-                  amount: prev.price.toString(),
-                  compareAtAmount: prev.compareAtPrice?.toString(),
-                  currencyCode: "EUR",
-                }}
-                src={prev.featuredImage?.url}
-                fill
-                sizes="150px"
-              />
-            </Link>
-          </div>
+          {prev && (
+            <div className="hidden md:flex flex-none w-[150px] justify-center opacity-30 transition-opacity duration-300">
+              <Link
+                href={`/product/${prev.handle}`}
+                className="relative aspect-square h-[25vh] max-h-[200px] block"
+              >
+                <GridTileImage
+                  alt={prev.title}
+                  label={{
+                    title: prev.title,
+                    amount: prev.price.toString(),
+                    compareAtAmount: prev.compareAtPrice?.toString(),
+                    currencyCode: "EUR",
+                  }}
+                  src={prev.featuredImage?.url}
+                  fill
+                  sizes="150px"
+                />
+              </Link>
+            </div>
+          )}
 
           {/* Current Product (full opacity) - centered */}
           <div className="flex-none w-full md:w-[475px] flex justify-center opacity-100 transition-all duration-300 scale-100">
@@ -146,25 +151,27 @@ export function Carousel({ products }: CarouselProps) {
           </div>
 
           {/* Next Product (faded) */}
-          <div className="hidden md:flex flex-none w-[150px] justify-center opacity-30 transition-opacity duration-300">
-            <Link
-              href={`/product/${next.handle}`}
-              className="relative aspect-square h-[25vh] max-h-[200px] block"
-            >
-              <GridTileImage
-                alt={next.title}
-                label={{
-                  title: next.title,
-                  amount: next.price.toString(),
-                  compareAtAmount: next.compareAtPrice?.toString(),
-                  currencyCode: "EUR",
-                }}
-                src={next.featuredImage?.url}
-                fill
-                sizes="150px"
-              />
-            </Link>
-          </div>
+          {next && (
+            <div className="hidden md:flex flex-none w-[150px] justify-center opacity-30 transition-opacity duration-300">
+              <Link
+                href={`/product/${next.handle}`}
+                className="relative aspect-square h-[25vh] max-h-[200px] block"
+              >
+                <GridTileImage
+                  alt={next.title}
+                  label={{
+                    title: next.title,
+                    amount: next.price.toString(),
+                    compareAtAmount: next.compareAtPrice?.toString(),
+                    currencyCode: "EUR",
+                  }}
+                  src={next.featuredImage?.url}
+                  fill
+                  sizes="150px"
+                />
+              </Link>
+            </div>
+          )}
         </div>
       </div>
 
