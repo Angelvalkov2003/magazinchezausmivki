@@ -11,9 +11,6 @@ const contactPhone = "0877349616";
 const contactAddress = "гр. София, бул.Янко Сакъзов 36.";
 
 export default async function Footer() {
-  const currentYear = new Date().getFullYear();
-  const copyrightDate = 2023 + (currentYear > 2023 ? `-${currentYear}` : "");
-
   return (
     <footer className="bg-light-sage/20 dark:bg-sage/10 border-t border-sage/30 dark:border-sage/50">
       <div className="mx-auto max-w-7xl px-6 py-12">
@@ -111,10 +108,7 @@ export default async function Footer() {
 
         {/* Copyright */}
         <div className="mt-8 pt-6 border-t border-sage/30 dark:border-sage/50">
-          <div className="flex flex-col items-center gap-2 text-center md:flex-row md:justify-between">
-            <p className="text-xs text-sage dark:text-sage">
-              &copy; {copyrightDate} {SITE_NAME}. Всички права запазени.
-            </p>
+          <div className="flex flex-col items-center gap-2 text-center md:flex-row md:justify-end">
             <div className="flex gap-4 text-xs">
               <Link
                 href="/about"
