@@ -6,11 +6,11 @@ export function WelcomeBanner() {
       {/* Animated flowing gradient background */}
       <div className="relative rounded-3xl md:rounded-[2rem] p-6 md:p-8 lg:p-6 xl:p-8 border-2 border-light-sage/50 dark:border-sage/30 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.1)] dark:shadow-[0_20px_60px_-15px_rgba(0,0,0,0.3)] overflow-hidden">
         {/* Animated gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-br from-light-sage/40 via-white to-light-sage/30 dark:from-sage/20 dark:via-sage/10 dark:to-sage/20" />
+        <div className="absolute inset-0 bg-gradient-to-br from-[#F5F5DC]/60 via-[#FAF0E6]/50 to-[#F5E6D3]/60 dark:from-[#F5E6D3]/40 dark:via-[#FAF0E6]/30 dark:to-[#F5F5DC]/40" />
         <div 
-          className="absolute inset-0 opacity-50 dark:opacity-30 animate-gradient-flow"
+          className="absolute inset-0 opacity-40 dark:opacity-25 animate-gradient-flow"
           style={{
-            background: 'linear-gradient(45deg, #E1E9C9, #D4AF37, #CADCAE, #E1E9C9, #D4AF37)',
+            background: 'linear-gradient(45deg, #F5F5DC, #FAF0E6, #F5E6D3, #F5F5DC, #FAF0E6)',
           }}
         />
         
@@ -71,8 +71,8 @@ export function WelcomeBanner() {
             />
           </div>
 
-          {/* Banner element 3 - Duplicate top center */}
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-24 md:w-36 md:h-36 lg:w-48 lg:h-48 opacity-15 dark:opacity-12 transform -rotate-12">
+          {/* Banner element 3 - Duplicate top center - hidden behind logo */}
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-24 md:w-36 md:h-36 lg:w-48 lg:h-48 opacity-0 pointer-events-none transform -rotate-12">
             <Image
               src="/banner_elements/3.png"
               alt="Декоративен елемент"
@@ -93,8 +93,8 @@ export function WelcomeBanner() {
             />
           </div>
 
-          {/* More banner element duplicates - scattered everywhere */}
-          <div className="absolute top-1/6 left-1/6 w-24 h-24 md:w-36 md:h-36 lg:w-44 lg:h-44 opacity-10 dark:opacity-8 transform rotate-24">
+          {/* More banner element duplicates - scattered everywhere - hidden behind logo */}
+          <div className="absolute top-1/6 left-1/6 w-24 h-24 md:w-36 md:h-36 lg:w-44 lg:h-44 opacity-0 pointer-events-none transform rotate-24">
             <Image
               src="/banner_elements/1.png"
               alt="Декоративен елемент"
@@ -112,7 +112,7 @@ export function WelcomeBanner() {
               sizes="(max-width: 768px) 112px, (max-width: 1024px) 160px, 192px"
             />
           </div>
-          <div className="absolute top-2/3 left-1/2 w-20 h-20 md:w-32 md:h-32 lg:w-40 lg:h-40 opacity-8 dark:opacity-6 transform rotate-30">
+          <div className="absolute top-2/3 left-1/2 w-20 h-20 md:w-32 md:h-32 lg:w-40 lg:h-40 opacity-0 pointer-events-none transform rotate-30">
             <Image
               src="/banner_elements/3.png"
               alt="Декоративен елемент"
@@ -121,7 +121,7 @@ export function WelcomeBanner() {
               sizes="(max-width: 768px) 80px, (max-width: 1024px) 128px, 160px"
             />
           </div>
-          <div className="absolute top-1/4 right-1/5 w-22 h-22 md:w-34 md:h-34 lg:w-42 lg:h-42 opacity-10 dark:opacity-8 transform -rotate-24">
+          <div className="absolute top-1/4 right-1/5 w-22 h-22 md:w-34 md:h-34 lg:w-42 lg:h-42 opacity-0 pointer-events-none transform -rotate-24">
             <Image
               src="/banner_elements/1.png"
               alt="Декоративен елемент"
@@ -142,6 +142,98 @@ export function WelcomeBanner() {
           <div className="absolute top-3/4 right-1/3 w-18 h-18 md:w-30 md:h-30 lg:w-38 lg:h-38 opacity-10 dark:opacity-8 transform -rotate-20">
             <Image
               src="/banner_elements/3.png"
+              alt="Декоративен елемент"
+              fill
+              className="object-contain drop-shadow-md"
+              sizes="(max-width: 768px) 72px, (max-width: 1024px) 120px, 152px"
+            />
+          </div>
+
+          {/* Additional images in side areas only - not behind logo or text */}
+          <div className="absolute top-1/8 left-0 w-24 h-24 md:w-36 md:h-36 lg:w-44 lg:h-44 opacity-12 dark:opacity-10 transform -rotate-15">
+            <Image
+              src="/banner_elements/1.png"
+              alt="Декоративен елемент"
+              fill
+              className="object-contain drop-shadow-md"
+              sizes="(max-width: 768px) 96px, (max-width: 1024px) 144px, 176px"
+            />
+          </div>
+          <div className="absolute top-1/8 right-0 w-28 h-28 md:w-40 md:h-40 lg:w-48 lg:h-48 opacity-12 dark:opacity-10 transform rotate-15">
+            <Image
+              src="/banner_elements/2.png"
+              alt="Декоративен елемент"
+              fill
+              className="object-contain drop-shadow-md"
+              sizes="(max-width: 768px) 112px, (max-width: 1024px) 160px, 192px"
+            />
+          </div>
+          <div className="absolute bottom-1/8 left-0 w-26 h-26 md:w-38 md:h-38 lg:w-46 lg:h-46 opacity-10 dark:opacity-8 transform rotate-20">
+            <Image
+              src="/banner_elements/3.png"
+              alt="Декоративен елемент"
+              fill
+              className="object-contain drop-shadow-md"
+              sizes="(max-width: 768px) 104px, (max-width: 1024px) 152px, 184px"
+            />
+          </div>
+          <div className="absolute bottom-1/8 right-0 w-22 h-22 md:w-34 md:h-34 lg:w-42 lg:h-42 opacity-10 dark:opacity-8 transform -rotate-20">
+            <Image
+              src="/banner_elements/1.png"
+              alt="Декоративен елемент"
+              fill
+              className="object-contain drop-shadow-md"
+              sizes="(max-width: 768px) 88px, (max-width: 1024px) 136px, 168px"
+            />
+          </div>
+          <div className="absolute top-1/5 left-1/10 w-20 h-20 md:w-32 md:h-32 lg:w-40 lg:h-40 opacity-10 dark:opacity-8 transform rotate-25">
+            <Image
+              src="/banner_elements/2.png"
+              alt="Декоративен елемент"
+              fill
+              className="object-contain drop-shadow-md"
+              sizes="(max-width: 768px) 80px, (max-width: 1024px) 128px, 160px"
+            />
+          </div>
+          <div className="absolute top-1/5 right-1/10 w-20 h-20 md:w-32 md:h-32 lg:w-40 lg:h-40 opacity-10 dark:opacity-8 transform -rotate-25">
+            <Image
+              src="/banner_elements/3.png"
+              alt="Декоративен елемент"
+              fill
+              className="object-contain drop-shadow-md"
+              sizes="(max-width: 768px) 80px, (max-width: 1024px) 128px, 160px"
+            />
+          </div>
+          <div className="absolute bottom-1/5 left-1/10 w-24 h-24 md:w-36 md:h-36 lg:w-44 lg:h-44 opacity-10 dark:opacity-8 transform -rotate-18">
+            <Image
+              src="/banner_elements/1.png"
+              alt="Декоративен елемент"
+              fill
+              className="object-contain drop-shadow-md"
+              sizes="(max-width: 768px) 96px, (max-width: 1024px) 144px, 176px"
+            />
+          </div>
+          <div className="absolute bottom-1/5 right-1/10 w-24 h-24 md:w-36 md:h-36 lg:w-44 lg:h-44 opacity-10 dark:opacity-8 transform rotate-18">
+            <Image
+              src="/banner_elements/2.png"
+              alt="Декоративен елемент"
+              fill
+              className="object-contain drop-shadow-md"
+              sizes="(max-width: 768px) 96px, (max-width: 1024px) 144px, 176px"
+            />
+          </div>
+          <div className="absolute top-4/5 left-1/8 w-18 h-18 md:w-30 md:h-30 lg:w-38 lg:h-38 opacity-8 dark:opacity-6 transform rotate-12">
+            <Image
+              src="/banner_elements/3.png"
+              alt="Декоративен елемент"
+              fill
+              className="object-contain drop-shadow-md"
+              sizes="(max-width: 768px) 72px, (max-width: 1024px) 120px, 152px"
+            />
+          </div>
+          <div className="absolute top-4/5 right-1/8 w-18 h-18 md:w-30 md:h-30 lg:w-38 lg:h-38 opacity-8 dark:opacity-6 transform -rotate-12">
+            <Image
+              src="/banner_elements/1.png"
               alt="Декоративен елемент"
               fill
               className="object-contain drop-shadow-md"
@@ -389,7 +481,7 @@ export function WelcomeBanner() {
         {/* Content */}
         <div className="relative z-10 flex flex-col items-center text-center">
           {/* Logo */}
-          <div className="mb-3 md:mb-4 lg:mb-4 relative">
+          <div className="mb-3 md:mb-4 lg:mb-4 relative z-20">
             <div className="relative w-48 h-48 md:w-64 md:h-64 lg:w-64 lg:h-64 xl:w-72 xl:h-72 mx-auto">
               <Image
                 src="/logo_usmivka_final.png"
