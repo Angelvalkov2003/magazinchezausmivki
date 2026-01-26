@@ -21,6 +21,7 @@ export interface CreateProductData {
   images?: Image[];
   category?: string;
   available?: boolean;
+  mainscreen?: boolean;
   position?: number;
 }
 
@@ -255,6 +256,7 @@ export async function createProduct(data: CreateProductData) {
       images: data.images || [],
       category: data.category || null,
       available: data.available !== false,
+      mainscreen: data.mainscreen === true,
       position: data.position ?? 0,
       updated_at: new Date().toISOString(),
     };
@@ -315,6 +317,7 @@ export async function updateProduct(data: UpdateProductData) {
     if (data.images !== undefined) updateData.images = data.images || [];
     if (data.category !== undefined) updateData.category = data.category || null;
     if (data.available !== undefined) updateData.available = data.available;
+    if (data.mainscreen !== undefined) updateData.mainscreen = data.mainscreen === true;
     if (data.position !== undefined) updateData.position = data.position;
 
     const { data: product, error } = await supabase

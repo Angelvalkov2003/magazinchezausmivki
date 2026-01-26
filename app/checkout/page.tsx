@@ -451,11 +451,16 @@ export default function CheckoutPage() {
                     className="text-base md:text-lg font-semibold text-mustard dark:text-mustard"
                   />
                 </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-base md:text-lg text-sage dark:text-sage font-medium">Доставка</span>
-                  <span className="text-sm md:text-base text-sage dark:text-sage italic">
-                    Ще се изчисли при плащане
-                  </span>
+                <div className="flex flex-col">
+                  <div className="flex justify-between items-center">
+                    <span className="text-base md:text-lg text-sage dark:text-sage font-medium">Доставка</span>
+                    <span className="text-sm md:text-base text-sage dark:text-sage italic">
+                      Ще се изчисли при плащане
+                    </span>
+                  </div>
+                  <p className="text-xs md:text-sm text-sage dark:text-sage italic mt-1 text-right">
+                    Доставката се плаща от клиента
+                  </p>
                 </div>
                 <div className="flex justify-between items-center pt-4 mt-4 border-t-2 border-mustard/30 dark:border-mustard/30">
                   <span className="text-xl md:text-2xl font-bold text-mustard dark:text-mustard">Общо</span>

@@ -145,7 +145,7 @@ export default function CartModal() {
                         );
                       })}
                   </ul>
-                  <div className="py-4 text-sm text-sage dark:text-sage">
+                  <div className="py-4 text-sm text-mustard dark:text-mustard">
                     <div className="mb-3 flex items-center justify-between border-b border-sage pb-1 dark:border-sage/50">
                       <p className="text-mustard dark:text-mustard">Междинна сума</p>
                       <Price
@@ -154,9 +154,14 @@ export default function CartModal() {
                         currencyCode={cart.currency}
                       />
                     </div>
-                    <div className="mb-3 flex items-center justify-between border-b border-sage pb-1 pt-1 dark:border-sage/50">
-                      <p className="text-mustard dark:text-mustard">Доставка</p>
-                      <p className="text-right text-sage dark:text-sage">Ще се изчисли при плащане</p>
+                    <div className="mb-3 flex flex-col border-b border-sage pb-1 pt-1 dark:border-sage/50">
+                      <div className="flex items-center justify-between">
+                        <p className="text-mustard dark:text-mustard">Доставка</p>
+                        <p className="text-right text-mustard dark:text-mustard">Ще се изчисли при плащане</p>
+                      </div>
+                      <p className="text-xs text-mustard dark:text-mustard italic mt-1">
+                        Доставката се плаща от клиента
+                      </p>
                     </div>
                     <div className="mb-3 flex items-center justify-between border-b border-sage pb-1 pt-1 dark:border-sage/50">
                       <p className="text-mustard dark:text-mustard font-semibold">Общо</p>
@@ -166,7 +171,7 @@ export default function CartModal() {
                         currencyCode={cart.currency}
                       />
                     </div>
-                    <div className="mt-3 text-xs text-sage dark:text-sage">
+                    <div className="mt-3 text-xs text-mustard dark:text-mustard">
                       <p className="text-center">
                         Цените се изчисляват по курс 1 EUR = 1.95583 BGN
                       </p>

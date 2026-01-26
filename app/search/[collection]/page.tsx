@@ -36,20 +36,28 @@ export default async function CategoryPage(props: {
   return (
     <section>
       <div className="mb-8">
-        <h1 className="text-3xl font-bold">{collection.title}</h1>
+        <h1 className="text-4xl md:text-5xl font-bold text-mustard dark:text-mustard mb-4">
+          {collection.title}
+        </h1>
         {collection.description && (
-          <p className="mt-3 text-lg text-neutral-700 dark:text-neutral-300">
-            {collection.description}
-          </p>
+          <div className="mt-6">
+            <p className="text-xl md:text-2xl leading-relaxed text-mustard dark:text-mustard font-medium">
+              {collection.description}
+            </p>
+          </div>
         )}
         {products.length > 0 && (
-          <p className="mt-2 text-neutral-600 dark:text-neutral-400">
-            {products.length} {products.length === 1 ? 'продукт' : 'продукта'}
-          </p>
+          <div className="mt-4 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-mustard/10 dark:bg-mustard/20 border border-mustard/30 dark:border-mustard/40">
+            <span className="text-base font-semibold text-mustard dark:text-mustard">
+              {products.length} {products.length === 1 ? 'продукт' : 'продукта'}
+            </span>
+          </div>
         )}
       </div>
       {products.length === 0 ? (
-        <p className="py-3 text-lg">{`Няма намерени продукти в тази колекция`}</p>
+        <div className="py-12 text-center">
+          <p className="text-xl text-sage dark:text-sage">{`Няма намерени продукти в тази колекция`}</p>
+        </div>
       ) : (
         <Grid className="grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
           <ProductGridItems products={products} />

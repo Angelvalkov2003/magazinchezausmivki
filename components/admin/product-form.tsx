@@ -16,6 +16,7 @@ interface ProductFormData {
   featured_image_url: string;
   category: string;
   available: boolean;
+  mainscreen: boolean;
   position: string;
   images: Image[];
 }
@@ -39,6 +40,7 @@ export function ProductForm({ product, collections }: ProductFormProps) {
     featured_image_url: product?.featured_image?.url || "",
     category: product?.category || "",
     available: product?.available !== false,
+    mainscreen: product?.mainscreen === true,
     position: product?.position?.toString() || "0",
     images: product?.images || [],
   });
@@ -80,6 +82,7 @@ export function ProductForm({ product, collections }: ProductFormProps) {
         images: imagesWithAltText,
         category: formData.category || undefined,
         available: formData.available,
+        mainscreen: formData.mainscreen,
         position: parseInt(formData.position) || 0,
       };
 
@@ -506,17 +509,32 @@ export function ProductForm({ product, collections }: ProductFormProps) {
         })}
       </div>
 
-      <div className="flex items-center">
-        <input
-          type="checkbox"
-          id="available"
-          checked={formData.available}
-          onChange={(e) => setFormData({ ...formData, available: e.target.checked })}
-          className="mr-2"
-        />
-        <label htmlFor="available" className="text-sm font-medium text-gray-700 dark:text-gray-300">
-          Продуктът е достъпен
-        </label>
+      <div className="flex flex-col gap-4">
+        <div className="flex items-center">
+          <input
+            type="checkbox"
+            id="available"
+            checked={formData.available}
+            onChange={(e) => setFormData({ ...formData, available: e.target.checked })}
+            className="mr-2"
+          />
+          <label htmlFor="available" className="text-sm font-medium text-gray-700 dark:text-gray-300">
+            Продуктът е достъпен
+          </label>
+        </div>
+
+        <div className="flex items-center">
+          <input
+            type="checkbox"
+            id="mainscreen"
+            checked={formData.mainscreen}
+            onChange={(e) => setFormData({ ...formData, mainscreen: e.target.checked })}
+            className="mr-2"
+          />
+          <label htmlFor="mainscreen" className="text-sm font-medium text-gray-700 dark:text-gray-300">
+            Покажи в карусел на главната страница
+          </label>
+        </div>
       </div>
 
       <div className="flex gap-4">

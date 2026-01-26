@@ -83,7 +83,7 @@ export default function ContactPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-6 lg:gap-8">
             {/* Address */}
-            <div className="flex flex-col items-center text-center space-y-3 p-6 lg:p-8 rounded-xl bg-white dark:bg-sage border border-light-sage shadow-lg lg:col-span-2 lg:col-start-1">
+            <div className="flex flex-col items-center text-center space-y-3 p-6 lg:p-8 rounded-xl bg-white dark:bg-sage border border-light-sage shadow-lg lg:col-span-2 lg:col-start-1 lg:mt-8">
               <div className="flex h-16 w-16 items-center justify-center rounded-lg bg-sage dark:bg-sage/80">
                 <MapPinIcon className="h-8 w-8 text-white" />
               </div>

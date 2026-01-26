@@ -23,6 +23,7 @@ export async function getProducts(params?: {
   maxPrice?: number;
   categories?: string[];
   onSaleOnly?: boolean;
+  mainscreen?: boolean;
 }): Promise<Product[]> {
   try {
     const supabase = await createServerClient();
@@ -31,6 +32,10 @@ export async function getProducts(params?: {
       .from("products")
       .select("*")
       .eq("available", true);
+
+    if (params?.mainscreen !== undefined) {
+      query = query.eq("mainscreen", params.mainscreen);
+    }
 
     if (params?.query) {
       query = query.or(`title.ilike.%${params.query}%,description.ilike.%${params.query}%`);
@@ -244,5 +249,6 @@ function transformProduct(data: any): Product {
     createdAt: data.created_at,
     updatedAt: data.updated_at,
     available: data.available !== false,
+    mainscreen: data.mainscreen === true,
   };
 }

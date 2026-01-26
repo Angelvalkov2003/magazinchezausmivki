@@ -40,6 +40,7 @@ CREATE TABLE products (
     images JSONB[] DEFAULT '{}',
     category TEXT, -- This references collections by handle or can be collection title
     available BOOLEAN DEFAULT true,
+    mainscreen BOOLEAN DEFAULT false NOT NULL,
     position INTEGER NOT NULL DEFAULT 0,
     created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
     updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
@@ -77,6 +78,7 @@ CREATE TABLE orders (
 CREATE INDEX idx_products_handle ON products(handle);
 CREATE INDEX idx_products_category ON products(category);
 CREATE INDEX idx_products_available ON products(available);
+CREATE INDEX idx_products_mainscreen ON products(mainscreen) WHERE mainscreen = true;
 CREATE INDEX idx_products_position ON products(position);
 CREATE INDEX idx_collections_handle ON collections(handle);
 CREATE INDEX idx_collections_position ON collections(position);
@@ -124,3 +126,4 @@ COMMENT ON COLUMN product_images.sort_order IS '0 = main image, 1+ = secondary i
 COMMENT ON COLUMN orders.products IS 'JSON array containing product snapshot: {id, name, price, quantity}';
 COMMENT ON COLUMN orders.status IS 'Order status: new, paid, shipped, completed, canceled';
 COMMENT ON COLUMN products.category IS 'Category/collection name - can reference collections table by handle or title';
+COMMENT ON COLUMN products.mainscreen IS 'If true, product will be displayed in carousel on main page';

@@ -6,7 +6,7 @@ export function ProductDescription({ product }: { product: Product }) {
   return (
     <>
       <div className="mb-6 flex flex-col border-b pb-6 dark:border-neutral-700">
-        <h1 className="mb-2 text-5xl font-medium">{product.title}</h1>
+        <h1 className="mb-2 text-5xl font-medium text-mustard dark:text-mustard">{product.title}</h1>
         <div className="mr-auto w-auto rounded-full bg-light-sage dark:bg-sage p-2 text-sm text-gray-900 dark:text-white">
           {product.compareAtPrice && product.compareAtPrice > product.price ? (
             <div className="flex items-center gap-2">
@@ -30,7 +30,7 @@ export function ProductDescription({ product }: { product: Product }) {
         </div>
       </div>
       {product.description && (
-        <div className="mb-6 text-sm leading-tight dark:text-white/[60%]">
+        <div className="mb-6 text-sm leading-tight text-mustard dark:text-mustard">
           {product.description}
         </div>
       )}

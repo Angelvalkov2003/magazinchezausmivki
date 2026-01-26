@@ -144,7 +144,7 @@ export default function MobileMenu({ menu }: { menu: MenuItem[] }) {
                   </li>
                   <li className="py-2 text-xl text-mustard transition-colors hover:text-sage dark:text-mustard">
                     <Link
-                      href="/about"
+                      href="/za-nas"
                       prefetch={true}
                       onClick={closeMobileMenu}
                     >

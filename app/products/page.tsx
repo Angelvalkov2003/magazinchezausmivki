@@ -56,21 +56,25 @@ export default async function ProductsPage({
       <div className="order-first min-h-screen w-full md:order-none">
         <div className="mb-8">
           <div className="flex items-center justify-between mb-4">
-            <h1 className="text-3xl font-bold">
+            <h1 className="text-4xl md:text-5xl font-bold text-mustard dark:text-mustard">
               {collection
                 ? collections.find((c) => c.handle === collection)?.title || "Продукти"
                 : "Всички Продукти"}
             </h1>
           </div>
           {collection && collections.find((c) => c.handle === collection)?.description && (
-            <p className="mt-3 mb-4 text-lg text-neutral-700 dark:text-neutral-300">
-              {collections.find((c) => c.handle === collection)?.description}
-            </p>
+            <div className="mt-6 mb-4">
+              <p className="text-xl md:text-2xl leading-relaxed text-mustard dark:text-mustard font-medium">
+                {collections.find((c) => c.handle === collection)?.description}
+              </p>
+            </div>
           )}
           {products.length > 0 && (
-            <p className="mb-4 text-neutral-600 dark:text-neutral-400">
-              {products.length} {products.length === 1 ? "продукт" : "продукта"}
-            </p>
+            <div className="mb-4 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-mustard/10 dark:bg-mustard/20 border border-mustard/30 dark:border-mustard/40">
+              <span className="text-base font-semibold text-mustard dark:text-mustard">
+                {products.length} {products.length === 1 ? "продукт" : "продукта"}
+              </span>
+            </div>
           )}
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 sm:gap-3 mb-4">
             <div className="w-full sm:w-auto">
@@ -93,7 +97,7 @@ export default async function ProductsPage({
       {/* Collections Menu - Right Side */}
       <div className="order-last w-full flex-none md:order-last md:w-[250px]">
         <div className="sticky top-4">
-          <h2 className="mb-4 text-lg font-semibold">Категории</h2>
+          <h2 className="mb-4 text-xl font-bold text-mustard dark:text-mustard">Категории</h2>
           <ul className="space-y-2">
             <li>
               <a

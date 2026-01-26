@@ -112,6 +112,17 @@ export function NavbarClient() {
               </div>
             </li>
 
+            {/* About Us Link */}
+            <li>
+              <Link
+                href="/za-nas"
+                prefetch={true}
+                className="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+              >
+                За нас
+              </Link>
+            </li>
+
             {/* Contact Link */}
             <li>
               <Link

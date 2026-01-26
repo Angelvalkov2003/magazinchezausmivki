@@ -14,7 +14,7 @@ export default function LogoSquare({ size }: { size?: "sm" | "lg" | undefined })
       )}
     >
       <Image
-        src="/logo_usmivka.png"
+        src="/logo_usmivka_final.png"
         alt="Магазинче за усмивки"
         width={size === "sm" ? 30 : size === "lg" ? 160 : 120}
         height={size === "sm" ? 30 : size === "lg" ? 160 : 120}

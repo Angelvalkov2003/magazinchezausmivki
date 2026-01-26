@@ -32,6 +32,7 @@ export type Product = {
   createdAt: string;
   updatedAt: string;
   available: boolean;
+  mainscreen?: boolean;
 };
 
 export type CartItem = {

@@ -7,6 +7,7 @@ export const GridTileImage = memo(function GridTileImage({
   isInteractive = true,
   active,
   label,
+  objectPosition = "center",
   ...props
 }: {
   isInteractive?: boolean;
@@ -16,15 +17,16 @@ export const GridTileImage = memo(function GridTileImage({
     amount: string;
     compareAtAmount?: string;
     currencyCode: string;
-    position?: "bottom" | "center";
+    position?: "bottom" | "center" | "top";
+    split?: boolean;
   };
+  objectPosition?: "center" | "bottom";
 } & React.ComponentProps<typeof Image>) {
   return (
     <div
       className={clsx(
-        "group flex h-full w-full items-center justify-center overflow-hidden rounded-lg border bg-white hover:border-sage dark:bg-black dark:hover:border-mustard",
+        "group relative flex h-full w-full items-center justify-center overflow-hidden rounded-lg border bg-white hover:border-sage dark:bg-black dark:hover:border-mustard",
         {
-          relative: label,
           "border-2 border-sage dark:border-mustard": active,
           "border-neutral-200 dark:border-neutral-800": !active,
         },
@@ -33,6 +35,8 @@ export const GridTileImage = memo(function GridTileImage({
       {props.src ? (
         <Image
           className={clsx("relative h-full w-full object-contain", {
+            "object-center": objectPosition === "center",
+            "object-[center_bottom]": objectPosition === "bottom",
             "transition duration-300 ease-in-out group-hover:scale-105":
               isInteractive,
           })}
@@ -46,6 +50,7 @@ export const GridTileImage = memo(function GridTileImage({
           compareAtAmount={label.compareAtAmount}
           currencyCode={label.currencyCode}
           position={label.position}
+          split={label.split}
         />
       ) : null}
     </div>
