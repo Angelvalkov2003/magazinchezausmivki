@@ -106,4 +106,21 @@ button {
   .animate-check-in {
     animation: check-in 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   }
+
+  @keyframes gradientFlow {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  .animate-gradient-flow {
+    background-size: 400% 400%;
+    animation: gradientFlow 15s ease infinite;
+  }
 }
