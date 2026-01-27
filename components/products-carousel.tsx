@@ -78,7 +78,9 @@ export function ProductsCarousel() {
     return null;
   }
 
-  const currentSlide = slides[currentIndex] ?? slides[0];
+  // Ensure currentIndex is within bounds
+  const safeIndex = currentIndex >= 0 && currentIndex < slides.length ? currentIndex : 0;
+  const currentSlide: ProductSlide = slides[safeIndex]!;
 
   return (
     <div
