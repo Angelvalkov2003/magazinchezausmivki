@@ -24,6 +24,22 @@ export const metadata = {
     shortcut: "/favicon.ico",
     apple: "/favicon.ico",
   },
+  openGraph: {
+    type: "website",
+    siteName: SITE_NAME,
+    images: [
+      {
+        url: "/logo_usmivka_final.png",
+        width: 1200,
+        height: 630,
+        alt: SITE_NAME,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: ["/logo_usmivka_final.png"],
+  },
 };
 
 export default async function RootLayout({

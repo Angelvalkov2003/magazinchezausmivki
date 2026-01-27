@@ -10,6 +10,14 @@ export const metadata: Metadata = {
   description: `Запознайте се с ${siteName} - малък семеен бизнес за ръчно изработени подаръци, цветя и декорации.`,
   openGraph: {
     type: "website",
+    images: [
+      {
+        url: "/logo_usmivka_final.png",
+        width: 1200,
+        height: 630,
+        alt: siteName,
+      },
+    ],
   },
 };
 
