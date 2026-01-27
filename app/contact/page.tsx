@@ -81,24 +81,9 @@ export default function ContactPage() {
             Контактна информация
           </h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-6 lg:gap-8">
-            {/* Address */}
-            <div className="flex flex-col items-center text-center space-y-3 p-6 lg:p-8 rounded-xl bg-white dark:bg-sage border border-light-sage shadow-lg lg:col-span-2 lg:col-start-1 lg:mt-8">
-              <div className="flex h-16 w-16 items-center justify-center rounded-lg bg-sage dark:bg-sage/80">
-                <MapPinIcon className="h-8 w-8 text-white" />
-              </div>
-              <div>
-                <h3 className="text-sm font-medium text-sage dark:text-sage mb-2">
-                  Адрес
-                </h3>
-                <p className="text-base text-mustard dark:text-mustard">
-                  {contactAddressFull}
-                </p>
-              </div>
-            </div>
-
-            {/* Email */}
-            <div className="flex flex-col items-center text-center space-y-3 p-6 lg:p-8 rounded-xl bg-white dark:bg-sage border border-light-sage shadow-lg lg:col-span-2 lg:col-start-3">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-6 lg:gap-8 lg:grid-rows-[auto_auto_auto]">
+            {/* Email - Top Left */}
+            <div className="flex flex-col items-center text-center space-y-3 p-6 lg:p-8 rounded-xl bg-white dark:bg-sage border border-light-sage shadow-lg lg:col-span-2 lg:col-start-2 lg:row-start-1">
               <div className="flex h-16 w-16 items-center justify-center rounded-lg bg-sage dark:bg-sage/80">
                 <EnvelopeIcon className="h-8 w-8 text-white" />
               </div>
@@ -115,8 +100,8 @@ export default function ContactPage() {
               </div>
             </div>
 
-            {/* Phone */}
-            <div className="flex flex-col items-center text-center space-y-3 p-6 lg:p-8 rounded-xl bg-white dark:bg-sage border border-light-sage shadow-lg lg:col-span-2 lg:col-start-5">
+            {/* Phone - Top Right */}
+            <div className="flex flex-col items-center text-center space-y-3 p-6 lg:p-8 rounded-xl bg-white dark:bg-sage border border-light-sage shadow-lg lg:col-span-2 lg:col-start-4 lg:row-start-1">
               <div className="flex h-16 w-16 items-center justify-center rounded-lg bg-sage dark:bg-sage/80">
                 <PhoneIcon className="h-8 w-8 text-white" />
               </div>
@@ -133,8 +118,23 @@ export default function ContactPage() {
               </div>
             </div>
 
-            {/* Facebook */}
-            <div className="flex flex-col items-center text-center space-y-3 p-6 lg:p-8 rounded-xl bg-white dark:bg-sage border border-light-sage shadow-lg lg:col-span-2 lg:col-start-1">
+            {/* Address - Center, Lower */}
+            <div className="flex flex-col items-center text-center space-y-3 p-6 lg:p-8 rounded-xl bg-white dark:bg-sage border border-light-sage shadow-lg lg:col-span-2 lg:col-start-3 lg:row-start-2 lg:mt-4">
+              <div className="flex h-16 w-16 items-center justify-center rounded-lg bg-sage dark:bg-sage/80">
+                <MapPinIcon className="h-8 w-8 text-white" />
+              </div>
+              <div>
+                <h3 className="text-sm font-medium text-sage dark:text-sage mb-2">
+                  Адрес
+                </h3>
+                <p className="text-base text-mustard dark:text-mustard">
+                  {contactAddressFull}
+                </p>
+              </div>
+            </div>
+
+            {/* Facebook - Bottom Left */}
+            <div className="flex flex-col items-center text-center space-y-3 p-6 lg:p-8 rounded-xl bg-white dark:bg-sage border border-light-sage shadow-lg lg:col-span-2 lg:col-start-2 lg:row-start-3">
               <div className="flex h-16 w-16 items-center justify-center rounded-lg bg-sage dark:bg-sage/80">
                 <svg
                   className="h-8 w-8 text-white"
@@ -164,8 +164,8 @@ export default function ContactPage() {
               </div>
             </div>
 
-            {/* Instagram */}
-            <div className="flex flex-col items-center text-center space-y-3 p-6 lg:p-8 rounded-xl bg-white dark:bg-sage border border-light-sage shadow-lg lg:col-span-2 lg:col-start-5">
+            {/* Instagram - Bottom Right */}
+            <div className="flex flex-col items-center text-center space-y-3 p-6 lg:p-8 rounded-xl bg-white dark:bg-sage border border-light-sage shadow-lg lg:col-span-2 lg:col-start-4 lg:row-start-3">
               <div className="flex h-16 w-16 items-center justify-center rounded-lg bg-sage dark:bg-sage/80">
                 <svg
                   className="h-8 w-8 text-white"
