@@ -133,7 +133,7 @@ export function CollectionForm({ collection }: CollectionFormProps) {
             </p>
           ) : (
             <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">
-              Ако не се въведе, ще се генерира автоматично от името. Само малки букви, числа и без разстояния. Пример: /teniskazelena
+              Ако не се въведе, ще се генерира автоматично от името. Само малки букви, числа и без разстояния. Пример: chashi или soevisveshi или plastichensapun
             </p>
           )}
         </div>
