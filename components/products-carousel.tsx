@@ -73,7 +73,12 @@ export function ProductsCarousel() {
   const handleMouseEnter = () => setIsAutoPlaying(false);
   const handleMouseLeave = () => setIsAutoPlaying(true);
 
-  const currentSlide = slides[currentIndex];
+  // Safety check - should never happen, but TypeScript needs it
+  if (slides.length === 0) {
+    return null;
+  }
+
+  const currentSlide = slides[currentIndex] ?? slides[0];
 
   return (
     <div
