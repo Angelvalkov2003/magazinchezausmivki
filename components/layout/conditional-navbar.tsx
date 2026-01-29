@@ -1,6 +1,7 @@
 "use client";
 
 import { usePathname } from "next/navigation";
+import { AnnouncementBar } from "./announcement-bar";
 import { NavbarClient } from "./navbar-client";
 
 export function ConditionalNavbar() {
@@ -11,5 +12,10 @@ export function ConditionalNavbar() {
     return null;
   }
 
-  return <NavbarClient />;
+  return (
+    <>
+      <AnnouncementBar />
+      <NavbarClient />
+    </>
+  );
 }
