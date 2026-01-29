@@ -1,13 +1,12 @@
 "use client";
 
-import { useEffect, useState, useRef } from "react";
+import { ChevronDownIcon } from "@heroicons/react/24/outline";
 import CartModal from "components/cart/modal";
 import LogoSquare from "components/logo-square";
 import Link from "next/link";
-import { Suspense } from "react";
+import { Suspense, useEffect, useRef, useState } from "react";
 import MobileMenu from "./navbar/mobile-menu";
 import Search, { SearchSkeleton } from "./navbar/search";
-import { ChevronDownIcon } from "@heroicons/react/24/outline";
 
 const SITE_NAME = "Магазинче за усмивки";
 
@@ -39,7 +38,10 @@ export function NavbarClient() {
   // Close dropdown when clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
         setProductsDropdownOpen(false);
       }
     };
@@ -53,97 +55,127 @@ export function NavbarClient() {
     };
   }, [productsDropdownOpen]);
 
-  const menu = collections.map((c) => ({ title: c.title, path: `/search/${c.handle}` }));
+  const menu = collections.map((c) => ({
+    title: c.title,
+    path: `/search/${c.handle}`,
+  }));
 
   return (
-    <nav className="relative flex items-center justify-between p-4 lg:px-12 bg-light-sage/20 dark:bg-sage/10">
-      <div className="block flex-none md:hidden">
-        <Suspense fallback={null}>
-          <MobileMenu menu={menu} />
-        </Suspense>
-      </div>
-      <div className="flex w-full items-center">
-        <div className="flex w-full md:w-1/3">
-          <Link
-            href="/"
-            prefetch={true}
-            className="mr-2 flex w-full items-center justify-center md:w-auto lg:mr-6"
-          >
-            <LogoSquare size="lg" />
-          </Link>
-          <ul className="hidden gap-6 text-sm md:flex md:items-center">
-            {/* Products Dropdown */}
-            <li className="relative">
-              <div ref={dropdownRef}>
-                <button
-                  onClick={() => setProductsDropdownOpen(!productsDropdownOpen)}
-                  className="flex items-center gap-1 text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+    <>
+      {/* Desktop-only categories bar (under the top yellow announcement bar) */}
+      <div className="hidden w-full border-b border-light-sage/60 bg-white md:block">
+        <div className="mx-auto max-w-screen-2xl px-4 py-2 lg:px-12">
+          <div className="flex flex-wrap items-center justify-center gap-2 text-sm">
+            {loading ? (
+              <span className="text-black/70">Зареждане...</span>
+            ) : (
+              collections.map((collection) => (
+                <Link
+                  key={collection.id}
+                  href={`/products?collection=${collection.handle}`}
+                  className="rounded-full px-3 py-1 text-black transition-colors hover:bg-mustard/10 hover:text-black"
                 >
-                  Продукти
-                  <ChevronDownIcon className={`h-4 w-4 transition-transform ${productsDropdownOpen ? "rotate-180" : ""}`} />
-                </button>
-                {productsDropdownOpen && (
-                  <div className="absolute left-0 top-full mt-2 w-48 rounded-lg bg-white shadow-lg dark:bg-sage border border-gray-200 dark:border-gray-700 z-50">
-                    <ul className="py-2">
-                      <li>
-                        <Link
-                          href="/products"
-                          onClick={() => setProductsDropdownOpen(false)}
-                          className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
-                        >
-                          Всички
-                        </Link>
-                      </li>
-                      {!loading &&
-                        collections.map((collection) => (
-                          <li key={collection.id}>
-                            <Link
-                              href={`/products?collection=${collection.handle}`}
-                              onClick={() => setProductsDropdownOpen(false)}
-                              className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
-                            >
-                              {collection.title}
-                            </Link>
-                          </li>
-                        ))}
-                    </ul>
-                  </div>
-                )}
-              </div>
-            </li>
-
-            {/* About Us Link */}
-            <li>
-              <Link
-                href="/za-nas"
-                prefetch={true}
-                className="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
-              >
-                За нас
-              </Link>
-            </li>
-
-            {/* Contact Link */}
-            <li>
-              <Link
-                href="/contact"
-                prefetch={true}
-                className="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
-              >
-                Контакти
-              </Link>
-            </li>
-          </ul>
+                  {collection.title}
+                </Link>
+              ))
+            )}
+          </div>
         </div>
-        <div className="hidden justify-center md:flex md:w-1/3">
-          <Suspense fallback={<SearchSkeleton />}>
-            <Search />
+      </div>
+
+      <nav className="relative flex items-center justify-between p-4 lg:px-12 bg-light-sage/20 dark:bg-sage/10">
+        <div className="block flex-none md:hidden">
+          <Suspense fallback={null}>
+            <MobileMenu menu={menu} />
           </Suspense>
         </div>
-        <div className="flex justify-end md:w-1/3">
-          <CartModal />
+        <div className="flex w-full items-center">
+          <div className="flex w-full md:w-1/3">
+            <Link
+              href="/"
+              prefetch={true}
+              className="mr-2 flex w-full items-center justify-center md:w-auto lg:mr-6"
+            >
+              <LogoSquare size="lg" />
+            </Link>
+            <ul className="hidden gap-6 md:flex md:items-center">
+              {/* Products Dropdown */}
+              <li className="relative">
+                <div ref={dropdownRef}>
+                  <button
+                    onClick={() =>
+                      setProductsDropdownOpen(!productsDropdownOpen)
+                    }
+                    className="flex items-center gap-1 text-[15px] text-mustard-contrast underline-offset-4 hover:underline"
+                  >
+                    Продукти
+                    <ChevronDownIcon
+                      className={`h-4 w-4 transition-transform ${productsDropdownOpen ? "rotate-180" : ""}`}
+                    />
+                  </button>
+                  {productsDropdownOpen && (
+                    <div className="absolute left-0 top-full z-50 mt-2 w-48 rounded-lg border border-gray-200 bg-white shadow-lg dark:border-gray-700 dark:bg-sage">
+                      <ul className="py-2">
+                        <li>
+                          <Link
+                            href="/products"
+                            onClick={() => setProductsDropdownOpen(false)}
+                            className="block px-4 py-2 text-sm text-mustard-contrast hover:bg-mustard/10"
+                          >
+                            Всички
+                          </Link>
+                        </li>
+                        {!loading &&
+                          collections.map((collection) => (
+                            <li key={collection.id}>
+                              <Link
+                                href={`/products?collection=${collection.handle}`}
+                                onClick={() => setProductsDropdownOpen(false)}
+                                className="block px-4 py-2 text-sm text-mustard-contrast hover:bg-mustard/10"
+                              >
+                                {collection.title}
+                              </Link>
+                            </li>
+                          ))}
+                      </ul>
+                    </div>
+                  )}
+                </div>
+              </li>
+
+              {/* About Us Link */}
+              <li>
+                <Link
+                  href="/za-nas"
+                  prefetch={true}
+                  className="text-[15px] text-mustard-contrast underline-offset-4 hover:underline"
+                >
+                  За нас
+                </Link>
+              </li>
+
+              {/* Contact Link */}
+              <li>
+                <Link
+                  href="/contact"
+                  prefetch={true}
+                  className="text-[15px] text-mustard-contrast underline-offset-4 hover:underline"
+                >
+                  Контакти
+                </Link>
+              </li>
+            </ul>
+          </div>
+          <div className="hidden justify-center md:flex md:w-1/3">
+            <Suspense fallback={<SearchSkeleton />}>
+              <Search />
+            </Suspense>
+          </div>
+          <div className="flex justify-end md:w-1/3">
+            <CartModal />
+          </div>
         </div>
-      </div>
-    </nav>
+      </nav>
+    </>
   );
 }

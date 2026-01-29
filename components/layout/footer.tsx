@@ -1,11 +1,16 @@
+import {
+  EnvelopeIcon,
+  MapPinIcon,
+  PhoneIcon,
+} from "@heroicons/react/24/outline";
 import Link from "next/link";
-import { EnvelopeIcon, PhoneIcon, MapPinIcon } from "@heroicons/react/24/outline";
 
 import LogoSquare from "components/logo-square";
 
 const SITE_NAME = "Магазинче за усмивки";
 const instagramUrl = "https://www.instagram.com/magazinchezausmivki.shop/";
-const facebookUrl = "https://www.facebook.com/share/1BmkCLhfYc/?mibextid=wwXIfr";
+const facebookUrl =
+  "https://www.facebook.com/share/1BmkCLhfYc/?mibextid=wwXIfr";
 const contactEmail = "order@magazinchezausmivki.bg";
 const contactPhone = "0877349616";
 const contactAddress = "гр. София, бул.Янко Сакъзов 36.";
@@ -22,10 +27,13 @@ export default async function Footer() {
               href="/"
             >
               <LogoSquare size="sm" />
-              <span className="text-lg font-semibold uppercase">{SITE_NAME}</span>
+              <span className="text-lg font-semibold uppercase">
+                {SITE_NAME}
+              </span>
             </Link>
             <p className="text-sm text-sage dark:text-sage text-center md:text-left max-w-xs">
-              Мястото, където подаръците се правят с обич, а усмивките са най-важното. 🤍
+              Мястото, където подаръците се правят с обич, а усмивките са
+              най-важното. 🤍
             </p>
           </div>
 
@@ -34,27 +42,33 @@ export default async function Footer() {
             <div className="flex flex-col gap-3 text-center md:text-right">
               {/* Address */}
               <div className="flex items-center gap-2 justify-center md:justify-end">
-                <MapPinIcon className="h-4 w-4 text-sage dark:text-sage flex-shrink-0" />
-                <p className="text-sm text-sage dark:text-sage">{contactAddress}</p>
+                <MapPinIcon className="h-4 w-4 text-sage md:text-mustard-contrast dark:text-sage flex-shrink-0" />
+                <p className="text-sm md:text-[15px] text-sage md:text-mustard-contrast dark:text-sage">
+                  {contactAddress}
+                </p>
               </div>
               {/* Email */}
               <a
                 href={`mailto:${contactEmail}`}
-                className="flex items-center gap-2 justify-center md:justify-end hover:text-mustard dark:hover:text-mustard transition-colors"
+                className="flex items-center gap-2 justify-center md:justify-end transition-colors hover:opacity-90"
               >
-                <EnvelopeIcon className="h-4 w-4 text-sage dark:text-sage flex-shrink-0" />
-                <p className="text-sm text-sage dark:text-sage">{contactEmail}</p>
+                <EnvelopeIcon className="h-4 w-4 text-sage md:text-mustard-contrast dark:text-sage flex-shrink-0" />
+                <p className="text-sm md:text-[15px] text-sage md:text-mustard-contrast dark:text-sage">
+                  {contactEmail}
+                </p>
               </a>
               {/* Phone */}
               <a
                 href={`tel:${contactPhone.replace(/\s/g, "")}`}
-                className="flex items-center gap-2 justify-center md:justify-end hover:text-mustard dark:hover:text-mustard transition-colors"
+                className="flex items-center gap-2 justify-center md:justify-end transition-colors hover:opacity-90"
               >
-                <PhoneIcon className="h-4 w-4 text-sage dark:text-sage flex-shrink-0" />
-                <p className="text-sm text-sage dark:text-sage">{contactPhone}</p>
+                <PhoneIcon className="h-4 w-4 text-sage md:text-mustard-contrast dark:text-sage flex-shrink-0" />
+                <p className="text-sm md:text-[15px] text-sage md:text-mustard-contrast dark:text-sage">
+                  {contactPhone}
+                </p>
               </a>
             </div>
-            
+
             <div className="flex flex-col items-center md:items-end gap-4">
               <p className="text-sm font-medium text-mustard dark:text-mustard">
                 Следвайте ни
@@ -109,22 +123,22 @@ export default async function Footer() {
         {/* Copyright */}
         <div className="mt-8 pt-6 border-t border-sage/30 dark:border-sage/50">
           <div className="flex flex-col items-center gap-2 text-center md:flex-row md:justify-end">
-            <div className="flex gap-4 text-xs">
+            <div className="flex gap-4 text-xs md:text-[15px]">
               <Link
                 href="/about"
-                className="text-sage dark:text-sage hover:text-mustard dark:hover:text-mustard transition-colors"
+                className="text-sage md:text-mustard-contrast dark:text-sage transition-colors hover:opacity-90"
               >
                 За нас
               </Link>
               <Link
                 href="/contact"
-                className="text-sage dark:text-sage hover:text-mustard dark:hover:text-mustard transition-colors"
+                className="text-sage md:text-mustard-contrast dark:text-sage transition-colors hover:opacity-90"
               >
                 Контакти
               </Link>
               <Link
                 href="/privacy-policy"
-                className="text-sage dark:text-sage hover:text-mustard dark:hover:text-mustard transition-colors"
+                className="text-sage md:text-mustard-contrast dark:text-sage transition-colors hover:opacity-90"
               >
                 Политика за поверителност
               </Link>
