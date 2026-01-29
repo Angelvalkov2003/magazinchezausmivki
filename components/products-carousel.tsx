@@ -79,7 +79,8 @@ export function ProductsCarousel() {
   }
 
   // Ensure currentIndex is within bounds
-  const safeIndex = currentIndex >= 0 && currentIndex < slides.length ? currentIndex : 0;
+  const safeIndex =
+    currentIndex >= 0 && currentIndex < slides.length ? currentIndex : 0;
   const currentSlide: ProductSlide = slides[safeIndex]!;
 
   return (
@@ -91,7 +92,7 @@ export function ProductsCarousel() {
       {/* Navigation Arrows */}
       <button
         onClick={goToPrevious}
-        className="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 z-20 bg-white/90 dark:bg-sage/90 hover:bg-white dark:hover:bg-sage rounded-full p-2 shadow-lg transition-all duration-200 hover:scale-110 active:scale-95"
+        className="absolute left-1 md:left-2 top-1/2 -translate-y-1/2 z-20 bg-white/90 dark:bg-sage/90 hover:bg-white dark:hover:bg-sage rounded-full p-2 shadow-lg transition-all duration-200 hover:scale-110 active:scale-95"
         aria-label="Предишна снимка"
       >
         <ChevronLeftIcon className="h-5 w-5 md:h-6 md:w-6 text-gray-800 dark:text-white" />
@@ -99,34 +100,38 @@ export function ProductsCarousel() {
 
       <button
         onClick={goToNext}
-        className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 z-20 bg-white/90 dark:bg-sage/90 hover:bg-white dark:hover:bg-sage rounded-full p-2 shadow-lg transition-all duration-200 hover:scale-110 active:scale-95"
+        className="absolute right-1 md:right-2 top-1/2 -translate-y-1/2 z-20 bg-white/90 dark:bg-sage/90 hover:bg-white dark:hover:bg-sage rounded-full p-2 shadow-lg transition-all duration-200 hover:scale-110 active:scale-95"
         aria-label="Следваща снимка"
       >
         <ChevronRightIcon className="h-5 w-5 md:h-6 md:w-6 text-gray-800 dark:text-white" />
       </button>
 
       {/* Carousel Container */}
-      <div className="relative w-full overflow-hidden rounded-2xl md:rounded-3xl shadow-lg">
-        <Link href={currentSlide.link} className="block relative w-full h-[300px] md:h-[400px] lg:h-[500px] cursor-pointer group">
+      <div className="relative w-full overflow-hidden rounded-2xl md:rounded-3xl">
+        <Link
+          href={currentSlide.link}
+          className="block relative w-full h-[300px] md:h-[400px] lg:h-[500px] cursor-pointer group"
+        >
           <Image
             src={currentSlide.image}
             alt={currentSlide.text}
             fill
-            className="object-cover transition-transform duration-500 group-hover:scale-105"
+            className="object-cover md:object-contain object-center transition-transform duration-500 group-hover:scale-105 md:group-hover:scale-100"
             sizes="100vw"
             priority={currentIndex === 0}
           />
-          
+
           {/* Cloud-shaped text bubble overlay */}
-          <div className="absolute top-4 left-4 md:top-8 md:left-8 z-10">
-            <div 
-              className="bg-mustard dark:bg-mustard text-white px-5 py-3 md:px-7 md:py-4 shadow-lg"
+          <div className="absolute inset-x-0 top-0 z-10 flex justify-center pt-4 md:pt-8 px-4 md:px-8">
+            <div
+              className="bg-mustard dark:bg-mustard px-5 py-3 md:px-7 md:py-4 shadow-lg"
               style={{
-                borderRadius: '50px 50px 50px 50px / 60px 60px 40px 40px',
-                clipPath: 'polygon(0% 45%, 5% 25%, 12% 18%, 22% 22%, 30% 12%, 40% 18%, 50% 12%, 60% 18%, 70% 12%, 78% 22%, 88% 18%, 95% 25%, 100% 45%, 95% 65%, 88% 72%, 78% 68%, 70% 78%, 60% 72%, 50% 78%, 40% 72%, 30% 78%, 22% 68%, 12% 72%, 5% 65%)',
+                borderRadius: "50px 50px 50px 50px / 60px 60px 40px 40px",
+                clipPath:
+                  "polygon(0% 45%, 5% 25%, 12% 18%, 22% 22%, 30% 12%, 40% 18%, 50% 12%, 60% 18%, 70% 12%, 78% 22%, 88% 18%, 95% 25%, 100% 45%, 95% 65%, 88% 72%, 78% 68%, 70% 78%, 60% 72%, 50% 78%, 40% 72%, 30% 78%, 22% 68%, 12% 72%, 5% 65%)",
               }}
             >
-              <p className="text-sm md:text-base lg:text-lg font-semibold whitespace-nowrap text-white">
+              <p className="max-w-[85vw] text-center text-sm font-semibold text-white md:max-w-[520px] md:text-base lg:text-lg">
                 {currentSlide.text}
               </p>
             </div>
