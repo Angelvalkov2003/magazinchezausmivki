@@ -18,11 +18,8 @@ export default function AboutUsPage() {
         {/* Content Section */}
         <div className="prose prose-lg max-w-none dark:prose-invert">
           <div className="bg-light-sage/30 dark:bg-light-sage/10 rounded-lg p-8 mb-8 border border-sage/20">
-            <p className="text-xl leading-relaxed text-mustard dark:text-mustard mb-6 text-center">
-              <strong className="text-mustard dark:text-mustard">
-                Магазинче за усмивки
-              </strong>{" "}
-              е сбъдната мечта.
+            <p className="mb-6 text-center text-3xl font-extrabold leading-tight text-mustard md:text-4xl">
+              Магазинче за усмивки е сбъдната мечта.
             </p>
 
             {/* First Text + Image - Desktop: image on right, Mobile: text then image */}
