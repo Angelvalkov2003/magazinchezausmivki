@@ -1,7 +1,13 @@
 import clsx from "clsx";
 import Image from "next/image";
 
-export default function LogoSquare({ size }: { size?: "sm" | "lg" | undefined }) {
+export default function LogoSquare({
+  size,
+}: {
+  size?: "sm" | "md" | "lg" | undefined;
+}) {
+  const px = size === "sm" ? 30 : size === "md" ? 80 : size === "lg" ? 160 : 120;
+
   return (
     <div
       className={clsx(
@@ -9,6 +15,7 @@ export default function LogoSquare({ size }: { size?: "sm" | "lg" | undefined })
         {
           "h-[120px] w-[120px]": !size,
           "h-[30px] w-[30px] rounded-lg": size === "sm",
+          "h-[80px] w-[80px] rounded-xl": size === "md",
           "h-[160px] w-[160px]": size === "lg",
         },
       )}
@@ -16,8 +23,8 @@ export default function LogoSquare({ size }: { size?: "sm" | "lg" | undefined })
       <Image
         src="/logo_usmivka_final.png"
         alt="Магазинче за усмивки"
-        width={size === "sm" ? 30 : size === "lg" ? 160 : 120}
-        height={size === "sm" ? 30 : size === "lg" ? 160 : 120}
+        width={px}
+        height={px}
         className="object-contain"
         priority
       />

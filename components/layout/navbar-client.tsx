@@ -62,7 +62,7 @@ export function NavbarClient() {
 
   return (
     <>
-      <nav className="relative flex items-center justify-between bg-white p-4 text-black lg:px-12 border-b border-black/15">
+      <nav className="relative flex items-center justify-between border-b border-black/15 bg-white px-4 py-2 text-black lg:px-12">
         <div className="block flex-none md:hidden">
           <Suspense fallback={null}>
             <MobileMenu menu={menu} />
@@ -75,7 +75,7 @@ export function NavbarClient() {
               prefetch={true}
               className="mr-2 flex w-full items-center justify-center md:w-auto lg:mr-6"
             >
-              <LogoSquare size="lg" />
+              <LogoSquare size="md" />
             </Link>
             <ul className="hidden gap-6 md:flex md:items-center">
               {/* Products Dropdown */}
