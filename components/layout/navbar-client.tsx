@@ -62,27 +62,6 @@ export function NavbarClient() {
 
   return (
     <>
-      {/* Desktop-only categories bar (under the top yellow announcement bar) */}
-      <div className="hidden w-full border-b border-light-sage/60 bg-white md:block">
-        <div className="mx-auto max-w-screen-2xl px-4 py-2 lg:px-12">
-          <div className="flex flex-wrap items-center justify-center gap-2 text-sm">
-            {loading ? (
-              <span className="text-black/70">Зареждане...</span>
-            ) : (
-              collections.map((collection) => (
-                <Link
-                  key={collection.id}
-                  href={`/products?collection=${collection.handle}`}
-                  className="rounded-full px-3 py-1 text-black transition-colors hover:bg-mustard/10 hover:text-black"
-                >
-                  {collection.title}
-                </Link>
-              ))
-            )}
-          </div>
-        </div>
-      </div>
-
       <nav className="relative flex items-center justify-between bg-mustard p-4 text-black lg:px-12">
         <div className="block flex-none md:hidden">
           <Suspense fallback={null}>
@@ -176,6 +155,27 @@ export function NavbarClient() {
           </div>
         </div>
       </nav>
+
+      {/* Desktop-only categories bar (under navbar) */}
+      <div className="hidden w-full border-b border-black/15 bg-white md:block">
+        <div className="mx-auto max-w-screen-2xl px-4 py-2 lg:px-12">
+          <div className="flex flex-wrap items-center justify-center gap-2 text-sm">
+            {loading ? (
+              <span className="text-black/70">Зареждане...</span>
+            ) : (
+              collections.map((collection) => (
+                <Link
+                  key={collection.id}
+                  href={`/products?collection=${collection.handle}`}
+                  className="rounded-full px-3 py-1 text-black transition-colors hover:bg-mustard/10 hover:text-black"
+                >
+                  {collection.title}
+                </Link>
+              ))
+            )}
+          </div>
+        </div>
+      </div>
     </>
   );
 }
