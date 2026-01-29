@@ -83,7 +83,7 @@ export function NavbarClient() {
         </div>
       </div>
 
-      <nav className="relative flex items-center justify-between p-4 lg:px-12 bg-light-sage/20 dark:bg-sage/10">
+      <nav className="relative flex items-center justify-between bg-mustard p-4 text-black lg:px-12">
         <div className="block flex-none md:hidden">
           <Suspense fallback={null}>
             <MobileMenu menu={menu} />
@@ -106,7 +106,7 @@ export function NavbarClient() {
                     onClick={() =>
                       setProductsDropdownOpen(!productsDropdownOpen)
                     }
-                    className="flex items-center gap-1 text-[15px] text-mustard-contrast underline-offset-4 hover:underline"
+                    className="flex items-center gap-1 text-[15px] text-black underline-offset-4 hover:underline"
                   >
                     Продукти
                     <ChevronDownIcon
@@ -114,13 +114,13 @@ export function NavbarClient() {
                     />
                   </button>
                   {productsDropdownOpen && (
-                    <div className="absolute left-0 top-full z-50 mt-2 w-48 rounded-lg border border-gray-200 bg-white shadow-lg dark:border-gray-700 dark:bg-sage">
+                    <div className="absolute left-0 top-full z-50 mt-2 w-56 rounded-lg border border-black/20 bg-mustard shadow-lg">
                       <ul className="py-2">
                         <li>
                           <Link
                             href="/products"
                             onClick={() => setProductsDropdownOpen(false)}
-                            className="block px-4 py-2 text-sm text-mustard-contrast hover:bg-mustard/10"
+                            className="block px-4 py-2 text-sm text-black hover:bg-black/10"
                           >
                             Всички
                           </Link>
@@ -131,7 +131,7 @@ export function NavbarClient() {
                               <Link
                                 href={`/products?collection=${collection.handle}`}
                                 onClick={() => setProductsDropdownOpen(false)}
-                                className="block px-4 py-2 text-sm text-mustard-contrast hover:bg-mustard/10"
+                                className="block px-4 py-2 text-sm text-black hover:bg-black/10"
                               >
                                 {collection.title}
                               </Link>
@@ -148,7 +148,7 @@ export function NavbarClient() {
                 <Link
                   href="/za-nas"
                   prefetch={true}
-                  className="text-[15px] text-mustard-contrast underline-offset-4 hover:underline"
+                  className="text-[15px] text-black underline-offset-4 hover:underline"
                 >
                   За нас
                 </Link>
@@ -159,7 +159,7 @@ export function NavbarClient() {
                 <Link
                   href="/contact"
                   prefetch={true}
-                  className="text-[15px] text-mustard-contrast underline-offset-4 hover:underline"
+                  className="text-[15px] text-black underline-offset-4 hover:underline"
                 >
                   Контакти
                 </Link>

@@ -17,13 +17,13 @@ const contactAddress = "гр. София, бул.Янко Сакъзов 36.";
 
 export default async function Footer() {
   return (
-    <footer className="bg-light-sage/20 dark:bg-sage/10 border-t border-sage/30 dark:border-sage/50">
+    <footer className="bg-mustard text-black border-t border-black/15">
       <div className="mx-auto max-w-7xl px-6 py-12">
         <div className="flex flex-col items-center gap-8 md:flex-row md:justify-between">
           {/* Logo and Name */}
           <div className="flex flex-col items-center md:items-start">
             <Link
-              className="flex items-center gap-2 text-mustard dark:text-mustard mb-4 hover:opacity-80 transition-opacity"
+              className="mb-4 flex items-center gap-2 text-black transition-opacity hover:opacity-80"
               href="/"
             >
               <LogoSquare size="sm" />
@@ -31,7 +31,7 @@ export default async function Footer() {
                 {SITE_NAME}
               </span>
             </Link>
-            <p className="text-sm text-sage dark:text-sage text-center md:text-left max-w-xs">
+            <p className="max-w-xs text-center text-sm text-black/80 md:text-left">
               Мястото, където подаръците се правят с обич, а усмивките са
               най-важното. 🤍
             </p>
@@ -42,44 +42,42 @@ export default async function Footer() {
             <div className="flex flex-col gap-3 text-center md:text-right">
               {/* Address */}
               <div className="flex items-center gap-2 justify-center md:justify-end">
-                <MapPinIcon className="h-4 w-4 text-sage md:text-mustard-contrast dark:text-sage flex-shrink-0" />
-                <p className="text-sm md:text-[15px] text-sage md:text-mustard-contrast dark:text-sage">
+                <MapPinIcon className="h-4 w-4 text-black flex-shrink-0" />
+                <p className="text-sm md:text-[15px] text-black">
                   {contactAddress}
                 </p>
               </div>
               {/* Email */}
               <a
                 href={`mailto:${contactEmail}`}
-                className="flex items-center gap-2 justify-center md:justify-end transition-colors hover:opacity-90"
+                className="flex items-center gap-2 justify-center md:justify-end transition-opacity hover:opacity-90"
               >
-                <EnvelopeIcon className="h-4 w-4 text-sage md:text-mustard-contrast dark:text-sage flex-shrink-0" />
-                <p className="text-sm md:text-[15px] text-sage md:text-mustard-contrast dark:text-sage">
+                <EnvelopeIcon className="h-4 w-4 text-black flex-shrink-0" />
+                <p className="text-sm md:text-[15px] text-black">
                   {contactEmail}
                 </p>
               </a>
               {/* Phone */}
               <a
                 href={`tel:${contactPhone.replace(/\s/g, "")}`}
-                className="flex items-center gap-2 justify-center md:justify-end transition-colors hover:opacity-90"
+                className="flex items-center gap-2 justify-center md:justify-end transition-opacity hover:opacity-90"
               >
-                <PhoneIcon className="h-4 w-4 text-sage md:text-mustard-contrast dark:text-sage flex-shrink-0" />
-                <p className="text-sm md:text-[15px] text-sage md:text-mustard-contrast dark:text-sage">
+                <PhoneIcon className="h-4 w-4 text-black flex-shrink-0" />
+                <p className="text-sm md:text-[15px] text-black">
                   {contactPhone}
                 </p>
               </a>
             </div>
 
             <div className="flex flex-col items-center md:items-end gap-4">
-              <p className="text-sm font-medium text-mustard dark:text-mustard">
-                Следвайте ни
-              </p>
+              <p className="text-sm font-medium text-black">Следвайте ни</p>
               <div className="flex gap-4">
                 {/* Instagram */}
                 <a
                   href={instagramUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex h-12 w-12 items-center justify-center rounded-full bg-sage dark:bg-sage/80 hover:scale-110 transition-transform shadow-lg"
+                  className="flex h-12 w-12 items-center justify-center rounded-full bg-black hover:scale-110 transition-transform shadow-lg"
                   aria-label="Instagram"
                 >
                   <svg
@@ -100,7 +98,7 @@ export default async function Footer() {
                   href={facebookUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex h-12 w-12 items-center justify-center rounded-full bg-sage dark:bg-sage/80 hover:scale-110 transition-transform shadow-lg"
+                  className="flex h-12 w-12 items-center justify-center rounded-full bg-black hover:scale-110 transition-transform shadow-lg"
                   aria-label="Facebook"
                 >
                   <svg
@@ -121,24 +119,24 @@ export default async function Footer() {
         </div>
 
         {/* Copyright */}
-        <div className="mt-8 pt-6 border-t border-sage/30 dark:border-sage/50">
+        <div className="mt-8 border-t border-black/15 pt-6">
           <div className="flex flex-col items-center gap-2 text-center md:flex-row md:justify-end">
             <div className="flex gap-4 text-xs md:text-[15px]">
               <Link
                 href="/about"
-                className="text-sage md:text-mustard-contrast dark:text-sage transition-colors hover:opacity-90"
+                className="text-black transition-opacity hover:opacity-90"
               >
                 За нас
               </Link>
               <Link
                 href="/contact"
-                className="text-sage md:text-mustard-contrast dark:text-sage transition-colors hover:opacity-90"
+                className="text-black transition-opacity hover:opacity-90"
               >
                 Контакти
               </Link>
               <Link
                 href="/privacy-policy"
-                className="text-sage md:text-mustard-contrast dark:text-sage transition-colors hover:opacity-90"
+                className="text-black transition-opacity hover:opacity-90"
               >
                 Политика за поверителност
               </Link>

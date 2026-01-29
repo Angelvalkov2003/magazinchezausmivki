@@ -1,16 +1,12 @@
 "use client";
 
-import clsx from "clsx";
 import { Dialog, Transition } from "@headlessui/react";
 import { ShoppingCartIcon, XMarkIcon } from "@heroicons/react/24/outline";
-import LoadingDots from "components/loading-dots";
+import clsx from "clsx";
 import Price from "components/price";
-import { createUrl } from "lib/utils";
 import Image from "next/image";
 import Link from "next/link";
 import { Fragment, useState } from "react";
-import { useFormStatus } from "react-dom";
-import { redirectToCheckout } from "./actions";
 import { useCart } from "./cart-context";
 import { DeleteItemButton } from "./delete-item-button";
 import { EditItemQuantityButton } from "./edit-item-quantity-button";
@@ -95,7 +91,10 @@ export default function CartModal() {
                                     className="h-full w-full object-cover"
                                     width={64}
                                     height={64}
-                                    alt={item.product.image.altText || item.product.title}
+                                    alt={
+                                      item.product.image.altText ||
+                                      item.product.title
+                                    }
                                     src={item.product.image.url}
                                   />
                                 </div>
@@ -119,7 +118,9 @@ export default function CartModal() {
                               <div className="flex h-16 flex-col justify-between">
                                 <Price
                                   className="flex justify-end space-y-2 text-right text-sm"
-                                  amount={(item.price * item.quantity).toString()}
+                                  amount={(
+                                    item.price * item.quantity
+                                  ).toString()}
                                   currencyCode={cart.currency}
                                 />
                                 <div className="ml-auto flex h-9 flex-row items-center rounded-full border border-neutral-200 dark:border-neutral-700">
@@ -145,33 +146,35 @@ export default function CartModal() {
                         );
                       })}
                   </ul>
-                  <div className="py-4 text-sm text-mustard dark:text-mustard">
+                  <div className="py-4 text-sm text-black">
                     <div className="mb-3 flex items-center justify-between border-b border-sage pb-1 dark:border-sage/50">
-                      <p className="text-mustard dark:text-mustard">Междинна сума</p>
+                      <p className="text-black">Междинна сума</p>
                       <Price
-                        className="text-right text-base text-mustard dark:text-mustard"
+                        className="text-right text-base text-black"
                         amount={cart.subtotal.toString()}
                         currencyCode={cart.currency}
                       />
                     </div>
                     <div className="mb-3 flex flex-col border-b border-sage pb-1 pt-1 dark:border-sage/50">
                       <div className="flex items-center justify-between">
-                        <p className="text-mustard dark:text-mustard">Доставка</p>
-                        <p className="text-right text-mustard dark:text-mustard">Ще се изчисли при плащане</p>
+                        <p className="text-black">Доставка</p>
+                        <p className="text-right text-black">
+                          Ще се изчисли при плащане
+                        </p>
                       </div>
-                      <p className="text-xs text-mustard dark:text-mustard italic mt-1">
+                      <p className="mt-1 text-xs italic text-black">
                         Доставката се плаща от клиента
                       </p>
                     </div>
                     <div className="mb-3 flex items-center justify-between border-b border-sage pb-1 pt-1 dark:border-sage/50">
-                      <p className="text-mustard dark:text-mustard font-semibold">Общо</p>
+                      <p className="font-semibold text-black">Общо</p>
                       <Price
-                        className="text-right text-base text-mustard dark:text-mustard font-semibold"
+                        className="text-right text-base font-semibold text-black"
                         amount={cart.total.toString()}
                         currencyCode={cart.currency}
                       />
                     </div>
-                    <div className="mt-3 text-xs text-mustard dark:text-mustard">
+                    <div className="mt-3 text-xs text-black">
                       <p className="text-center">
                         Цените се изчисляват по курс 1 EUR = 1.95583 BGN
                       </p>
@@ -206,4 +209,3 @@ function CloseCart({ className }: { className?: string }) {
     </div>
   );
 }
-

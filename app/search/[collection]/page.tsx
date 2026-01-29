@@ -10,7 +10,7 @@ export async function generateMetadata(props: {
 }): Promise<Metadata> {
   const params = await props.params;
   const collections = await getCollections();
-  const collection = collections.find(c => c.handle === params.collection);
+  const collection = collections.find((c) => c.handle === params.collection);
 
   if (!collection) return notFound();
 
@@ -26,7 +26,7 @@ export default async function CategoryPage(props: {
 }) {
   const params = await props.params;
   const collections = await getCollections();
-  const collection = collections.find(c => c.handle === params.collection);
+  const collection = collections.find((c) => c.handle === params.collection);
   const products = await getCollectionProducts(params.collection);
 
   if (!collection) {
@@ -34,7 +34,7 @@ export default async function CategoryPage(props: {
   }
 
   return (
-    <section>
+    <section className="pt-10">
       <div className="mb-8">
         <h1 className="text-4xl md:text-5xl font-bold text-mustard dark:text-mustard mb-4">
           {collection.title}
@@ -49,7 +49,7 @@ export default async function CategoryPage(props: {
         {products.length > 0 && (
           <div className="mt-4 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-mustard/10 dark:bg-mustard/20 border border-mustard/30 dark:border-mustard/40">
             <span className="text-base font-semibold text-mustard dark:text-mustard">
-              {products.length} {products.length === 1 ? 'продукт' : 'продукта'}
+              {products.length} {products.length === 1 ? "продукт" : "продукта"}
             </span>
           </div>
         )}

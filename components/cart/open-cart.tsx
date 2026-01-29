@@ -32,7 +32,7 @@ export default function OpenCart({
   return (
     <div
       className={clsx(
-        "relative flex h-11 w-11 items-center justify-center rounded-md border border-sage text-mustard transition-colors dark:border-sage/50 dark:text-mustard",
+        "relative flex h-11 w-11 items-center justify-center rounded-md border border-black/40 text-black transition-colors",
         bump && "animate-bump",
       )}
     >
@@ -46,7 +46,7 @@ export default function OpenCart({
       {quantity ? (
         <div
           className={clsx(
-            "absolute right-0 top-0 -mr-2 -mt-2 h-4 w-4 rounded-sm bg-mustard text-[11px] font-medium text-white",
+            "absolute right-0 top-0 -mr-2 -mt-2 h-4 w-4 rounded-sm bg-white text-[11px] font-medium text-black",
             bump && "animate-bump",
           )}
         >

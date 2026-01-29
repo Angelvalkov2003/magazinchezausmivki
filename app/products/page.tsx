@@ -1,10 +1,9 @@
-import { getProducts, getCollections } from "lib/supabase/products";
-import { Metadata } from "next";
 import Grid from "components/grid";
 import ProductGridItems from "components/layout/product-grid-items";
-import { SortFilter } from "components/products/sort-filter";
 import { FilterButton } from "components/products/filter-button";
-import { FilterModal } from "components/products/filter-modal";
+import { SortFilter } from "components/products/sort-filter";
+import { getCollections, getProducts } from "lib/supabase/products";
+import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Продукти",
@@ -25,12 +24,20 @@ export default async function ProductsPage({
 }) {
   const params = await searchParams;
   const collection = params.collection;
-  const sort = params.sort as "price-asc" | "price-desc" | "discount-desc" | "name-asc" | "newest" | undefined;
+  const sort = params.sort as
+    | "price-asc"
+    | "price-desc"
+    | "discount-desc"
+    | "name-asc"
+    | "newest"
+    | undefined;
   const minPrice = params.minPrice ? parseFloat(params.minPrice) : undefined;
   const maxPrice = params.maxPrice ? parseFloat(params.maxPrice) : undefined;
-  const categories = params.categories ? params.categories.split(",") : undefined;
+  const categories = params.categories
+    ? params.categories.split(",")
+    : undefined;
   const onSaleOnly = params.onSaleOnly === "true";
-  
+
   const [products, collections] = await Promise.all([
     getProducts({
       collection,
@@ -51,28 +58,34 @@ export default async function ProductsPage({
   };
 
   return (
-    <div className="mx-auto flex max-w-7xl flex-col gap-8 px-4 pb-4 text-black md:flex-row dark:text-white">
+    <div className="mx-auto flex max-w-7xl flex-col gap-8 px-4 pb-4 pt-10 text-black md:flex-row dark:text-white">
       {/* Products Grid - Main Content */}
       <div className="order-first min-h-screen w-full md:order-none">
         <div className="mb-8">
           <div className="flex items-center justify-between mb-4">
             <h1 className="text-4xl md:text-5xl font-bold text-mustard dark:text-mustard">
               {collection
-                ? collections.find((c) => c.handle === collection)?.title || "Продукти"
+                ? collections.find((c) => c.handle === collection)?.title ||
+                  "Продукти"
                 : "Всички Продукти"}
             </h1>
           </div>
-          {collection && collections.find((c) => c.handle === collection)?.description && (
-            <div className="mt-6 mb-4">
-              <p className="text-xl md:text-2xl leading-relaxed text-mustard dark:text-mustard font-medium">
-                {collections.find((c) => c.handle === collection)?.description}
-              </p>
-            </div>
-          )}
+          {collection &&
+            collections.find((c) => c.handle === collection)?.description && (
+              <div className="mt-6 mb-4">
+                <p className="text-xl md:text-2xl leading-relaxed text-mustard dark:text-mustard font-medium">
+                  {
+                    collections.find((c) => c.handle === collection)
+                      ?.description
+                  }
+                </p>
+              </div>
+            )}
           {products.length > 0 && (
             <div className="mb-4 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-mustard/10 dark:bg-mustard/20 border border-mustard/30 dark:border-mustard/40">
               <span className="text-base font-semibold text-mustard dark:text-mustard">
-                {products.length} {products.length === 1 ? "продукт" : "продукта"}
+                {products.length}{" "}
+                {products.length === 1 ? "продукт" : "продукта"}
               </span>
             </div>
           )}
@@ -81,7 +94,10 @@ export default async function ProductsPage({
               <SortFilter />
             </div>
             <div className="w-full sm:w-auto">
-              <FilterButton collections={collections} currentFilters={currentFilters} />
+              <FilterButton
+                collections={collections}
+                currentFilters={currentFilters}
+              />
             </div>
           </div>
         </div>
@@ -97,7 +113,9 @@ export default async function ProductsPage({
       {/* Collections Menu - Right Side */}
       <div className="order-last w-full flex-none md:order-last md:w-[250px]">
         <div className="sticky top-4">
-          <h2 className="mb-4 text-xl font-bold text-mustard dark:text-mustard">Категории</h2>
+          <h2 className="mb-4 text-xl font-bold text-mustard dark:text-mustard">
+            Категории
+          </h2>
           <ul className="space-y-2">
             <li>
               <a
