@@ -40,9 +40,17 @@ function SubmitButton({
       )}
     >
       <div className="absolute left-0 ml-4">
-        {justAdded ? <CheckIcon className="h-5" /> : <PlusIcon className="h-5" />}
+        {justAdded ? (
+          <CheckIcon className="h-5" />
+        ) : (
+          <PlusIcon className="h-5" />
+        )}
       </div>
-      {justAdded ? "Добавено" : isSubmitting ? "Добавяне..." : "Добави в Количка"}
+      {justAdded
+        ? "Добавено"
+        : isSubmitting
+          ? "Добавяне..."
+          : "Добави в Количка"}
     </button>
   );
 }
@@ -89,7 +97,11 @@ export function AddToCart({ product }: { product: Product }) {
         }
       }}
     >
-      <SubmitButton available={available} isSubmitting={isSubmitting} justAdded={justAdded} />
+      <SubmitButton
+        available={available}
+        isSubmitting={isSubmitting}
+        justAdded={justAdded}
+      />
       <p aria-live="polite" className="sr-only" role="status">
         {message}
       </p>
