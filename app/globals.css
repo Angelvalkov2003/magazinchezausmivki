@@ -10,6 +10,8 @@
   --color-mustard: #d4af37;
   /* Higher-contrast mustard for text on pale backgrounds (desktop nav/footer). */
   --color-mustard-contrast: #8c6a00;
+  /* Strong mustard for primary buttons / CTAs. */
+  --color-mustard-strong: #b8860b;
   --color-sage: #cadcae;
   --color-light-sage: #e1e9c9;
   --color-peach: #fee8d9;

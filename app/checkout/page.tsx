@@ -1,19 +1,17 @@
 "use client";
 
-import { useState } from "react";
-import { useRouter } from "next/navigation";
-import { useCart } from "components/cart/cart-context";
-import Price from "components/price";
 import { createOrder } from "app/checkout/actions";
+import { useCart } from "components/cart/cart-context";
 import LoadingDots from "components/loading-dots";
+import Price from "components/price";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 // Check if Stripe is enabled
 const isStripeEnabled = () => {
   const publishableKey = process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY;
   return (
-    publishableKey &&
-    publishableKey !== "none" &&
-    publishableKey.trim() !== ""
+    publishableKey && publishableKey !== "none" && publishableKey.trim() !== ""
   );
 };
 
@@ -23,7 +21,9 @@ export default function CheckoutPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const stripeEnabled = isStripeEnabled();
-  const [deliveryType, setDeliveryType] = useState<"address" | "office" | null>(null);
+  const [deliveryType, setDeliveryType] = useState<"address" | "office" | null>(
+    null,
+  );
   const [formData, setFormData] = useState({
     customer_name: "",
     customer_email: "",
@@ -36,17 +36,17 @@ export default function CheckoutPage() {
 
   if (!cart || cart.items.length === 0) {
     return (
-      <div className="flex min-h-screen flex-col items-center justify-center px-4">
-        <div className="max-w-md w-full text-center">
-          <h1 className="mb-4 text-3xl font-bold text-mustard dark:text-mustard">
+      <div className="flex min-h-screen flex-col items-center justify-center bg-mustard/10 px-4">
+        <div className="w-full max-w-md text-center">
+          <h1 className="mb-4 text-3xl font-bold text-black">
             Количката е празна
           </h1>
-          <p className="mb-8 text-lg text-sage dark:text-sage">
+          <p className="mb-8 text-lg text-black/80">
             Моля, добавете продукти в количката преди да финализирате поръчката.
           </p>
           <button
             onClick={() => router.push("/search")}
-            className="rounded-lg bg-mustard px-6 py-3 text-white hover:opacity-90 transition-colors"
+            className="rounded-lg bg-mustard-strong px-6 py-3 font-semibold text-black transition-colors hover:opacity-95"
           >
             Към продуктите
           </button>
@@ -67,9 +67,10 @@ export default function CheckoutPage() {
       }
 
       // Format address based on delivery type
-      const formattedAddress = deliveryType === "address"
-        ? `До точен адрес: ${formData.customer_address}`
-        : `До офис на Спийди: ${formData.customer_address}`;
+      const formattedAddress =
+        deliveryType === "address"
+          ? `До точен адрес: ${formData.customer_address}`
+          : `До офис на Спийди: ${formData.customer_address}`;
 
       // Prepare products data
       const products = cart.items.map((item) => ({
@@ -123,17 +124,20 @@ export default function CheckoutPage() {
   };
 
   return (
-    <div className="min-h-screen bg-white dark:bg-sage py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-mustard/10 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
-        <h1 className="text-3xl font-bold text-mustard dark:text-mustard mb-8">
+        <h1 className="text-3xl font-bold text-black mb-8">
           Финализиране на поръчката
         </h1>
 
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
           {/* Order Form */}
           <div className="lg:col-span-3">
-            <form onSubmit={handleSubmit} className="bg-white dark:bg-sage rounded-lg shadow-lg border border-light-sage p-6">
-              <h2 className="text-xl font-semibold mb-6 text-mustard dark:text-mustard">
+            <form
+              onSubmit={handleSubmit}
+              className="rounded-lg border border-mustard/30 bg-mustard/5 p-6 shadow-lg"
+            >
+              <h2 className="mb-6 text-xl font-semibold text-black">
                 Данни за доставка
               </h2>
 
@@ -147,7 +151,7 @@ export default function CheckoutPage() {
                 <div>
                   <label
                     htmlFor="customer_name"
-                    className="block text-sm font-medium text-sage dark:text-sage mb-1"
+                    className="mb-1 block text-sm font-medium text-black"
                   >
                     Име и фамилия *
                   </label>
@@ -157,16 +161,19 @@ export default function CheckoutPage() {
                     required
                     value={formData.customer_name}
                     onChange={(e) =>
-                      setFormData({ ...formData, customer_name: e.target.value })
+                      setFormData({
+                        ...formData,
+                        customer_name: e.target.value,
+                      })
                     }
-                    className="w-full px-4 py-2 border border-light-sage dark:border-sage rounded-lg focus:ring-2 focus:ring-mustard focus:border-transparent dark:bg-light-sage/20 dark:text-mustard"
+                    className="w-full rounded-lg border border-black/30 bg-white px-4 py-2 text-black placeholder:text-black/50 focus:border-black focus:ring-2 focus:ring-black"
                   />
                 </div>
 
                 <div>
                   <label
                     htmlFor="customer_email"
-                    className="block text-sm font-medium text-sage dark:text-sage mb-1"
+                    className="mb-1 block text-sm font-medium text-black"
                   >
                     Имейл *
                   </label>
@@ -176,16 +183,19 @@ export default function CheckoutPage() {
                     required
                     value={formData.customer_email}
                     onChange={(e) =>
-                      setFormData({ ...formData, customer_email: e.target.value })
+                      setFormData({
+                        ...formData,
+                        customer_email: e.target.value,
+                      })
                     }
-                    className="w-full px-4 py-2 border border-light-sage dark:border-sage rounded-lg focus:ring-2 focus:ring-mustard focus:border-transparent dark:bg-light-sage/20 dark:text-mustard"
+                    className="w-full rounded-lg border border-black/30 bg-white px-4 py-2 text-black placeholder:text-black/50 focus:border-black focus:ring-2 focus:ring-black"
                   />
                 </div>
 
                 <div>
                   <label
                     htmlFor="customer_phone"
-                    className="block text-sm font-medium text-sage dark:text-sage mb-1"
+                    className="mb-1 block text-sm font-medium text-black"
                   >
                     Телефон
                   </label>
@@ -194,14 +204,17 @@ export default function CheckoutPage() {
                     id="customer_phone"
                     value={formData.customer_phone}
                     onChange={(e) =>
-                      setFormData({ ...formData, customer_phone: e.target.value })
+                      setFormData({
+                        ...formData,
+                        customer_phone: e.target.value,
+                      })
                     }
-                    className="w-full px-4 py-2 border border-light-sage dark:border-sage rounded-lg focus:ring-2 focus:ring-mustard focus:border-transparent dark:bg-light-sage/20 dark:text-mustard"
+                    className="w-full rounded-lg border border-black/30 bg-white px-4 py-2 text-black placeholder:text-black/50 focus:border-black focus:ring-2 focus:ring-black"
                   />
                 </div>
 
                 {/* Delivery Information */}
-                <div className="bg-light-sage/30 dark:bg-light-sage/10 rounded-lg p-6 border border-sage/30 mb-4">
+                <div className="mb-4 rounded-lg border border-mustard/30 bg-white/70 p-6">
                   <div className="flex items-center gap-4 mb-4">
                     <img
                       src="https://brcc.bg/storage/773/conversions/speedy-logo-rgb-vector-list.webp"
@@ -209,13 +222,13 @@ export default function CheckoutPage() {
                       className="h-12 object-contain"
                     />
                     <div>
-                      <p className="text-base font-semibold text-mustard dark:text-mustard">
+                      <p className="text-base font-semibold text-black">
                         Изпращаме поръчките само чрез Speedy
                       </p>
                     </div>
                   </div>
-                  
-                  <label className="block text-sm font-medium text-sage dark:text-sage mb-3">
+
+                  <label className="mb-3 block text-sm font-medium text-black">
                     Тип доставка *
                   </label>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
@@ -227,14 +240,14 @@ export default function CheckoutPage() {
                       }}
                       className={`p-4 rounded-lg border-2 transition-all ${
                         deliveryType === "address"
-                          ? "border-mustard bg-mustard/10 dark:bg-mustard/20"
-                          : "border-light-sage hover:border-sage dark:border-sage/50"
+                          ? "border-mustard-strong bg-mustard/25"
+                          : "border-mustard/30 bg-white hover:border-mustard-strong"
                       }`}
                     >
-                      <div className="font-medium text-mustard dark:text-mustard mb-1">
+                      <div className="mb-1 font-semibold text-black">
                         До точен адрес
                       </div>
-                      <div className="text-xs text-sage dark:text-sage">
+                      <div className="text-xs text-black/70">
                         До вашия адрес
                       </div>
                     </button>
@@ -246,14 +259,14 @@ export default function CheckoutPage() {
                       }}
                       className={`p-4 rounded-lg border-2 transition-all ${
                         deliveryType === "office"
-                          ? "border-mustard bg-mustard/10 dark:bg-mustard/20"
-                          : "border-light-sage hover:border-sage dark:border-sage/50"
+                          ? "border-mustard-strong bg-mustard/25"
+                          : "border-mustard/30 bg-white hover:border-mustard-strong"
                       }`}
                     >
-                      <div className="font-medium text-mustard dark:text-mustard mb-1">
+                      <div className="mb-1 font-semibold text-black">
                         До офис
                       </div>
-                      <div className="text-xs text-sage dark:text-sage">
+                      <div className="text-xs text-black/70">
                         До офис на Speedy
                       </div>
                     </button>
@@ -263,7 +276,7 @@ export default function CheckoutPage() {
                     <div className="mt-4">
                       <label
                         htmlFor="customer_address"
-                        className="block text-sm font-medium text-sage dark:text-sage mb-2"
+                        className="mb-2 block text-sm font-medium text-black"
                       >
                         {deliveryType === "address"
                           ? "Въведете точен адрес, на който искате да получите пратката *"
@@ -275,16 +288,19 @@ export default function CheckoutPage() {
                         rows={3}
                         value={formData.customer_address}
                         onChange={(e) =>
-                          setFormData({ ...formData, customer_address: e.target.value })
+                          setFormData({
+                            ...formData,
+                            customer_address: e.target.value,
+                          })
                         }
                         placeholder={
                           deliveryType === "address"
                             ? "Например: гр. София, ул. Примерна 123, ап. 45"
                             : "Например: гр. София, офис №123"
                         }
-                        className="w-full px-4 py-2 border border-light-sage dark:border-sage rounded-lg focus:ring-2 focus:ring-mustard focus:border-transparent dark:bg-light-sage/20 dark:text-mustard"
+                        className="w-full rounded-lg border border-black/30 bg-white px-4 py-2 text-black placeholder:text-black/50 focus:border-black focus:ring-2 focus:ring-black"
                       />
-                      <p className="mt-2 text-xs text-sage dark:text-sage italic">
+                      <p className="mt-2 text-xs italic text-black/70">
                         Ще се свържем с вас, за да потвърдим адреса и поръчката.
                       </p>
                     </div>
@@ -294,7 +310,7 @@ export default function CheckoutPage() {
                 <div>
                   <label
                     htmlFor="comment"
-                    className="block text-sm font-medium text-sage dark:text-sage mb-1"
+                    className="mb-1 block text-sm font-medium text-black"
                   >
                     Коментар (по избор)
                   </label>
@@ -305,16 +321,16 @@ export default function CheckoutPage() {
                     onChange={(e) =>
                       setFormData({ ...formData, comment: e.target.value })
                     }
-                    className="w-full px-4 py-2 border border-light-sage dark:border-sage rounded-lg focus:ring-2 focus:ring-mustard focus:border-transparent dark:bg-light-sage/20 dark:text-mustard"
+                    className="w-full rounded-lg border border-black/30 bg-white px-4 py-2 text-black placeholder:text-black/50 focus:border-black focus:ring-2 focus:ring-black"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-sage dark:text-sage mb-3">
+                  <label className="mb-3 block text-sm font-medium text-black">
                     Начин на плащане *
                   </label>
                   <div className="space-y-2">
-                    <label className="flex items-center p-4 border border-light-sage dark:border-sage rounded-lg cursor-pointer hover:bg-light-sage dark:hover:bg-sage/20">
+                    <label className="flex cursor-pointer items-center rounded-lg border border-mustard/30 bg-white/70 p-4 hover:bg-mustard/10">
                       <input
                         type="radio"
                         name="payment_method"
@@ -323,23 +339,25 @@ export default function CheckoutPage() {
                         onChange={(e) =>
                           setFormData({
                             ...formData,
-                            payment_method: e.target.value as "cash_on_delivery" | "card",
+                            payment_method: e.target.value as
+                              | "cash_on_delivery"
+                              | "card",
                           })
                         }
                         className="mr-3"
                       />
                       <div>
-                        <div className="font-medium text-mustard dark:text-mustard">
+                        <div className="font-semibold text-black">
                           Наложен платеж
                         </div>
-                        <div className="text-sm text-sage dark:text-sage">
+                        <div className="text-sm text-black/70">
                           Плащане при получаване на поръчката
                         </div>
                       </div>
                     </label>
 
                     {stripeEnabled && (
-                      <label className="flex items-center p-4 border border-light-sage dark:border-sage rounded-lg cursor-pointer hover:bg-light-sage dark:hover:bg-sage/20">
+                      <label className="flex cursor-pointer items-center rounded-lg border border-mustard/30 bg-white/70 p-4 hover:bg-mustard/10">
                         <input
                           type="radio"
                           name="payment_method"
@@ -348,16 +366,18 @@ export default function CheckoutPage() {
                           onChange={(e) =>
                             setFormData({
                               ...formData,
-                              payment_method: e.target.value as "cash_on_delivery" | "card",
+                              payment_method: e.target.value as
+                                | "cash_on_delivery"
+                                | "card",
                             })
                           }
                           className="mr-3"
                         />
                         <div>
-                          <div className="font-medium text-mustard dark:text-mustard">
+                          <div className="font-semibold text-black">
                             Плащане с карта
                           </div>
-                          <div className="text-sm text-sage dark:text-sage">
+                          <div className="text-sm text-black/70">
                             Сигурно плащане чрез Stripe
                           </div>
                         </div>
@@ -378,19 +398,20 @@ export default function CheckoutPage() {
                           privacy_policy_accepted: e.target.checked,
                         })
                       }
-                      className="mt-1 h-4 w-4 text-mustard focus:ring-mustard border-sage rounded"
+                      className="mt-1 h-4 w-4 rounded border-black/40 text-black focus:ring-black"
                     />
-                    <span className="text-sm text-sage dark:text-sage">
+                    <span className="text-sm text-black">
                       Съгласен съм с{" "}
                       <a
                         href="/privacy-policy"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-mustard dark:text-mustard underline hover:opacity-80 dark:hover:opacity-80"
+                        className="font-semibold text-black underline hover:opacity-80"
                       >
                         Политиката за поверителност
                       </a>{" "}
-                      и се съгласявам обработката на моите лични данни за целите на поръчката. *
+                      и се съгласявам обработката на моите лични данни за целите
+                      на поръчката. *
                     </span>
                   </label>
                 </div>
@@ -398,7 +419,7 @@ export default function CheckoutPage() {
                 <button
                   type="submit"
                   disabled={isSubmitting || !formData.privacy_policy_accepted}
-                  className="w-full bg-mustard text-white py-3 px-6 rounded-lg font-medium hover:opacity-90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
+                  className="flex w-full items-center justify-center rounded-lg bg-mustard-strong px-6 py-3 font-semibold text-black transition-colors hover:opacity-95 disabled:cursor-not-allowed disabled:opacity-50"
                 >
                   {isSubmitting ? (
                     <LoadingDots className="bg-white" />
@@ -412,8 +433,8 @@ export default function CheckoutPage() {
 
           {/* Order Summary */}
           <div className="lg:col-span-2">
-            <div className="bg-white dark:bg-sage rounded-xl shadow-xl border-2 border-peach p-8 lg:p-10 sticky top-4 max-w-2xl lg:max-w-none">
-              <h2 className="text-2xl md:text-3xl font-bold mb-6 text-mustard dark:text-mustard">
+            <div className="sticky top-4 max-w-2xl rounded-xl border border-mustard/30 bg-mustard/5 p-8 shadow-xl lg:max-w-none lg:p-10">
+              <h2 className="mb-6 text-2xl font-bold text-black md:text-3xl">
                 Резюме на поръчката
               </h2>
 
@@ -424,18 +445,19 @@ export default function CheckoutPage() {
                     className="flex justify-between items-start border-b-2 border-light-sage dark:border-sage/50 pb-4"
                   >
                     <div className="flex-1 pr-4">
-                      <p className="text-base md:text-lg font-semibold text-mustard dark:text-mustard mb-1">
+                      <p className="mb-1 text-base font-semibold text-black md:text-lg">
                         {item.product.title}
                       </p>
-                      <p className="text-sm md:text-base text-sage dark:text-sage">
-                        Количество: <span className="font-medium">{item.quantity}</span>
+                      <p className="text-sm text-black/70 md:text-base">
+                        Количество:{" "}
+                        <span className="font-medium">{item.quantity}</span>
                       </p>
                     </div>
                     <div className="text-right">
                       <Price
                         amount={(item.price * item.quantity).toString()}
                         currencyCode={cart.currency}
-                        className="text-base md:text-lg font-bold text-mustard dark:text-mustard"
+                        className="text-base font-bold text-black md:text-lg"
                       />
                     </div>
                   </div>
@@ -444,34 +466,40 @@ export default function CheckoutPage() {
 
               <div className="space-y-4 pt-6 border-t-2 border-sage dark:border-sage/50">
                 <div className="flex justify-between items-center">
-                  <span className="text-base md:text-lg text-sage dark:text-sage font-medium">Междинна сума</span>
+                  <span className="text-base font-medium text-black md:text-lg">
+                    Междинна сума
+                  </span>
                   <Price
                     amount={cart.subtotal.toString()}
                     currencyCode={cart.currency}
-                    className="text-base md:text-lg font-semibold text-mustard dark:text-mustard"
+                    className="text-base font-semibold text-black md:text-lg"
                   />
                 </div>
                 <div className="flex flex-col">
                   <div className="flex justify-between items-center">
-                    <span className="text-base md:text-lg text-sage dark:text-sage font-medium">Доставка</span>
-                    <span className="text-sm md:text-base text-sage dark:text-sage italic">
+                    <span className="text-base font-medium text-black md:text-lg">
+                      Доставка
+                    </span>
+                    <span className="text-sm italic text-black/70 md:text-base">
                       Ще се изчисли при плащане
                     </span>
                   </div>
-                  <p className="text-xs md:text-sm text-sage dark:text-sage italic mt-1 text-right">
-                    Доставката се плаща от клиента
+                  <p className="mt-1 text-right text-xs italic text-black/70 md:text-sm">
+                    Плаща се от клиента, ако сумата е под 49 евро
                   </p>
                 </div>
                 <div className="flex justify-between items-center pt-4 mt-4 border-t-2 border-mustard/30 dark:border-mustard/30">
-                  <span className="text-xl md:text-2xl font-bold text-mustard dark:text-mustard">Общо</span>
+                  <span className="text-xl font-bold text-black md:text-2xl">
+                    Общо
+                  </span>
                   <Price
                     amount={cart.total.toString()}
                     currencyCode={cart.currency}
-                    className="text-xl md:text-2xl font-bold text-mustard dark:text-mustard"
+                    className="text-xl font-bold text-black md:text-2xl"
                   />
                 </div>
                 <div className="mt-6 pt-4 border-t border-light-sage dark:border-sage/30">
-                  <p className="text-xs md:text-sm text-center text-sage dark:text-sage italic">
+                  <p className="text-center text-xs italic text-black/70 md:text-sm">
                     Цените се изчисляват по курс 1 EUR = 1.95583 BGN
                   </p>
                 </div>

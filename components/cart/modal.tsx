@@ -163,7 +163,8 @@ export default function CartModal() {
                         </p>
                       </div>
                       <p className="mt-1 text-xs italic text-black">
-                        Доставката се плаща от клиента
+                        Доставката се плаща от клиента, ако поръчката е под 49
+                        евро
                       </p>
                     </div>
                     <div className="mb-3 flex items-center justify-between border-b border-sage pb-1 pt-1 dark:border-sage/50">
