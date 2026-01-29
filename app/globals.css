@@ -3,12 +3,15 @@
 @plugin "@tailwindcss/container-queries";
 @plugin "@tailwindcss/typography";
 
+/* Force Tailwind `dark:` to be class-based (no OS dark mode). */
+@custom-variant dark (&&:where(.dark, .dark *));
+
 @theme {
-  --color-mustard: #D4AF37;
-  --color-sage: #CADCAE;
-  --color-light-sage: #E1E9C9;
-  --color-peach: #FEE8D9;
-  
+  --color-mustard: #d4af37;
+  --color-sage: #cadcae;
+  --color-light-sage: #e1e9c9;
+  --color-peach: #fee8d9;
+
   --color-primary: var(--color-mustard);
   --color-secondary: var(--color-sage);
   --color-accent: var(--color-peach);
@@ -23,25 +26,32 @@
   ::file-selector-button {
     border-color: var(--color-gray-200, currentColor);
   }
-  
+
   /* Geist Sans font */
   @font-face {
-    font-family: 'Geist Sans';
-    src: url('/fonts/geist-sans/Geist-Variable.woff2') format('woff2');
+    font-family: "Geist Sans";
+    src: url("/fonts/geist-sans/Geist-Variable.woff2") format("woff2");
     font-weight: 100 900;
     font-style: normal;
     font-display: swap;
   }
-  
+
   html,
   body {
-    font-family: 'Geist Sans', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-family:
+      "Geist Sans",
+      ui-sans-serif,
+      system-ui,
+      -apple-system,
+      BlinkMacSystemFont,
+      "Segoe UI",
+      Roboto,
+      sans-serif;
   }
-}
 
-@media (prefers-color-scheme: dark) {
+  /* Always render in light color-scheme (even if OS is dark). */
   html {
-    color-scheme: dark;
+    color-scheme: light;
   }
 }
 
@@ -70,13 +80,21 @@ button {
   }
 
   @keyframes shake {
-    0%, 100% {
+    0%,
+    100% {
       transform: translateX(0);
     }
-    10%, 30%, 50%, 70%, 90% {
+    10%,
+    30%,
+    50%,
+    70%,
+    90% {
       transform: translateX(-5px);
     }
-    20%, 40%, 60%, 80% {
+    20%,
+    40%,
+    60%,
+    80% {
       transform: translateX(5px);
     }
   }

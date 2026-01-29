@@ -1,11 +1,11 @@
 import { CartProvider } from "components/cart/cart-context";
+import { CookieConsent } from "components/cookie-consent";
 import { ConditionalNavbar } from "components/layout/conditional-navbar";
 import Footer from "components/layout/footer";
-import { CookieConsent } from "components/cookie-consent";
+import { baseUrl } from "lib/utils";
 import { ReactNode } from "react";
 import { Toaster } from "sonner";
 import "./globals.css";
-import { baseUrl } from "lib/utils";
 
 const SITE_NAME = "Магазинче за усмивки";
 
@@ -53,9 +53,17 @@ export default async function RootLayout({
   return (
     <html lang="bg">
       <head>
+        <meta name="color-scheme" content="light" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Fredoka+One&display=swap" rel="stylesheet" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Fredoka+One&display=swap"
+          rel="stylesheet"
+        />
       </head>
       <body className="bg-neutral-50 text-black selection:bg-teal-300 dark:bg-neutral-900 dark:text-white dark:selection:bg-pink-500 dark:selection:text-white">
         <CartProvider>
