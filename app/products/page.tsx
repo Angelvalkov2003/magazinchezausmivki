@@ -122,7 +122,7 @@ export default async function ProductsPage({
                 href="/products"
                 className={`block rounded-lg px-4 py-2 transition-colors ${
                   !collection
-                    ? "bg-sage text-white dark:bg-mustard"
+                    ? "bg-mustard text-black font-semibold"
                     : "bg-gray-100 text-gray-700 hover:bg-gray-200 dark:bg-sage dark:text-gray-300 dark:hover:bg-gray-700"
                 }`}
               >
@@ -135,7 +135,7 @@ export default async function ProductsPage({
                   href={`/products?collection=${col.handle}`}
                   className={`block rounded-lg px-4 py-2 transition-colors ${
                     collection === col.handle
-                      ? "bg-sage text-white dark:bg-mustard"
+                      ? "bg-mustard text-black font-semibold"
                       : "bg-gray-100 text-gray-700 hover:bg-gray-200 dark:bg-sage dark:text-gray-300 dark:hover:bg-gray-700"
                   }`}
                 >

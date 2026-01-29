@@ -106,7 +106,7 @@ export function NavbarClient() {
                     onClick={() =>
                       setProductsDropdownOpen(!productsDropdownOpen)
                     }
-                    className="flex items-center gap-1 text-[15px] text-black underline-offset-4 hover:underline"
+                    className="flex items-center gap-1 text-[15px] font-semibold text-black underline-offset-4 hover:underline"
                   >
                     Продукти
                     <ChevronDownIcon
@@ -148,7 +148,7 @@ export function NavbarClient() {
                 <Link
                   href="/za-nas"
                   prefetch={true}
-                  className="text-[15px] text-black underline-offset-4 hover:underline"
+                  className="text-[15px] font-semibold text-black underline-offset-4 hover:underline"
                 >
                   За нас
                 </Link>
@@ -159,7 +159,7 @@ export function NavbarClient() {
                 <Link
                   href="/contact"
                   prefetch={true}
-                  className="text-[15px] text-black underline-offset-4 hover:underline"
+                  className="text-[15px] font-semibold text-black underline-offset-4 hover:underline"
                 >
                   Контакти
                 </Link>

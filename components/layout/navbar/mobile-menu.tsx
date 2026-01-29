@@ -5,7 +5,11 @@ import Link from "next/link";
 import { usePathname, useSearchParams } from "next/navigation";
 import { Fragment, Suspense, useEffect, useState } from "react";
 
-import { Bars3Icon, XMarkIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
+import {
+  Bars3Icon,
+  ChevronRightIcon,
+  XMarkIcon,
+} from "@heroicons/react/24/outline";
 import Search, { SearchSkeleton } from "./search";
 
 type MenuItem = {
@@ -26,7 +30,7 @@ export default function MobileMenu({ menu }: { menu: MenuItem[] }) {
   const [productsSubmenuOpen, setProductsSubmenuOpen] = useState(false);
   const [collections, setCollections] = useState<Collection[]>([]);
   const [loading, setLoading] = useState(true);
-  
+
   const openMobileMenu = () => setIsOpen(true);
   const closeMobileMenu = () => setIsOpen(false);
 
@@ -62,7 +66,7 @@ export default function MobileMenu({ menu }: { menu: MenuItem[] }) {
       <button
         onClick={openMobileMenu}
         aria-label="Open mobile menu"
-        className="flex h-11 w-11 items-center justify-center rounded-md border border-neutral-200 text-black transition-colors md:hidden dark:border-neutral-700 dark:text-white"
+        className="flex h-11 w-11 items-center justify-center rounded-md border border-black/40 text-black transition-colors md:hidden"
       >
         <Bars3Icon className="h-4" />
       </button>
@@ -88,10 +92,10 @@ export default function MobileMenu({ menu }: { menu: MenuItem[] }) {
             leaveFrom="translate-x-0"
             leaveTo="translate-x-[-100%]"
           >
-            <Dialog.Panel className="fixed bottom-0 left-0 right-0 top-0 flex h-full w-full flex-col bg-white pb-6 dark:bg-black">
+            <Dialog.Panel className="fixed bottom-0 left-0 right-0 top-0 flex h-full w-full flex-col bg-mustard pb-6 text-black">
               <div className="p-4">
                 <button
-                  className="mb-4 flex h-11 w-11 items-center justify-center rounded-md border border-neutral-200 text-black transition-colors dark:border-neutral-700 dark:text-white"
+                  className="mb-4 flex h-11 w-11 items-center justify-center rounded-md border border-black/40 text-black transition-colors"
                   onClick={closeMobileMenu}
                   aria-label="Затвори мобилно меню"
                 >
@@ -106,8 +110,10 @@ export default function MobileMenu({ menu }: { menu: MenuItem[] }) {
                 <ul className="flex w-full flex-col">
                   <li>
                     <button
-                      onClick={() => setProductsSubmenuOpen(!productsSubmenuOpen)}
-                      className="flex w-full items-center justify-between py-2 text-xl text-mustard transition-colors hover:text-sage dark:text-mustard"
+                      onClick={() =>
+                        setProductsSubmenuOpen(!productsSubmenuOpen)
+                      }
+                      className="flex w-full items-center justify-between py-2 text-xl font-semibold text-black transition-colors hover:opacity-90"
                     >
                       Продукти
                       <ChevronRightIcon
@@ -115,13 +121,13 @@ export default function MobileMenu({ menu }: { menu: MenuItem[] }) {
                       />
                     </button>
                     {productsSubmenuOpen && (
-                      <ul className="ml-4 mt-2 space-y-2 border-l-2 border-sage dark:border-sage/50 pl-4">
+                      <ul className="ml-4 mt-2 space-y-2 border-l-2 border-black/40 pl-4">
                         <li>
                           <Link
                             href="/products"
                             prefetch={true}
                             onClick={closeMobileMenu}
-                            className="block py-2 text-lg text-sage transition-colors hover:text-mustard dark:text-sage dark:hover:text-mustard"
+                            className="block py-2 text-lg text-black transition-colors hover:opacity-90"
                           >
                             Всички
                           </Link>
@@ -133,7 +139,7 @@ export default function MobileMenu({ menu }: { menu: MenuItem[] }) {
                                 href={`/products?collection=${collection.handle}`}
                                 prefetch={true}
                                 onClick={closeMobileMenu}
-                                className="block py-2 text-lg text-sage transition-colors hover:text-mustard dark:text-sage dark:hover:text-mustard"
+                                className="block py-2 text-lg text-black transition-colors hover:opacity-90"
                               >
                                 {collection.title}
                               </Link>
@@ -142,7 +148,7 @@ export default function MobileMenu({ menu }: { menu: MenuItem[] }) {
                       </ul>
                     )}
                   </li>
-                  <li className="py-2 text-xl text-mustard transition-colors hover:text-sage dark:text-mustard">
+                  <li className="py-2 text-xl font-semibold text-black transition-colors hover:opacity-90">
                     <Link
                       href="/za-nas"
                       prefetch={true}
@@ -151,7 +157,7 @@ export default function MobileMenu({ menu }: { menu: MenuItem[] }) {
                       За нас
                     </Link>
                   </li>
-                  <li className="py-2 text-xl text-mustard transition-colors hover:text-sage dark:text-mustard">
+                  <li className="py-2 text-xl font-semibold text-black transition-colors hover:opacity-90">
                     <Link
                       href="/contact"
                       prefetch={true}
