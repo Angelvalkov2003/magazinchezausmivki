@@ -17,7 +17,7 @@ function SubmitButton({
   justAdded: boolean;
 }) {
   const buttonClasses =
-    "relative flex w-full items-center justify-center rounded-full bg-mustard p-4 tracking-wide text-white transition-all duration-200 active:scale-[0.98]";
+    "relative flex w-full items-center justify-center rounded-full bg-mustard p-4 tracking-wide text-black border border-black/50 shadow-sm transition-all duration-200 active:scale-[0.98]";
   const disabledClasses = "cursor-not-allowed opacity-60 hover:opacity-60";
 
   if (!available) {
@@ -34,9 +34,9 @@ function SubmitButton({
       disabled={isSubmitting}
       className={clsx(
         buttonClasses,
-        "hover:opacity-90",
+        "hover:opacity-95",
         isSubmitting && disabledClasses,
-        justAdded && "bg-sage animate-bump",
+        justAdded && "bg-black text-white border-black animate-bump",
       )}
     >
       <div className="absolute left-0 ml-4">
