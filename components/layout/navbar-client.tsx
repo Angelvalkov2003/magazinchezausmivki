@@ -62,7 +62,7 @@ export function NavbarClient() {
 
   return (
     <>
-      <nav className="relative flex items-center justify-between bg-mustard p-4 text-black lg:px-12">
+      <nav className="relative flex items-center justify-between bg-white p-4 text-black lg:px-12 border-b border-black/15">
         <div className="block flex-none md:hidden">
           <Suspense fallback={null}>
             <MobileMenu menu={menu} />
@@ -93,7 +93,7 @@ export function NavbarClient() {
                     />
                   </button>
                   {productsDropdownOpen && (
-                    <div className="absolute left-0 top-full z-50 mt-2 w-56 rounded-lg border border-black/20 bg-mustard shadow-lg">
+                    <div className="absolute left-0 top-full z-50 mt-2 w-56 rounded-lg border border-black/20 bg-white shadow-lg">
                       <ul className="py-2">
                         <li>
                           <Link
@@ -157,17 +157,17 @@ export function NavbarClient() {
       </nav>
 
       {/* Desktop-only categories bar (under navbar) */}
-      <div className="hidden w-full border-b border-black/15 bg-white md:block">
+      <div className="hidden w-full border-b border-black/15 bg-mustard md:block">
         <div className="mx-auto max-w-screen-2xl px-4 py-2 lg:px-12">
           <div className="flex flex-wrap items-center justify-center gap-2 text-sm">
             {loading ? (
-              <span className="text-black/70">Зареждане...</span>
+              <span className="font-semibold text-black/80">Зареждане...</span>
             ) : (
               collections.map((collection) => (
                 <Link
                   key={collection.id}
                   href={`/products?collection=${collection.handle}`}
-                  className="rounded-full px-3 py-1 text-black transition-colors hover:bg-mustard/10 hover:text-black"
+                  className="rounded-full px-3 py-1 font-semibold text-black transition-colors hover:bg-black/10 hover:text-black"
                 >
                   {collection.title}
                 </Link>
