@@ -25,11 +25,14 @@ export default async function HomePage() {
   const products = await getProducts({ limit: 20, mainscreen: true });
 
   return (
-    <div className="min-h-screen bg-white dark:bg-sage py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto">
-        <WelcomeBanner />
+    <div className="min-h-screen bg-white dark:bg-sage">
+      <WelcomeBanner />
+
+      <div className="px-4 py-12 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-7xl">
         <ProductsCarousel />
         <Carousel products={products} />
+        </div>
       </div>
     </div>
   );
