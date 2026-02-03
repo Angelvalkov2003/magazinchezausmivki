@@ -36,9 +36,9 @@ export function WelcomeBanner() {
               alt=""
               fill
               priority
-              quality={90}
+              quality={100}
               className="object-cover object-[50%_37%]"
-              sizes="(min-width: 1280px) 1920px, (min-width: 768px) 100vw, 100vw"
+              sizes="(min-width: 1920px) 3840px, (min-width: 1280px) 2560px, (min-width: 768px) 100vw, 100vw"
             />
             {/* Оверлей: лого горе в центъра + текстове и бутон отдолу */}
             <div
