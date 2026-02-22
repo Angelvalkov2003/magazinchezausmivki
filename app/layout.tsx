@@ -53,6 +53,10 @@ export default async function RootLayout({
   return (
     <html lang="bg">
       <head>
+        <meta
+          name="google-site-verification"
+          content="XlMbRSEHir8wIIGU6j3HbPaUaXe6MH7th_9unF726UQ"
+        />
         <meta name="color-scheme" content="light" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
