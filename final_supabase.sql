@@ -37,7 +37,7 @@ CREATE TABLE products (
     price NUMERIC(10, 2) NOT NULL CHECK (price >= 0),
     compare_at_price NUMERIC(10, 2),
     featured_image JSONB,
-    images JSONB[] DEFAULT '{}',
+    images JSONB DEFAULT '[]'::jsonb,
     category TEXT, -- This references collections by handle or can be collection title
     available BOOLEAN DEFAULT true,
     mainscreen BOOLEAN DEFAULT false NOT NULL,
@@ -124,6 +124,6 @@ COMMENT ON TABLE product_images IS 'Stores product images with ordering support.
 COMMENT ON TABLE orders IS 'Stores complete order information including customer details. Products are stored as JSON snapshots. Cart is stored locally in browser (localStorage/cookies), not in database.';
 COMMENT ON COLUMN product_images.sort_order IS '0 = main image, 1+ = secondary images';
 COMMENT ON COLUMN orders.products IS 'JSON array containing product snapshot: {id, name, price, quantity}';
-COMMENT ON COLUMN orders.status IS 'Order status: new, paid, shipped, completed, canceled';
+COMMENT ON COLUMN orders.status IS 'Order status: new, confirmed, shipped, paid, completed, canceled';
 COMMENT ON COLUMN products.category IS 'Category/collection name - can reference collections table by handle or title';
 COMMENT ON COLUMN products.mainscreen IS 'If true, product will be displayed in carousel on main page';
